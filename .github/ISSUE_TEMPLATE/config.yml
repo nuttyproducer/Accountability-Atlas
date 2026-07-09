@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/
+    about: Do not open public issues for security vulnerabilities. Follow SECURITY.md.
+  - name: Sensitive witness material
+    url: https://github.com/
+    about: Do not submit sensitive witness material through GitHub. This project is not accepting sensitive submissions yet.
