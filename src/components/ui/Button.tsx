@@ -25,9 +25,9 @@ const variantClasses: Record<string, string> = {
   primary:
     "bg-ink text-bone hover:bg-charcoal active:scale-[0.98]",
   secondary:
-    "border border-ink text-ink bg-transparent hover:bg-ink/5 active:scale-[0.98]",
+    "border border-ink text-ink bg-paper hover:bg-ink/5 active:scale-[0.98]",
   ghost:
-    "text-ink bg-transparent hover:bg-ink/5 active:scale-[0.98]",
+    "text-ink bg-paper hover:bg-ink/5 active:scale-[0.98]",
 };
 
 export function Button({
