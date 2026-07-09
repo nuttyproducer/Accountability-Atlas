@@ -9,7 +9,7 @@ interface BadgeProps {
 const badgeVariants: Record<string, string> = {
   neutral: "bg-border/30 text-charcoal border-border",
   info: "bg-trust/10 text-trust border-trust/30",
-  warning: "bg-amber/10 text-amber border-amber/30",
+  warning: "bg-amber/10 text-[#8B6914] border-amber/30",
   alert: "bg-clay/10 text-clay border-clay/30",
 };
 

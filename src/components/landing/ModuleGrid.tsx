@@ -12,6 +12,7 @@ export function ModuleGrid() {
           <SectionHeading
             eyebrow="What We're Building"
             title="Core Modules"
+            id="modules-title"
             description="Each module is designed to connect evidence, context, and lawful action — without collecting sensitive data prematurely."
           />
         </Reveal>

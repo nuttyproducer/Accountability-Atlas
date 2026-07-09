@@ -2,12 +2,14 @@ interface SectionHeadingProps {
   eyebrow?: string;
   title: string;
   description?: string;
+  id?: string;
 }
 
 export function SectionHeading({
   eyebrow,
   title,
   description,
+  id,
 }: SectionHeadingProps) {
   return (
     <div className="text-center max-w-2xl mx-auto mb-16">
@@ -17,7 +19,7 @@ export function SectionHeading({
         </p>
       )}
       <div className="w-10 h-px bg-border mx-auto mb-6" aria-hidden="true" />
-      <h2 className="font-serif text-3xl lg:text-4xl font-semibold text-ink mb-6">
+      <h2 id={id} className="font-serif text-3xl lg:text-4xl font-semibold text-ink mb-6">
         {title}
       </h2>
       {description && (

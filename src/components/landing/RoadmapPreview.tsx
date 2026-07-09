@@ -13,6 +13,7 @@ export function RoadmapPreview() {
           <SectionHeading
             eyebrow="Where We're Going"
             title="Roadmap"
+            id="roadmap-title"
             description="Each phase builds on the last. We move carefully — accuracy and safety before speed."
           />
         </Reveal>

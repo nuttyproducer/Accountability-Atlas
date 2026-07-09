@@ -10,6 +10,7 @@ export function MissionSection() {
           <SectionHeading
             eyebrow="Why This Exists"
             title="Building calm public-interest infrastructure."
+            id="mission-title"
           />
         </Reveal>
         <Reveal delay={0.1}>

@@ -10,6 +10,7 @@ export function NotThisProject() {
           <SectionHeading
             eyebrow="Clarity"
             title="What This Project Will Not Do"
+            id="not-title"
           />
         </Reveal>
         <Reveal delay={0.1}>

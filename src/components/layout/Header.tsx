@@ -98,7 +98,8 @@ export function Header() {
                 key={item.href}
                 to={item.href}
                 className={`
-                  px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200
+                  px-3 py-3 text-sm font-medium rounded-md transition-colors duration-200
+                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50
                   ${isActive(item.href) ? "text-ink bg-ink/5" : "text-charcoal hover:text-ink hover:bg-ink/3"}
                 `.trim()}
                 onClick={closeMenu}
@@ -110,7 +111,7 @@ export function Header() {
               href={githubLink.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-charcoal hover:text-ink rounded-md transition-colors duration-200"
+              className="inline-flex items-center gap-1.5 px-3 py-3 text-sm font-medium text-charcoal hover:text-ink rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50"
               onClick={closeMenu}
             >
               {githubLink.label}

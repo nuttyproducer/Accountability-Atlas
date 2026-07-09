@@ -11,6 +11,7 @@ export function SafetyPrinciples() {
           <SectionHeading
             eyebrow="How We Work"
             title="Safety Principles"
+            id="principles-title"
             description="These principles guide every decision, from code to content to community."
           />
         </Reveal>
