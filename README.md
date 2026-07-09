@@ -343,6 +343,6 @@ See `NOTICE.md` and the `LICENSES/` folder for details.
 
 ## 🕊️ Closing Principle
 
-> **Be smaller than you want to appear, but more reliable than people expect.**
+> **Be smaller than you want to appear, but more reliable than people expect!**
 
 Accountability Atlas earns trust through calm language, transparent methodology, careful contributors, public corrections, and a strict commitment to human dignity.
