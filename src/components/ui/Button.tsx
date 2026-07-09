@@ -40,7 +40,7 @@ export function Button({
   onClick,
 }: ButtonProps) {
   const classes = `
-    inline-flex items-center gap-2 px-6 py-3 text-base font-medium
+    inline-flex items-center gap-2.5 px-7 py-3.5 text-base lg:text-lg font-medium
     rounded-md transition-colors duration-200
     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2
     ${variantClasses[variant]}

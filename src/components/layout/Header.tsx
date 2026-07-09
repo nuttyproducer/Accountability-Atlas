@@ -14,7 +14,7 @@ export function Header() {
   return (
     <header className="bg-paper/95 border-b border-border/50" role="banner">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-[4.5rem] lg:h-[5.5rem]">
           {/* Logo + wordmark */}
           <Link
             to="/"
@@ -24,14 +24,14 @@ export function Header() {
             <img
               src={logoMark}
               alt=""
-              className="w-8 h-8 flex-shrink-0"
+              className="w-10 h-10 flex-shrink-0"
               aria-hidden="true"
             />
             <div className="hidden sm:block">
-              <span className="font-serif text-lg font-semibold text-ink leading-tight block">
+              <span className="font-serif text-xl font-semibold text-ink leading-tight block">
                 Accountability Atlas
               </span>
-              <span className="font-mono text-[10px] font-medium tracking-[0.15em] text-charcoal/60 uppercase">
+              <span className="font-mono text-[11px] font-medium tracking-[0.15em] text-charcoal/60 uppercase">
                 Civic Evidence Platform
               </span>
             </div>

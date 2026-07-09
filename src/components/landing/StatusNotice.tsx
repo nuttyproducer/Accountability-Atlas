@@ -6,7 +6,7 @@ export function StatusNotice() {
           <p className="font-mono text-xs font-medium tracking-wider text-charcoal/60 uppercase mb-2">
             Project Status
           </p>
-          <p className="text-sm text-charcoal leading-relaxed">
+          <p className="text-base text-charcoal leading-relaxed">
             Early-stage open-source initiative. Not yet a registered NGO,
             charity, legal entity, or formal partner of any listed
             organization.

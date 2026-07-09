@@ -24,29 +24,29 @@ export function Card({
   return (
     <div
       className={`
-        relative bg-bone border border-border rounded-lg
-        p-6 lg:p-8
+        relative bg-bone border border-charcoal/15 rounded-lg
+        p-7 lg:p-9
         transition duration-300
-        hover:shadow-soft hover:-translate-y-0.5 hover:border-charcoal/20
+        hover:shadow-soft hover:-translate-y-0.5 hover:border-charcoal/30
         ${className}
       `.trim()}
     >
       {accent && (
         <div
-          className={`absolute top-0 left-0 w-[3px] h-6 rounded-br-sm ${accentColors[accent]}`}
+          className={`absolute top-0 left-0 w-1 h-8 rounded-br-sm ${accentColors[accent]}`}
           aria-hidden="true"
         />
       )}
       <div className={accent ? "pl-1" : ""}>
         {label && (
-          <p className="font-mono text-xs font-medium text-charcoal/60 mb-2 tracking-wider">
+          <p className="font-mono text-[11px] font-medium text-charcoal/50 mb-3 uppercase tracking-[0.12em]">
             {label}
           </p>
         )}
-        <h3 className="font-serif text-xl lg:text-2xl font-semibold text-ink mb-3">
+        <h3 className="font-serif text-2xl lg:text-3xl font-bold text-ink mb-3">
           {title}
         </h3>
-        <p className="text-charcoal leading-relaxed">{children}</p>
+        <p className="text-base lg:text-lg text-charcoal/80 leading-relaxed">{children}</p>
       </div>
     </div>
   );

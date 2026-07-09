@@ -14,8 +14,8 @@ export function NotThisProject() {
           />
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="max-w-3xl mx-auto bg-bone border border-border rounded-lg p-8">
-            <p className="text-charcoal leading-relaxed text-lg">
+          <div className="max-w-3xl mx-auto bg-bone border border-charcoal/15 rounded-lg p-8 lg:p-10">
+            <p className="text-charcoal leading-relaxed text-xl">
               This is not a rage platform, a doxing project, a donation
               intermediary, a replacement for humanitarian organizations, or
               a legal authority.

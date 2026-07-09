@@ -19,11 +19,11 @@ export function SectionHeading({
         </p>
       )}
       <div className="w-10 h-px bg-border mx-auto mb-6" aria-hidden="true" />
-      <h2 id={id} className="font-serif text-3xl lg:text-4xl font-semibold text-ink mb-6">
+      <h2 id={id} className="font-serif text-3xl lg:text-4xl font-bold text-ink mb-6">
         {title}
       </h2>
       {description && (
-        <p className="text-lg text-charcoal/80 leading-relaxed max-w-3xl mx-auto">
+        <p className="text-xl text-charcoal/80 leading-relaxed max-w-3xl mx-auto">
           {description}
         </p>
       )}

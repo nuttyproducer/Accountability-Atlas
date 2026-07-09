@@ -15,16 +15,18 @@ export function SafetyPrinciples() {
             description="These principles guide every decision, from code to content to community."
           />
         </Reveal>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto space-y-4">
           {principles.map((principle, i) => (
-            <Reveal key={i} delay={i * 0.08}>
-              <div className="flex items-start gap-3 bg-bone border border-border rounded-lg p-5 transition-shadow duration-300 hover:shadow-soft hover:border-charcoal/20">
-                {/* Clay dot — echo of the coordinate point motif */}
+            <Reveal key={i} delay={i * 0.06}>
+              <div className="flex items-center gap-5 bg-bone border border-charcoal/15 rounded-lg p-5 lg:p-6 transition duration-300 hover:shadow-soft hover:border-charcoal/30 group">
+                {/* Numbered marker with clay dot */}
                 <span
-                  className="flex-shrink-0 w-2 h-2 rounded-full bg-clay mt-2"
+                  className="flex-shrink-0 w-9 h-9 rounded-full border border-clay/30 flex items-center justify-center font-mono text-xs font-medium text-clay group-hover:bg-clay/5 transition-colors duration-300"
                   aria-hidden="true"
-                />
-                <span className="text-charcoal leading-relaxed">
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-lg text-charcoal leading-relaxed">
                   {principle}
                 </span>
               </div>
