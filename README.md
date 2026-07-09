@@ -22,3 +22,16 @@ The initial work centers on creating a clear structure for:
 ## Getting started
 
 Review the main documentation first, then explore the contributor guidance and project roadmap before proposing changes.
+
+## License
+
+This repository uses a dual-license model:
+
+- Software source code: AGPL-3.0-or-later
+- Documentation and written project content: CC BY-SA 4.0
+
+Brand assets, third-party materials, evidence, testimony, witness submissions, images,
+videos, partner-provided materials, and sensitive source material are not covered by
+these licenses unless explicitly stated.
+
+See `NOTICE.md` and the `LICENSES/` folder for details.

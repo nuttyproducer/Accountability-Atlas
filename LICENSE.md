@@ -6,30 +6,30 @@ Because this is a public-interest civic-technology project, licensing should be 
 
 ---
 
-## Recommended license model
-
 ### Code
 
-Recommended: **GNU Affero General Public License v3.0 or later (AGPL-3.0-or-later)**
+**GNU Affero General Public License v3.0 or later (AGPL-3.0-or-later)**
 
 Reason: if someone modifies and hosts the platform as a network service, the AGPL helps ensure improvements remain available to the public.
 
 ### Documentation, methodology, public copy, and non-code content
 
-Recommended: **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**
+**Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**
 
 Reason: allows reuse and adaptation while requiring attribution and share-alike distribution.
 
 ---
 
-## Temporary notice
+This repository is dual-licensed:
 
-Until final legal review, this file serves as a license policy placeholder.
+1. Software source code is licensed under the GNU Affero General Public License v3.0 or later (AGPL-3.0-or-later).
+2. Documentation, written project materials, methodology documents, and non-code content are licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0), unless otherwise stated.
+3. Logos, names, trademarks, brand assets, third-party reports, linked source materials, evidence, testimony, witness submissions, images, videos, and partner-provided materials are not covered by these licenses unless explicitly stated.
 
-Before accepting external contributions, maintainers should either:
-
-1. replace this file with the full selected license text; or
-2. add separate `LICENSE-CODE` and `LICENSE-DOCS` files.
+See:
+- LICENSES/AGPL-3.0-or-later.txt
+- LICENSES/CC-BY-SA-4.0.txt
+- NOTICE.md
 
 ---
 

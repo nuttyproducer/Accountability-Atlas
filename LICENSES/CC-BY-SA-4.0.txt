@@ -1,0 +1,27 @@
+# Creative Commons Attribution-ShareAlike 4.0 International
+
+SPDX-License-Identifier: CC-BY-SA-4.0
+
+This file identifies the documentation/content license for this repository.
+
+Documentation, methodology documents, project planning documents, educational content,
+outreach templates, non-code written materials, and public project documentation in this
+repository are licensed under Creative Commons Attribution-ShareAlike 4.0 International
+(CC BY-SA 4.0), unless a specific file states otherwise.
+
+Canonical license text:
+https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt
+
+Human-readable summary:
+https://creativecommons.org/licenses/by-sa/4.0/
+
+Important project note:
+This license applies to project-created documentation and written content only. It does
+not automatically apply to software source code, logos, names, trademarks, brand assets,
+third-party reports, linked source materials, evidence, testimony, witness submissions,
+images, videos, humanitarian organization materials, legal filings, or partner-provided
+materials.
+
+Before accepting major external documentation contributions, maintainers should confirm
+the final license policy and, where appropriate, replace this reference file with the
+full verbatim CC BY-SA 4.0 legal code from Creative Commons.
