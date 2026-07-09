@@ -30,7 +30,7 @@ body {
   background: rgba(185, 92, 80, 0.24);
 }
 
-/* Subtle map-grid texture overlay */
+/* Subtle map-grid texture — sits between background and content */
 body::before {
   content: "";
   position: fixed;
@@ -41,6 +41,12 @@ body::before {
   background-repeat: repeat;
   background-size: 60px 60px;
   opacity: 0.25;
+}
+
+/* Ensure all app content renders above the grid texture */
+#root {
+  position: relative;
+  z-index: 1;
 }
 
 /* Skip-to-content link */
