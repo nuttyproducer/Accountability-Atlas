@@ -26,7 +26,7 @@ export function Card({
       className={`
         relative bg-bone border border-border rounded-lg
         p-6 lg:p-8
-        transition-shadow duration-300 transition-transform duration-300
+        transition duration-300
         hover:shadow-soft hover:-translate-y-0.5 hover:border-charcoal/20
         ${className}
       `.trim()}
