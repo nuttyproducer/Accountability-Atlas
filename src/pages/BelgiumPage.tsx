@@ -45,7 +45,7 @@ export default function BelgiumPage() {
               those institutions. The{" "}
               <Link
                 to="/institutions/european-union"
-                className="text-trust hover:text-trust/80 underline underline-offset-2"
+                className="text-trust hover:text-trust/80 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
               >
                 European Union institution page
               </Link>{" "}
@@ -139,7 +139,7 @@ export default function BelgiumPage() {
           expertise, see{" "}
           <Link
             to="/contribute"
-            className="text-trust hover:text-trust/80 underline underline-offset-2"
+            className="text-trust hover:text-trust/80 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
           >
             how to contribute
           </Link>
@@ -150,7 +150,7 @@ export default function BelgiumPage() {
           are welcome through the{" "}
           <Link
             to="/corrections"
-            className="text-trust hover:text-trust/80 underline underline-offset-2"
+            className="text-trust hover:text-trust/80 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
           >
             corrections process
           </Link>

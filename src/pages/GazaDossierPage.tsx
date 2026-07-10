@@ -174,7 +174,7 @@ export default function GazaDossierPage() {
           The dossier works together with the{" "}
           <Link
             to="/legal-tracker"
-            className="text-trust hover:text-trust/80 underline underline-offset-2"
+            className="text-trust hover:text-trust/80 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
           >
             Legal Tracker
           </Link>{" "}
@@ -227,7 +227,7 @@ export default function GazaDossierPage() {
           The platform uses consistent{" "}
           <Link
             to="/legal-tracker"
-            className="text-trust hover:text-trust/80 underline underline-offset-2"
+            className="text-trust hover:text-trust/80 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
           >
             legal status labels
           </Link>{" "}
@@ -328,7 +328,7 @@ export default function GazaDossierPage() {
           available for review. The{" "}
           <Link
             to="/methodology"
-            className="text-trust hover:text-trust/80 underline underline-offset-2"
+            className="text-trust hover:text-trust/80 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
           >
             Methodology
           </Link>{" "}
@@ -345,7 +345,7 @@ export default function GazaDossierPage() {
           humanitarian specialists are invited to{" "}
           <Link
             to="/contribute"
-            className="text-trust hover:text-trust/80 underline underline-offset-2"
+            className="text-trust hover:text-trust/80 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
           >
             contribute
           </Link>{" "}

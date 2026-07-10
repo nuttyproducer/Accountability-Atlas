@@ -39,14 +39,14 @@ export function PreviewNotice({
           <p className="text-sm text-charcoal/60 mt-2">
             <Link
               to="/methodology"
-              className="text-trust hover:text-trust/80 underline underline-offset-2 transition-colors duration-200"
+              className="text-trust hover:text-trust/80 underline underline-offset-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
             >
               Read the methodology
             </Link>
             {" — "}
             <Link
               to="/corrections"
-              className="text-trust hover:text-trust/80 underline underline-offset-2 transition-colors duration-200"
+              className="text-trust hover:text-trust/80 underline underline-offset-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
             >
               corrections welcome
             </Link>

@@ -65,7 +65,7 @@ export function AttributionsPage() {
               or inaccurate, please submit a correction through the{" "}
               <Link
                 to="/corrections"
-                className="text-trust hover:text-trust/80 underline underline-offset-2 transition-colors duration-200"
+                className="text-trust hover:text-trust/80 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm transition-colors duration-200"
               >
                 correction process
               </Link>
@@ -188,7 +188,7 @@ export function AttributionsPage() {
               us know through the{" "}
               <Link
                 to="/corrections"
-                className="text-trust hover:text-trust/80 underline underline-offset-2 transition-colors duration-200"
+                className="text-trust hover:text-trust/80 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm transition-colors duration-200"
               >
                 corrections process
               </Link>{" "}

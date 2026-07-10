@@ -94,7 +94,7 @@ export function CorrectionsPage() {
                   route will be listed on the{" "}
                   <Link
                     to="/contribute"
-                    className="text-trust hover:text-trust/80 underline underline-offset-2 transition-colors duration-200"
+                    className="text-trust hover:text-trust/80 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm transition-colors duration-200"
                   >
                     Contribute
                   </Link>{" "}

@@ -75,7 +75,7 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="text-base text-bone/70 hover:text-bone transition-colors duration-200"
+                    className="text-base text-bone/70 hover:text-bone transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
                   >
                     {link.label}
                   </Link>
@@ -94,7 +94,7 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="text-base text-bone/70 hover:text-bone transition-colors duration-200"
+                    className="text-base text-bone/70 hover:text-bone transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
                   >
                     {link.label}
                   </Link>
@@ -115,7 +115,7 @@ export function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-base text-bone/70 hover:text-bone transition-colors duration-200"
+                    className="text-base text-bone/70 hover:text-bone transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
                   >
                     {link.label}
                   </a>

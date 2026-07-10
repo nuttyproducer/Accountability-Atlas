@@ -93,7 +93,7 @@ export default function LegalTrackerPage() {
           Legal status labels use a consistent vocabulary drawn from the{" "}
           <Link
             to="/methodology"
-            className="text-trust hover:text-trust/80 underline underline-offset-2"
+            className="text-trust hover:text-trust/80 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
           >
             Methodology
           </Link>
@@ -233,7 +233,7 @@ export default function LegalTrackerPage() {
           <li>
             <Link
               to="/methodology"
-              className="text-trust hover:text-trust/80 underline underline-offset-2"
+              className="text-trust hover:text-trust/80 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
             >
               Methodology
             </Link>
@@ -242,7 +242,7 @@ export default function LegalTrackerPage() {
           <li>
             <Link
               to="/gaza-dossier"
-              className="text-trust hover:text-trust/80 underline underline-offset-2"
+              className="text-trust hover:text-trust/80 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
             >
               Gaza Dossier
             </Link>
@@ -251,7 +251,7 @@ export default function LegalTrackerPage() {
           <li>
             <Link
               to="/corrections"
-              className="text-trust hover:text-trust/80 underline underline-offset-2"
+              className="text-trust hover:text-trust/80 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
             >
               Corrections
             </Link>

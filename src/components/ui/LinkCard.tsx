@@ -100,7 +100,7 @@ export function LinkCard({
   }
 
   return (
-    <Link to={to} className="block h-full group">
+    <Link to={to} className="block h-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm">
       {cardContent}
     </Link>
   );

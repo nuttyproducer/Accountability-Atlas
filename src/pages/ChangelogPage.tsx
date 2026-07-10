@@ -184,7 +184,7 @@ export function ChangelogPage() {
                 href="https://github.com/nuttyproducer/accountability-atlas"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-trust hover:text-trust/80 underline underline-offset-2 transition-colors duration-200"
+                className="text-trust hover:text-trust/80 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm transition-colors duration-200"
               >
                 GitHub repository
               </a>
