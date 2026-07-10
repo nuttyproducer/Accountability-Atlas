@@ -6,6 +6,7 @@ export interface NavItem {
 
 export const mainNavItems: NavItem[] = [
   { label: "Methodology", href: "/methodology" },
+  { label: "Corrections", href: "/corrections" },
   { label: "Contribute", href: "/contribute" },
 ];
 

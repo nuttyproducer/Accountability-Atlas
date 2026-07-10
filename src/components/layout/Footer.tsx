@@ -4,10 +4,18 @@ import logoMark from "../../assets/logo-mark.svg";
 const projectLinks = [
   { label: "Methodology", href: "/methodology" },
   { label: "Contribute", href: "/contribute" },
+  { label: "Corrections", href: "/corrections" },
   { label: "Changelog", href: "/changelog" },
 ];
 
 const resourceLinks = [
+  { label: "Attributions", href: "/attributions" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Accessibility", href: "/accessibility" },
+  { label: "Disclaimer", href: "/disclaimer" },
+];
+
+const externalLinks = [
   {
     label: "GitHub Repository",
     href: "https://github.com/nuttyproducer/accountability-atlas",
@@ -19,8 +27,8 @@ const resourceLinks = [
     external: true,
   },
   {
-    label: "Image Credits",
-    href: "https://github.com/nuttyproducer/accountability-atlas/blob/main/docs/attributions.md",
+    label: "Contribution Guide",
+    href: "https://github.com/nuttyproducer/accountability-atlas/blob/main/CONTRIBUTING.md",
     external: true,
   },
 ];
@@ -30,9 +38,9 @@ export function Footer() {
     <footer className="bg-ink text-bone/70" role="contentinfo">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
         {/* Top grid: brand + link columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
-          <div className="sm:col-span-1">
+          <div className="sm:col-span-1 lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <img
                 src={logoMark}
@@ -81,6 +89,25 @@ export function Footer() {
             <ul className="space-y-3">
               {resourceLinks.map((link) => (
                 <li key={link.label}>
+                  <Link
+                    to={link.href}
+                    className="text-base text-bone/70 hover:text-bone transition-colors duration-200"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* External */}
+          <div>
+            <h3 className="font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-bone/40 mb-4">
+              External
+            </h3>
+            <ul className="space-y-3">
+              {externalLinks.map((link) => (
+                <li key={link.label}>
                   <a
                     href={link.href}
                     target="_blank"
@@ -97,7 +124,23 @@ export function Footer() {
 
         <hr className="border-bone/20 mb-8" aria-hidden="true" />
 
+        {/* Trust language */}
+        <div className="space-y-4 text-base text-bone/50 leading-relaxed mb-8">
+          <p>
+            Accountability Atlas is an independent open-source civic
+            accountability project. It is not a registered NGO, charity, court,
+            humanitarian organization, or formal partner of listed organizations
+            unless explicitly stated.
+          </p>
+          <p>
+            The project does not provide legal advice. It does not promote
+            violence, harassment, hatred, doxing, or collective blame.
+          </p>
+        </div>
+
         {/* Legal + disclaimers */}
+        <hr className="border-bone/20 mb-8" aria-hidden="true" />
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-3 text-base text-bone/60 leading-relaxed">
             <p>
