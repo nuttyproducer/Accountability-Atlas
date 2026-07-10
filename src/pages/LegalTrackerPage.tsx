@@ -14,7 +14,6 @@ import { SourceList } from "../components/pages/SourceList";
 import { legalCases } from "../data/legalCases";
 import { sources } from "../data/sources";
 import type { LegalStatus } from "../types/content";
-import { LEGAL_STATUS_LABELS } from "../types/content";
 
 const statusExplanations: { status: LegalStatus; explanation: string }[] = [
   {
