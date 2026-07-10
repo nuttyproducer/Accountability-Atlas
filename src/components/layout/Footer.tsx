@@ -4,6 +4,7 @@ import logoMark from "../../assets/logo-mark.svg";
 const projectLinks = [
   { label: "Methodology", href: "/methodology" },
   { label: "Contribute", href: "/contribute" },
+  { label: "Changelog", href: "/changelog" },
 ];
 
 const resourceLinks = [
