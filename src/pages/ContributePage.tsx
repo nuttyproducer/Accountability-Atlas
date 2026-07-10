@@ -40,17 +40,19 @@ export function ContributePage() {
               Contribute
             </p>
             <h1 className="font-serif text-4xl lg:text-5xl font-bold text-ink mb-4">
-              Help Build the Foundation
+              Help Build the Platform
             </h1>
             <div className="w-10 h-px bg-border mb-8" aria-hidden="true" />
           </Reveal>
 
           <Reveal delay={0.1}>
             <p className="text-lg text-charcoal/80 leading-relaxed mb-10">
-              Accountability Atlas is an open-source project built by careful
-              contributors. We welcome developers, designers, researchers,
-              legal reviewers, security auditors, writers, and translators.
-              Every contribution is reviewed for safety and accuracy.
+              Accountability Atlas is an open-source project building
+              infrastructure against genocide and mass atrocities. We welcome
+              developers, designers, researchers, legal and human-rights
+              reviewers, OSINT/source-verification people, security auditors,
+              writers, and translators. Every contribution is reviewed for
+              safety and accuracy.
             </p>
           </Reveal>
 

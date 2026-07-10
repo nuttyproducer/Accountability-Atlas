@@ -1,32 +1,46 @@
+export type PhaseStatus = "current" | "next" | "planned" | "reviewed-later";
+
 export interface RoadmapPhase {
   phase: string;
   title: string;
   description: string;
+  status: PhaseStatus;
 }
 
 export const roadmap: RoadmapPhase[] = [
   {
     phase: "Phase 1",
-    title: "Credibility Landing Page",
+    title: "Public Foundation",
     description:
-      "Create a public landing page, methodology placeholder, contribute page, and safe project framing.",
+      "Landing page, methodology preview, contribution flow, safety rules, source policy, and open project documentation.",
+    status: "current",
   },
   {
     phase: "Phase 2",
-    title: "Methodology and Country Pages",
+    title: "Gaza Accountability Dossier",
     description:
-      "Publish the first source methodology, Belgium page, EU page, legal tracker structure, and organization directory.",
+      "First public dossier structure for Gaza and the wider regional crisis: legal status, humanitarian context, source categories, key institutions, and action routes.",
+    status: "next",
   },
   {
     phase: "Phase 3",
-    title: "Static Evidence Dossiers",
+    title: "Country Accountability Pages",
     description:
-      "Add source-cited public dossiers and downloadable briefing formats.",
+      "Belgium and EU pages first: public statements, votes, arms-transfer positions, humanitarian aid policy, representatives, and lawful action templates.",
+    status: "planned",
   },
   {
     phase: "Phase 4",
-    title: "Reviewed Dynamic Features",
+    title: "Legal & Organization Trackers",
     description:
-      "Only after review: maps, search, secure workflows, and structured data.",
+      "Structured legal tracker, humanitarian organization directory, civil society directory, and correction process.",
+    status: "planned",
+  },
+  {
+    phase: "Phase 5",
+    title: "Reviewed Dynamic Platform",
+    description:
+      "Only after legal, security, and methodology review: search, maps, structured datasets, dossier generation, and secure workflows.",
+    status: "reviewed-later",
   },
 ];

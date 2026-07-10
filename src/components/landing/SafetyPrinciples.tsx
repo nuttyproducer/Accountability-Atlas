@@ -12,7 +12,7 @@ export function SafetyPrinciples() {
             eyebrow="How We Work"
             title="Safety Principles"
             id="principles-title"
-            description="These principles guide every decision, from code to content to community."
+            description="This project deals with genocide allegations, atrocity documentation, humanitarian harm, and political responsibility. That means safety is not decoration — it is core infrastructure."
           />
         </Reveal>
         <div className="max-w-3xl mx-auto space-y-4">

@@ -7,31 +7,31 @@ export const modules: Module[] = [
   {
     title: "Evidence Library",
     description:
-      "Organize public-interest sources, reports, legal records, and documentation with clear source labels.",
+      "A structured archive of source-cited public evidence, reports, legal records, humanitarian updates, and documented incidents.",
   },
   {
-    title: "Legal Tracker",
+    title: "Legal Accountability Tracker",
     description:
-      "Track public court processes, institutional findings, and legal accountability mechanisms.",
+      "A tracker for ICJ, ICC, UN, national court, sanctions, and accountability processes — clearly separating allegations, findings, warrants, rulings, and ongoing cases.",
   },
   {
-    title: "Country Accountability",
+    title: "Country Accountability Pages",
     description:
-      "Show what governments and institutions say, do, vote for, fund, block, or fail to do.",
+      "Country-by-country pages showing public statements, UN votes, arms-transfer positions, humanitarian aid policy, diplomatic action, and available citizen pressure routes.",
   },
   {
-    title: "Organization Directory",
+    title: "Humanitarian & Civil Society Directory",
     description:
-      "List humanitarian, legal, documentation, research, and civic organizations without implying partnership.",
+      "A responsible directory of humanitarian, legal, research, journalism, and civil society organizations — without implying partnership unless confirmed.",
   },
   {
     title: "Action Hub",
     description:
-      "Provide lawful templates and routes for citizens to contact representatives and act responsibly.",
+      "Lawful action tools: representative contact templates, policy asks, briefing links, call scripts, campaign explainers, and country-specific pressure routes.",
   },
   {
-    title: "Policy Dossiers",
+    title: "Dossier Generator",
     description:
-      "Turn source-cited information into concise briefings for citizens, journalists, and policymakers.",
+      "Source-cited briefing formats for citizens, journalists, researchers, lawyers, and policymakers — turning scattered evidence into usable pressure.",
   },
 ];

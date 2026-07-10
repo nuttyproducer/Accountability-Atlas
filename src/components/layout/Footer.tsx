@@ -17,6 +17,11 @@ const resourceLinks = [
     href: "https://github.com/nuttyproducer/accountability-atlas/blob/main/SECURITY.md",
     external: true,
   },
+  {
+    label: "Image Credits",
+    href: "https://github.com/nuttyproducer/accountability-atlas/blob/main/docs/attributions.md",
+    external: true,
+  },
 ];
 
 export function Footer() {
@@ -39,7 +44,7 @@ export function Footer() {
                   Accountability Atlas
                 </span>
                 <span className="font-mono text-[11px] font-medium tracking-[0.15em] text-bone/50 uppercase">
-                  Civic Evidence Platform
+                  Civic Accountability Platform
                 </span>
               </div>
             </div>

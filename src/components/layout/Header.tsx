@@ -32,7 +32,7 @@ export function Header() {
                 Accountability Atlas
               </span>
               <span className="font-mono text-[11px] font-medium tracking-[0.15em] text-charcoal/60 uppercase">
-                Civic Evidence Platform
+                Civic Accountability Platform
               </span>
             </div>
           </Link>

@@ -6,9 +6,11 @@ const contributorTypes = [
   "Developers",
   "Designers",
   "Researchers",
-  "Legal reviewers",
-  "Security auditors",
+  "Legal & human-rights reviewers",
+  "OSINT & source-verification",
+  "Security reviewers",
   "Writers & translators",
+  "Civic-tech contributors",
 ];
 
 export function ContributorCTA() {
@@ -21,11 +23,14 @@ export function ContributorCTA() {
               id="cta-title"
               className="font-serif text-3xl lg:text-4xl font-semibold text-ink mb-6"
             >
-              Help build the foundation.
+              Help build accountability infrastructure.
             </h2>
-            <p className="text-xl text-charcoal/80 leading-relaxed mb-6 max-w-xl mx-auto">
-              We are looking for careful contributors: developers, designers,
-              researchers, legal and human-rights reviewers, security
+            <p className="text-xl text-charcoal/80 leading-relaxed mb-4 max-w-xl mx-auto">
+              This project needs careful builders.
+            </p>
+            <p className="text-lg text-charcoal/70 leading-relaxed mb-6 max-w-xl mx-auto">
+              We are looking for developers, designers, researchers, legal and
+              human-rights reviewers, OSINT/source-verification people, security
               reviewers, writers, translators, and civic-tech contributors.
             </p>
 
@@ -42,8 +47,9 @@ export function ContributorCTA() {
             </div>
 
             <p className="text-base text-charcoal/60 mb-10 max-w-md mx-auto leading-relaxed">
-              Start with one focused issue, a review, or a small documentation
-              improvement. Every careful contribution moves the project forward.
+              You do not need to carry the whole mission. Start with one focused
+              issue, one review, one page, one component, one source policy
+              improvement, or one translation.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

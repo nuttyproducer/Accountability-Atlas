@@ -25,5 +25,5 @@
   <!-- Tagline -->
   <text x="600" y="420" text-anchor="middle" font-family="IBM Plex Serif, Georgia, serif" font-size="28" font-weight="500" fill="#1F2937">Evidence for protection. Action for accountability.</text>
   <!-- Sub-label -->
-  <text x="600" y="470" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="500" fill="#3B6EA8" letter-spacing="3">OPEN CIVIC EVIDENCE PLATFORM</text>
+  <text x="600" y="470" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="500" fill="#3B6EA8" letter-spacing="3">OPEN CIVIC ACCOUNTABILITY PLATFORM</text>
 </svg>

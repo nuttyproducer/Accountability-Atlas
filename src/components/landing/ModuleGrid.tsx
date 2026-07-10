@@ -13,7 +13,7 @@ export function ModuleGrid() {
             eyebrow="What We're Building"
             title="Core Modules"
             id="modules-title"
-            description="Each module is designed to connect evidence, context, and lawful action — without collecting sensitive data prematurely."
+            description="Each module connects verified evidence to lawful civic action — built carefully, without collecting sensitive data prematurely."
           />
         </Reveal>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -23,6 +23,7 @@ export function ModuleGrid() {
                 accent="amber"
                 label={`Module ${String(i + 1).padStart(2, "0")}`}
                 title={mod.title}
+                className="h-full"
               >
                 {mod.description}
               </Card>
