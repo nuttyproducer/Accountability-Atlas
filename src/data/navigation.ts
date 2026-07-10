@@ -5,8 +5,10 @@ export interface NavItem {
 }
 
 export const mainNavItems: NavItem[] = [
+  { label: "Gaza Dossier", href: "/gaza-dossier" },
+  { label: "Legal Tracker", href: "/legal-tracker" },
+  { label: "Belgium", href: "/countries/belgium" },
   { label: "Methodology", href: "/methodology" },
-  { label: "Corrections", href: "/corrections" },
   { label: "Contribute", href: "/contribute" },
 ];
 

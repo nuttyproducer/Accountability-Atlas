@@ -2,10 +2,13 @@ import { Link } from "react-router-dom";
 import logoMark from "../../assets/logo-mark.svg";
 
 const projectLinks = [
+  { label: "Gaza Dossier", href: "/gaza-dossier" },
+  { label: "Legal Tracker", href: "/legal-tracker" },
+  { label: "Belgium", href: "/countries/belgium" },
+  { label: "European Union", href: "/institutions/european-union" },
   { label: "Methodology", href: "/methodology" },
   { label: "Contribute", href: "/contribute" },
   { label: "Corrections", href: "/corrections" },
-  { label: "Changelog", href: "/changelog" },
 ];
 
 const resourceLinks = [
