@@ -88,6 +88,48 @@ export function PrivacyPage() {
             </p>
           </PolicySection>
 
+          {/* Third-party requests and font delivery */}
+          <PolicySection title="Third-party requests and fonts" id="third-party" delay={0.23}>
+            <p>
+              During the public static beta, the platform makes no third-party
+              browser requests by default.
+            </p>
+            <ul className="space-y-2 mt-3">
+              <li className="flex items-start gap-2">
+                <span className="text-clay mt-1.5" aria-hidden="true">•</span>
+                <span>
+                  <strong>Fonts are self-hosted.</strong> IBM Plex Serif, IBM
+                  Plex Mono, and Inter are served from the platform&rsquo;s own
+                  domain using the <code className="font-mono text-xs bg-ink/5 px-1 py-0.5 rounded-sm">@fontsource</code> package. No requests are
+                  made to Google Fonts or any external font provider.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-clay mt-1.5" aria-hidden="true">•</span>
+                <span>
+                  <strong>No analytics or tracking scripts.</strong> No
+                  third-party JavaScript is loaded.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-clay mt-1.5" aria-hidden="true">•</span>
+                <span>
+                  <strong>No embedded content from third parties.</strong> Maps,
+                  videos, social-media embeds, and iframes are not used.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-clay mt-1.5" aria-hidden="true">•</span>
+                <span>
+                  <strong>External links are plain anchors.</strong> When you
+                  click an external link, your browser navigates to that site.
+                  The platform does not track or redirect through intermediary
+                  URLs.
+                </span>
+              </li>
+            </ul>
+          </PolicySection>
+
           {/* External links */}
           <PolicySection title="External links" id="external-links" delay={0.24}>
             <p>
