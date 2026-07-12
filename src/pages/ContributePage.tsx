@@ -132,7 +132,7 @@ export function ContributePage() {
               >
                 Read the Contribution Guide
               </Button>
-              <Button href="/" variant="ghost" icon={<ArrowIcon />}>
+              <Button to="/" variant="ghost" icon={<ArrowIcon />}>
                 Back home
               </Button>
             </div>

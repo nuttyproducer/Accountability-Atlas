@@ -170,10 +170,10 @@ export function CorrectionsPage() {
               >
                 Submit a Correction on GitHub
               </Button>
-              <Button href="/methodology" variant="secondary" icon={<ArrowIcon />}>
+              <Button to="/methodology" variant="secondary" icon={<ArrowIcon />}>
                 Read the Methodology
               </Button>
-              <Button href="/" variant="ghost" icon={<ArrowIcon />}>
+              <Button to="/" variant="ghost" icon={<ArrowIcon />}>
                 Back home
               </Button>
             </div>

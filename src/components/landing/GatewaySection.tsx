@@ -44,10 +44,9 @@ const gatewayCards = [
     label: "Module 05",
     title: "Browse Public Resources",
     description:
-      "Humanitarian, legal, documentation, research, and press-freedom organizations will be listed responsibly without implying partnership.",
-    to: undefined,
-    disabled: true,
-    disabledLabel: "Next sprint",
+      "Humanitarian, legal, documentation, medical, research, and press-freedom organisations listed responsibly as public resources — without implying partnership, endorsement, or affiliation.",
+    to: "/organizations",
+    disabled: false,
     accent: "clay" as const,
   },
   {

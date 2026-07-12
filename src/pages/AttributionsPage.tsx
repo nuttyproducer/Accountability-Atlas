@@ -8,45 +8,19 @@ import { PageStatusNotice } from "../components/pages/PageStatusNotice";
 import { PolicySection } from "../components/pages/PolicySection";
 import { LastUpdated } from "../components/pages/LastUpdated";
 import { ExternalLink } from "../components/ui/ExternalLink";
+import { attributionRecords, type AttributionStatus } from "../data/attributions";
 
-interface ImageCredit {
-  title: string;
-  author: string;
-  source: string;
-  sourceUrl: string;
-  license: string;
-  licenseUrl: string;
-  whereUsed: string;
-  modifications: string;
-  dateAdded: string;
-}
+const statusBadge: Record<
+  AttributionStatus,
+  { label: string; variant: "info" | "warning" | "neutral" }
+> = {
+  complete: { label: "Attribution complete", variant: "info" },
+  review_pending: { label: "Needs verification", variant: "warning" },
+  disputed: { label: "Under review", variant: "warning" },
+  removed: { label: "Removed", variant: "neutral" },
+};
 
-const imageCredits: ImageCredit[] = [
-  {
-    title: "Destruction of Gaza 1.jpg",
-    author: "gloucester2gaza",
-    source: "Flickr / Wikimedia Commons",
-    sourceUrl:
-      "https://commons.wikimedia.org/wiki/File:Destruction_of_Gaza_1.jpg",
-    license: "CC BY-SA 2.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
-    whereUsed: "Starting Focus section",
-    modifications:
-      "Cropped, compressed, dark overlay applied in UI",
-    dateAdded: "2026-07-08",
-  },
-  {
-    title: "Hero image — Gaza displacement",
-    author: "TODO: Confirm source, author, license, and attribution for the hero image before public beta release.",
-    source: "TODO",
-    sourceUrl: "TODO",
-    license: "TODO",
-    licenseUrl: "TODO",
-    whereUsed: "Hero section",
-    modifications: "Cropped, compressed, overlay applied, converted to WebP",
-    dateAdded: "2026-07-07",
-  },
-];
+const visibleRecords = attributionRecords.filter((r) => r.status !== "removed");
 
 export function AttributionsPage() {
   return (
@@ -81,18 +55,16 @@ export function AttributionsPage() {
             </p>
           </PolicySection>
 
-          {imageCredits.map((credit, i) => (
-            <Reveal key={i} delay={0.18 + i * 0.06}>
+          {visibleRecords.map((record, i) => (
+            <Reveal key={record.id} delay={0.18 + i * 0.06}>
               <div className="bg-bone border border-border rounded-lg p-6 lg:p-8 mb-6">
                 <div className="flex items-start justify-between mb-4 flex-wrap gap-2">
                   <h3 className="font-serif text-xl font-semibold text-ink">
-                    {credit.title}
+                    {record.title}
                   </h3>
-                  {credit.author.startsWith("TODO") ? (
-                    <Badge variant="warning">Needs verification</Badge>
-                  ) : (
-                    <Badge variant="info">Attributed</Badge>
-                  )}
+                  <Badge variant={statusBadge[record.status].variant}>
+                    {statusBadge[record.status].label}
+                  </Badge>
                 </div>
 
                 <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm">
@@ -100,25 +72,33 @@ export function AttributionsPage() {
                     <dt className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-charcoal/45 mb-0.5">
                       Author
                     </dt>
-                    <dd className="text-charcoal/80">{credit.author}</dd>
+                    <dd className="text-charcoal/80">{record.author}</dd>
                   </div>
                   <div>
                     <dt className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-charcoal/45 mb-0.5">
                       Source
                     </dt>
-                    <dd className="text-charcoal/80">{credit.source}</dd>
+                    <dd className="text-charcoal/80">
+                      {record.sourceUrl ? (
+                        <ExternalLink href={record.sourceUrl} showIcon={false}>
+                          {record.sourceName}
+                        </ExternalLink>
+                      ) : (
+                        record.sourceName
+                      )}
+                    </dd>
                   </div>
                   <div>
                     <dt className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-charcoal/45 mb-0.5">
                       License
                     </dt>
                     <dd className="text-charcoal/80">
-                      {credit.licenseUrl !== "TODO" ? (
-                        <ExternalLink href={credit.licenseUrl} showIcon={false}>
-                          {credit.license}
+                      {record.licenseUrl ? (
+                        <ExternalLink href={record.licenseUrl} showIcon={false}>
+                          {record.licenseName}
                         </ExternalLink>
                       ) : (
-                        credit.license
+                        record.licenseName
                       )}
                     </dd>
                   </div>
@@ -126,25 +106,34 @@ export function AttributionsPage() {
                     <dt className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-charcoal/45 mb-0.5">
                       Where used
                     </dt>
-                    <dd className="text-charcoal/80">{credit.whereUsed}</dd>
+                    <dd className="text-charcoal/80">{record.whereUsed}</dd>
                   </div>
                   <div>
                     <dt className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-charcoal/45 mb-0.5">
                       Modifications
                     </dt>
-                    <dd className="text-charcoal/80">{credit.modifications}</dd>
+                    <dd className="text-charcoal/80">{record.modifications}</dd>
                   </div>
                   <div>
                     <dt className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-charcoal/45 mb-0.5">
                       Date added
                     </dt>
-                    <dd className="text-charcoal/80">{credit.dateAdded}</dd>
+                    <dd className="text-charcoal/80">{record.dateAdded}</dd>
                   </div>
                 </dl>
 
-                {credit.sourceUrl !== "TODO" && (
+                {record.statusNote && (
+                  <div className="mt-4 pt-4 border-t border-amber/20">
+                    <p className="text-sm text-charcoal/60 leading-relaxed">
+                      <span className="font-medium text-charcoal/70">Note: </span>
+                      {record.statusNote}
+                    </p>
+                  </div>
+                )}
+
+                {record.sourceUrl && (
                   <div className="mt-4 pt-4 border-t border-border">
-                    <ExternalLink href={credit.sourceUrl}>
+                    <ExternalLink href={record.sourceUrl}>
                       View source
                     </ExternalLink>
                   </div>
@@ -198,12 +187,31 @@ export function AttributionsPage() {
               </ExternalLink>
               .
             </p>
+
+            <div className="bg-bone border border-border rounded-md p-5 mt-5">
+              <h3 className="font-serif text-lg font-semibold text-ink mb-2">
+                Attribution disputes
+              </h3>
+              <p className="text-sm text-charcoal/70 leading-relaxed">
+                If you are a rights holder and believe your work is misattributed,
+                incorrectly licensed, or should not appear on this platform, you
+                can submit a dispute through the same correction route. Please
+                include the specific record, the nature of the concern, and any
+                supporting information. Disputes are reviewed carefully and the
+                record status will be updated while the review is underway.
+              </p>
+              <p className="text-sm text-charcoal/70 leading-relaxed mt-3">
+                During a dispute review, the relevant image may be temporarily
+                replaced with a placeholder while the attribution concern is
+                investigated. Every effort will be made to respond promptly.
+              </p>
+            </div>
           </PolicySection>
 
           {/* Links */}
           <Reveal delay={0.36}>
             <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-border mt-10">
-              <Button href="/" variant="ghost" icon={<ArrowIcon />}>
+              <Button to="/" variant="ghost" icon={<ArrowIcon />}>
                 Back home
               </Button>
             </div>

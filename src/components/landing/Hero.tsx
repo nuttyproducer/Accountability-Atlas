@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Reveal } from "../ui/Reveal";
 import { Container } from "../ui/Container";
 import heroBgJpg from "../../assets/images/hero-gaza-displacement.jpg";
@@ -111,8 +112,8 @@ export function Hero() {
           <Reveal delay={0.38} duration={0.5}>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-10">
               {/* Primary CTA */}
-              <a
-                href="/contribute"
+              <Link
+                to="/contribute"
                 className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 text-base lg:text-lg font-medium rounded-md transition-colors duration-200 bg-bone text-ink hover:bg-paper border border-bone shadow-soft min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
               >
                 Help Build the Platform
@@ -131,11 +132,11 @@ export function Hero() {
                     strokeLinejoin="round"
                   />
                 </svg>
-              </a>
+              </Link>
 
               {/* Secondary CTA */}
-              <a
-                href="/methodology"
+              <Link
+                to="/methodology"
                 className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 text-base lg:text-lg font-medium rounded-md transition-colors duration-200 bg-transparent text-bone border border-bone/60 hover:bg-bone/10 min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
               >
                 Read the Methodology
@@ -154,7 +155,7 @@ export function Hero() {
                     strokeLinejoin="round"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
 
             {/* Tertiary text link */}

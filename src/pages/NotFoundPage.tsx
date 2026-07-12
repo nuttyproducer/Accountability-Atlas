@@ -26,13 +26,13 @@ export function NotFoundPage() {
 
           <Reveal delay={0.15}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button href="/" variant="primary" icon={<ArrowIcon />}>
+              <Button to="/" variant="primary" icon={<ArrowIcon />}>
                 Home
               </Button>
-              <Button href="/methodology" variant="secondary" icon={<ArrowIcon />}>
+              <Button to="/methodology" variant="secondary" icon={<ArrowIcon />}>
                 Methodology
               </Button>
-              <Button href="/contribute" variant="secondary" icon={<ArrowIcon />}>
+              <Button to="/contribute" variant="secondary" icon={<ArrowIcon />}>
                 Contribute
               </Button>
               <Button

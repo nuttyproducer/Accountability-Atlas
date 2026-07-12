@@ -1,4 +1,5 @@
 import { type ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 interface ButtonBaseProps {
   variant?: "primary" | "secondary" | "ghost";
@@ -7,19 +8,37 @@ interface ButtonBaseProps {
   className?: string;
 }
 
-interface ButtonAsLink extends ButtonBaseProps {
+interface ButtonAsInternalLink extends ButtonBaseProps {
+  /** Internal route path — renders a React Router Link (no page reload). */
+  to: string;
+  href?: never;
+  external?: never;
+  onClick?: never;
+}
+
+interface ButtonAsExternalLink extends ButtonBaseProps {
+  /** External URL — renders a normal anchor. */
   href: string;
+  /** When true, opens in a new tab with rel="noopener noreferrer". */
   external?: boolean;
+  to?: never;
   onClick?: never;
 }
 
 interface ButtonAsButton extends ButtonBaseProps {
+  to?: never;
   href?: never;
   external?: never;
   onClick?: () => void;
 }
 
-type ButtonProps = ButtonAsLink | ButtonAsButton;
+type ButtonProps = ButtonAsInternalLink | ButtonAsExternalLink | ButtonAsButton;
+
+const baseClasses = `
+  inline-flex items-center gap-2.5 px-7 py-3.5 text-base lg:text-lg font-medium
+  rounded-md transition-colors duration-200 min-h-[44px]
+  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2
+`.trim();
 
 const variantClasses: Record<string, string> = {
   primary:
@@ -35,24 +54,29 @@ export function Button({
   children,
   icon,
   className = "",
-  href,
-  external,
-  onClick,
+  ...props
 }: ButtonProps) {
-  const classes = `
-    inline-flex items-center gap-2.5 px-7 py-3.5 text-base lg:text-lg font-medium
-    rounded-md transition-colors duration-200
-    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2
-    ${variantClasses[variant]}
-    ${className}
-  `.trim();
+  const classes = `${baseClasses} ${variantClasses[variant]} ${className}`.trim();
 
-  if (href) {
+  // Internal route — use React Router Link
+  if ("to" in props && props.to !== undefined) {
+    return (
+      <Link to={props.to} className={classes}>
+        {children}
+        {icon}
+      </Link>
+    );
+  }
+
+  // External URL — use native anchor
+  if ("href" in props && props.href !== undefined) {
     return (
       <a
-        href={href}
+        href={props.href}
         className={classes}
-        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        {...(props.external
+          ? { target: "_blank", rel: "noopener noreferrer" }
+          : {})}
       >
         {children}
         {icon}
@@ -60,8 +84,9 @@ export function Button({
     );
   }
 
+  // On-click button
   return (
-    <button type="button" className={classes} onClick={onClick}>
+    <button type="button" className={classes} onClick={props.onClick}>
       {children}
       {icon}
     </button>

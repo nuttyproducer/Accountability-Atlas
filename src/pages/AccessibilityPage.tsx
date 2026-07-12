@@ -165,7 +165,7 @@ export function AccessibilityPage() {
           {/* Links */}
           <Reveal delay={0.27}>
             <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-border mt-10">
-              <Button href="/" variant="ghost" icon={<ArrowIcon />}>
+              <Button to="/" variant="ghost" icon={<ArrowIcon />}>
                 Back home
               </Button>
             </div>

@@ -6,6 +6,7 @@ const projectLinks = [
   { label: "Legal Tracker", href: "/legal-tracker" },
   { label: "Belgium", href: "/countries/belgium" },
   { label: "European Union", href: "/institutions/european-union" },
+  { label: "Organizations", href: "/organizations" },
   { label: "Methodology", href: "/methodology" },
   { label: "Contribute", href: "/contribute" },
   { label: "Corrections", href: "/corrections" },

@@ -247,7 +247,7 @@ export function MethodologyPage() {
               >
                 Full Methodology on GitHub
               </Button>
-              <Button href="/" variant="ghost" icon={<ArrowIcon />}>
+              <Button to="/" variant="ghost" icon={<ArrowIcon />}>
                 Back home
               </Button>
             </div>
