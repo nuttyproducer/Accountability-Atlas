@@ -294,7 +294,9 @@ Thank you for your work covering this topic.
 5. Alternatively, use the project contact route listed on the Contribute page.
 6. Do not submit sensitive witness information, private personal data, or confidential material through public channels.`,
     language: "en",
-    contentStatus: "reviewed",
+    contentStatus: "static_preview",
+    lastReviewedAt: "2026-07-12",
+    reviewedByRole: "Contributor — internal platform route; no external source review required",
     sourceIds: [],
     version: 1,
     relatedRoutes: ["/corrections", "/methodology", "/contribute"],
@@ -325,7 +327,9 @@ Thank you for your work covering this topic.
 4. Join the project on GitHub and introduce yourself in a contribution discussion.
 5. Every contribution is reviewed. Start small — a documentation fix, a translation, or a source check is a valuable contribution.`,
     language: "en",
-    contentStatus: "reviewed",
+    contentStatus: "static_preview",
+    lastReviewedAt: "2026-07-12",
+    reviewedByRole: "Contributor — internal platform route; no external source review required",
     sourceIds: [],
     version: 1,
     relatedRoutes: ["/contribute", "/methodology"],

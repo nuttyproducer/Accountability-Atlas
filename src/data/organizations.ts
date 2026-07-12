@@ -48,8 +48,10 @@ export interface OrganizationRecord {
   contentStatus: ContentStatus;
   sourceIds: string[];
   lastReviewedAt?: string;
+  reviewedByRole?: string;
   version: number;
   correctionUrl: string;
+  reviewNotes?: string;
 }
 
 /**
@@ -84,8 +86,12 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "reviewed",
     sourceIds: [],
+    lastReviewedAt: "2026-07-12",
+    reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
+    reviewNotes:
+      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
   },
   {
     id: "ocha-opt",
@@ -105,8 +111,12 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "reviewed",
     sourceIds: [],
+    lastReviewedAt: "2026-07-12",
+    reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
+    reviewNotes:
+      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
   },
   {
     id: "wfp",
@@ -126,8 +136,12 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "reviewed",
     sourceIds: [],
+    lastReviewedAt: "2026-07-12",
+    reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
+    reviewNotes:
+      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
   },
 
   // ── Red Cross / Red Crescent ───────────────────────────────────────
@@ -150,8 +164,12 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "reviewed",
     sourceIds: [],
+    lastReviewedAt: "2026-07-12",
+    reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
+    reviewNotes:
+      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
   },
   {
     id: "prcs",
@@ -172,8 +190,12 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "reviewed",
     sourceIds: [],
+    lastReviewedAt: "2026-07-12",
+    reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
+    reviewNotes:
+      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
   },
 
   // ── Medical ─────────────────────────────────────────────────────────
@@ -196,8 +218,12 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "reviewed",
     sourceIds: [],
+    lastReviewedAt: "2026-07-12",
+    reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
+    reviewNotes:
+      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
   },
   {
     id: "map-uk",
@@ -217,8 +243,12 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "reviewed",
     sourceIds: [],
+    lastReviewedAt: "2026-07-12",
+    reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
+    reviewNotes:
+      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
   },
 
   // ── Legal and human rights ──────────────────────────────────────────
@@ -240,8 +270,12 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "reviewed",
     sourceIds: [],
+    lastReviewedAt: "2026-07-12",
+    reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
+    reviewNotes:
+      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
   },
   {
     id: "hrw",
@@ -261,8 +295,12 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "reviewed",
     sourceIds: [],
+    lastReviewedAt: "2026-07-12",
+    reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
+    reviewNotes:
+      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
   },
 
   // ── Documentation and data ──────────────────────────────────────────
@@ -284,8 +322,12 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "reviewed",
     sourceIds: [],
+    lastReviewedAt: "2026-07-12",
+    reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
+    reviewNotes:
+      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
   },
   {
     id: "airwars",
@@ -304,8 +346,12 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "reviewed",
     sourceIds: [],
+    lastReviewedAt: "2026-07-12",
+    reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
+    reviewNotes:
+      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
   },
 
   // ── Journalism and press freedom ────────────────────────────────────
@@ -327,8 +373,12 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "reviewed",
     sourceIds: [],
+    lastReviewedAt: "2026-07-12",
+    reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
+    reviewNotes:
+      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
   },
 
   // ── Academic and research ───────────────────────────────────────────
@@ -349,8 +399,12 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "reviewed",
     sourceIds: [],
+    lastReviewedAt: "2026-07-12",
+    reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
+    reviewNotes:
+      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
   },
 ];
 
