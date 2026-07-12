@@ -51,6 +51,15 @@ const gatewayCards = [
   },
   {
     label: "Module 06",
+    title: "Take Lawful Action",
+    description:
+      "Structured guidance for calm, lawful civic actions: contact representatives, support humanitarian access, share public documentation, and volunteer — all manual, copy-only during the static beta.",
+    to: "/take-action",
+    disabled: false,
+    accent: "amber" as const,
+  },
+  {
+    label: "Module 07",
     title: "Help Build the Platform",
     description:
       "Developers, designers, researchers, writers, translators, legal reviewers, and security reviewers can start with small, safe contributions.",
