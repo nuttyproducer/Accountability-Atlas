@@ -42,6 +42,15 @@ const gatewayCards = [
   },
   {
     label: "Module 05",
+    title: "Browse the Evidence Library",
+    description:
+      "Explore a structured evidence library: court records, UN documents, humanitarian updates, human-rights reports, and verified investigations — each with clear source-quality levels and editorial status labels.",
+    to: "/evidence",
+    disabled: false,
+    accent: "clay" as const,
+  },
+  {
+    label: "Module 06",
     title: "Browse Public Resources",
     description:
       "Humanitarian, legal, documentation, medical, research, and press-freedom organisations listed responsibly as public resources — without implying partnership, endorsement, or affiliation.",
@@ -50,7 +59,7 @@ const gatewayCards = [
     accent: "clay" as const,
   },
   {
-    label: "Module 06",
+    label: "Module 07",
     title: "Take Lawful Action",
     description:
       "Structured guidance for calm, lawful civic actions: contact representatives, support humanitarian access, share public documentation, and volunteer — all manual, copy-only during the static beta.",
@@ -59,7 +68,7 @@ const gatewayCards = [
     accent: "amber" as const,
   },
   {
-    label: "Module 07",
+    label: "Module 08",
     title: "Help Build the Platform",
     description:
       "Developers, designers, researchers, writers, translators, legal reviewers, and security reviewers can start with small, safe contributions.",

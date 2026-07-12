@@ -8,6 +8,7 @@ const projectLinks = [
   { label: "European Union", href: "/institutions/european-union" },
   { label: "Organizations", href: "/organizations" },
   { label: "Take Action", href: "/take-action" },
+  { label: "Evidence Library", href: "/evidence" },
   { label: "Methodology", href: "/methodology" },
   { label: "Contribute", href: "/contribute" },
   { label: "Corrections", href: "/corrections" },

@@ -17,6 +17,7 @@ import BelgiumPage from "./pages/BelgiumPage";
 import EuropeanUnionPage from "./pages/EuropeanUnionPage";
 import OrganizationsPage from "./pages/OrganizationsPage";
 import ActionHubPage from "./pages/ActionHubPage";
+import EvidenceLibraryPage from "./pages/EvidenceLibraryPage";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -49,6 +50,7 @@ export default function App() {
           <Route path="/institutions/european-union" element={<EuropeanUnionPage />} />
           <Route path="/organizations" element={<OrganizationsPage />} />
           <Route path="/take-action" element={<ActionHubPage />} />
+          <Route path="/evidence" element={<EvidenceLibraryPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </PageShell>
