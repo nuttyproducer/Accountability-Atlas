@@ -10,6 +10,7 @@ import { PreviewNotice } from "../components/pages/PreviewNotice";
 import { CorrectionLink } from "../components/pages/CorrectionLink";
 import { LegalStatusBadge } from "../components/pages/LegalStatusBadge";
 import { VerificationBadge } from "../components/pages/VerificationBadge";
+import { ContentStatusBadge } from "../components/pages/ContentStatusBadge";
 import { SourceList } from "../components/pages/SourceList";
 import { legalCases } from "../data/legalCases";
 import { sources } from "../data/sources";
@@ -144,22 +145,57 @@ export default function LegalTrackerPage() {
                   </p>
                 )}
 
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {entry.legalStatuses.map((ls) => (
-                    <LegalStatusBadge key={ls} status={ls} />
-                  ))}
+                {/* 1. Procedural / legal status */}
+                <div className="mb-4">
+                  <h4 className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-charcoal/50 mb-2">
+                    Legal status
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {entry.legalStatuses.map((ls) => (
+                      <LegalStatusBadge key={ls} status={ls} />
+                    ))}
+                  </div>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-3 mb-4">
-                  <VerificationBadge level={5} showPrefix={false} />
-                  <span className="text-xs text-charcoal/50 font-mono uppercase">
-                    Source pending
-                  </span>
-                  <span className="text-xs text-charcoal/50 font-mono uppercase">
-                    Legal wording review needed
-                  </span>
+                {/* 2. Source quality */}
+                <div className="mb-4">
+                  <h4 className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-charcoal/50 mb-2">
+                    Source quality
+                  </h4>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <VerificationBadge
+                      level={entry.sourceQuality}
+                      showPrefix
+                    />
+                  </div>
                 </div>
 
+                {/* 3. Editorial status */}
+                <div className="mb-4">
+                  <h4 className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-charcoal/50 mb-2">
+                    Editorial status
+                  </h4>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <ContentStatusBadge status={entry.contentStatus} />
+                    {entry.lastReviewedAt && (
+                      <span className="text-xs text-charcoal/50 font-mono">
+                        Checked: {entry.lastReviewedAt}
+                      </span>
+                    )}
+                    {entry.version > 0 && (
+                      <span className="text-xs text-charcoal/50 font-mono">
+                        v{entry.version}
+                      </span>
+                    )}
+                    {entry.reviewedByRole && (
+                      <span className="text-xs text-charcoal/50">
+                        {entry.reviewedByRole}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Sources */}
                 {entrySources.length > 0 && (
                   <SourceList
                     sources={entrySources}

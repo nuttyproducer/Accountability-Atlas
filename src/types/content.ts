@@ -86,12 +86,16 @@ export interface SourceRecord {
 }
 
 export interface ReviewMetadata {
-  status: ContentStatus;
+  contentStatus: ContentStatus;
+  sourceQuality?: VerificationLevel;
+  sourceIds: string[];
+  legalStatuses?: LegalStatus[];
   lastReviewedAt?: string;
-  reviewedBy?: string;
+  reviewedByRole?: string;
+  version: number;
   methodologyUrl?: string;
-  sourceIds?: string[];
   correctionUrl?: string;
+  reviewNotes?: string;
 }
 
 export interface BasePreviewRecord {
