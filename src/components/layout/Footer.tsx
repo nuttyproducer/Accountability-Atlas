@@ -18,6 +18,7 @@ const resourceLinks = [
   { label: "Attributions", href: "/attributions" },
   { label: "Privacy", href: "/privacy" },
   { label: "Accessibility", href: "/accessibility" },
+  { label: "Press", href: "/press" },
   { label: "Disclaimer", href: "/disclaimer" },
 ];
 
