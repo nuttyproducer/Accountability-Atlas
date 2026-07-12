@@ -528,7 +528,7 @@ export default function EvidenceLibraryPage() {
         </Reveal>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-          {filteredItems.map((item, i) => (
+          {filteredItems.map((item) => (
             <EvidenceCard key={item.id} item={item} />
           ))}
         </div>

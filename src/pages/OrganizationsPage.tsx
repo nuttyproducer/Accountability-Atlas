@@ -11,7 +11,6 @@ import { PreviewNotice } from "../components/pages/PreviewNotice";
 import { CorrectionLink } from "../components/pages/CorrectionLink";
 import { ExternalLink } from "../components/ui/ExternalLink";
 import {
-  organizationRecords,
   getOrganizationsByCategory,
   ORGANIZATION_CATEGORIES,
 } from "../data/organizations";

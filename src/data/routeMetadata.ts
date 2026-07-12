@@ -34,8 +34,6 @@ export function getCanonicalBase(): string {
 /** Change this to "index,follow" when the platform is ready for production indexing. */
 export const DEFAULT_ROBOTS = "noindex,nofollow";
 
-const DEFAULT_OG_IMAGE = "/social-preview.svg";
-
 export interface RouteMeta {
   /** Unique document title. Appended to base title. */
   title: string;

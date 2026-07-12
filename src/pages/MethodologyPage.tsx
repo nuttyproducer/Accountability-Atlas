@@ -11,7 +11,6 @@ import {
   VERIFICATION_LEVEL_LABELS,
   LEGAL_STATUS_LABELS,
   SOURCE_TYPE_LABELS,
-  CONTENT_STATUS_LABELS,
   type VerificationLevel,
   type SourceType,
 } from "../types/content";

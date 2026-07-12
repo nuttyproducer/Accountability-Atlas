@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Container } from "../components/ui/Container";
-import { Reveal } from "../components/ui/Reveal";
 import { PageIntro } from "../components/pages/PageIntro";
 import { PageStatusNotice } from "../components/pages/PageStatusNotice";
 import { PolicySection } from "../components/pages/PolicySection";

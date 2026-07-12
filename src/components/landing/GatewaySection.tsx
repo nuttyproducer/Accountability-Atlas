@@ -98,7 +98,7 @@ export function GatewaySection() {
                 title={card.title}
                 to={card.to}
                 disabled={card.disabled}
-                disabledLabel={card.disabledLabel}
+                disabledLabel={"disabledLabel" in card ? (card as { disabledLabel?: string }).disabledLabel : undefined}
                 accent={card.accent}
               >
                 {card.description}
