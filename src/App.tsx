@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { PageShell } from "./components/layout/PageShell";
+import { DocumentHead } from "./components/ui/DocumentHead";
+import { getRouteMeta } from "./data/routeMetadata";
 import { HomePage } from "./pages/HomePage";
 import { MethodologyPage } from "./pages/MethodologyPage";
 import { ContributePage } from "./pages/ContributePage";
@@ -20,6 +22,22 @@ import ActionHubPage from "./pages/ActionHubPage";
 import EvidenceLibraryPage from "./pages/EvidenceLibraryPage";
 import PressPage from "./pages/PressPage";
 
+function RouteMeta() {
+  const { pathname } = useLocation();
+  const meta = getRouteMeta(pathname);
+
+  return (
+    <DocumentHead
+      title={meta.title}
+      description={meta.description}
+      canonicalPath={meta.canonicalPath}
+      ogImage={meta.ogImage}
+      robots={meta.robots}
+      ogType={meta.ogType}
+    />
+  );
+}
+
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -33,6 +51,7 @@ function ScrollToTop() {
 export default function App() {
   return (
     <BrowserRouter>
+      <RouteMeta />
       <ScrollToTop />
       <PageShell>
         <Routes>
