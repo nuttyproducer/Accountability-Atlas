@@ -1,20 +1,18 @@
 import { Link } from "react-router-dom";
 import { Container } from "../components/ui/Container";
 import { Reveal } from "../components/ui/Reveal";
-import { Card } from "../components/ui/Card";
-import { Badge } from "../components/ui/Badge";
 import { PageIntro } from "../components/pages/PageIntro";
 import { PageStatusNotice } from "../components/pages/PageStatusNotice";
 import { PolicySection } from "../components/pages/PolicySection";
 import { LastUpdated } from "../components/pages/LastUpdated";
 import { PreviewNotice } from "../components/pages/PreviewNotice";
 import { CorrectionLink } from "../components/pages/CorrectionLink";
-import { ExternalLink } from "../components/ui/ExternalLink";
 import {
   getOrganizationsByCategory,
   ORGANIZATION_CATEGORIES,
 } from "../data/organizations";
-import { CONTENT_STATUS_LABELS } from "../types/content";
+import { OrganizationCard } from "../components/organizations/OrganizationCard";
+import { OrganizationDisclaimer } from "../components/organizations/OrganizationDisclaimer";
 
 const organizationsByCategory = getOrganizationsByCategory();
 
@@ -103,109 +101,12 @@ export default function OrganizationsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
               {orgs.map((org, i) => (
-                <Reveal key={org.id} delay={0.2 + catIdx * 0.04 + i * 0.05}>
-                  <Card
-                    title={org.name}
-                    accent={
-                      org.contentStatus === "reviewed"
-                        ? "blue"
-                        : org.contentStatus === "review_pending"
-                          ? "amber"
-                          : "clay"
-                    }
-                  >
-                    {/* Category + regions */}
-                    <div className="flex flex-wrap items-center gap-2 mb-3">
-                      <Badge variant="neutral">{category}</Badge>
-                      {org.regions.slice(0, 2).map((r) => (
-                        <span
-                          key={r}
-                          className="font-mono text-[11px] text-charcoal/50"
-                        >
-                          {r}
-                        </span>
-                      ))}
-                      {org.regions.length > 2 && (
-                        <span className="font-mono text-[11px] text-charcoal/40">
-                          +{org.regions.length - 2}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-charcoal/80 leading-relaxed mb-3">
-                      {org.shortDescription}
-                    </p>
-
-                    {/* Services */}
-                    {org.services && org.services.length > 0 && (
-                      <div className="mb-3">
-                        <p className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-charcoal/45 mb-1.5">
-                          Services
-                        </p>
-                        <ul className="space-y-1">
-                          {org.services.map((s) => (
-                            <li
-                              key={s}
-                              className="flex items-start gap-1.5 text-sm text-charcoal/70"
-                            >
-                              <span
-                                className="text-charcoal/30 mt-1 flex-shrink-0"
-                                aria-hidden="true"
-                              >
-                                •
-                              </span>
-                              {s}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {/* Links */}
-                    <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 mt-4 pt-4 border-t border-border">
-                      <ExternalLink href={org.officialWebsite}>
-                        Official website
-                      </ExternalLink>
-                      {org.officialDonationUrl && (
-                        <ExternalLink href={org.officialDonationUrl}>
-                          Official donation page
-                        </ExternalLink>
-                      )}
-                    </div>
-
-                    {/* Status row */}
-                    <div className="flex flex-wrap items-center gap-2 mt-4">
-                      <Badge variant="neutral">Public resource</Badge>
-                      <Badge
-                        variant={
-                          org.contentStatus === "reviewed"
-                            ? "info"
-                            : org.contentStatus === "review_pending"
-                              ? "warning"
-                              : "neutral"
-                        }
-                      >
-                        {CONTENT_STATUS_LABELS[org.contentStatus]}
-                      </Badge>
-                      {org.lastReviewedAt && (
-                        <span className="font-mono text-[11px] text-charcoal/45">
-                          Last reviewed: {org.lastReviewedAt}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Correction link */}
-                    <p className="mt-3 text-sm text-charcoal/50">
-                      <Link
-                        to="/corrections"
-                        className="text-trust hover:text-trust/80 underline underline-offset-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
-                      >
-                        Is this listing inaccurate or out of date?
-                      </Link>
-                    </p>
-                  </Card>
-                </Reveal>
+                <OrganizationCard
+                  key={org.id}
+                  org={org}
+                  category={category}
+                  index={catIdx * 10 + i}
+                />
               ))}
             </div>
           </section>
@@ -254,16 +155,7 @@ export default function OrganizationsPage() {
         id="donation-disclaimer"
         delay={0.58}
       >
-        <div className="bg-bone border border-border rounded-md p-5">
-          <p className="text-sm text-charcoal/75 leading-relaxed">
-            <strong>Donations go directly to the named organisation.</strong>{" "}
-            Accountability Atlas does not process, hold, or distribute funds.
-            Donation links point to the organisation&rsquo;s own official
-            donation page. The platform does not receive any commission,
-            referral fee, or benefit from these links. A donation link is not
-            an endorsement of every position or action of the organisation.
-          </p>
-        </div>
+        <OrganizationDisclaimer />
       </PolicySection>
 
       {/* Correction / removal process */}

@@ -12,66 +12,10 @@ import {
   LEGAL_STATUS_LABELS,
   SOURCE_TYPE_LABELS,
   type VerificationLevel,
-  type SourceType,
 } from "../types/content";
-
-/**
- * Source hierarchy — ordered by evidentiary weight for accountability
- * contexts. This hierarchy is contextual: a humanitarian report may carry
- * more weight for documenting access restrictions than a court record
- * that does not address that question. The hierarchy guides default
- * weighting; editorial judgment determines relevance.
- */
-const sourceHierarchy: { tier: number; sourceType: SourceType; notes: string }[] = [
-  {
-    tier: 1,
-    sourceType: "court",
-    notes:
-      "Official court filings, orders, judgments, and transcripts. The highest-weight category for legal accountability questions. A court record proves what the court ordered or found — it does not automatically prove every factual claim recited in the filing.",
-  },
-  {
-    tier: 2,
-    sourceType: "un",
-    notes:
-      "UN Security Council resolutions, General Assembly votes, Human Rights Council reports, Commission of Inquiry findings, and OCHA situation reports. Official UN documents carry institutional weight but may reflect political compromise.",
-  },
-  {
-    tier: 3,
-    sourceType: "humanitarian",
-    notes:
-      "ICRC, IFRC, national Red Cross / Red Crescent societies, and major humanitarian organisations with established operational presence. Humanitarian reporting is often the best source for access restrictions and civilian needs.",
-  },
-  {
-    tier: 4,
-    sourceType: "government",
-    notes:
-      "Official government statements, parliamentary records, voting records, and published policy documents. These prove what a government said or did — they do not independently verify the factual claims within.",
-  },
-  {
-    tier: 5,
-    sourceType: "ngo",
-    notes:
-      "Established human-rights and legal organisations with published methodologies. Organisational findings are distinct from judicial determinations and should be described as such.",
-  },
-  {
-    tier: 6,
-    sourceType: "journalism",
-    notes:
-      "Investigative journalism from outlets with published editorial standards. News reporting can surface information not yet in institutional records — it requires corroboration before being presented as established fact.",
-  },
-  {
-    tier: 7,
-    sourceType: "academic",
-    notes:
-      "Peer-reviewed research, university-published reports, and academic institutional findings. Academic work provides analytical frameworks and longitudinal context.",
-  },
-  {
-    tier: 8,
-    sourceType: "osint",
-    notes:
-      "Open-source intelligence and documentation groups with published methodologies. OSINT can verify specific events through multiple data streams — it is treated as a source, not automatically as verified proof without corroboration.",
-  },
-];
+import { sourceHierarchy } from "../components/methodology/sourceHierarchyData";
+import { PublicationWorkflow } from "../components/methodology/PublicationWorkflow";
+import { CitationGuide } from "../components/press/CitationGuide";
 
 const notActiveItems = [
   "No witness submissions accepted",
@@ -348,64 +292,7 @@ export function MethodologyPage() {
               to keep source quality and editorial review separate at every
               stage.
             </p>
-            <div className="bg-bone border border-border rounded-lg p-6 mt-4">
-              <ol className="space-y-5">
-                {[
-                  {
-                    step: "1",
-                    title: "Lead identification",
-                    desc: "Information is identified from public sources, contributor suggestions, or open-source research. Assigned verification level 0 (unreviewed). Not published.",
-                  },
-                  {
-                    step: "2",
-                    title: "Lead preservation",
-                    desc: "The lead is logged with its provenance, date, and any available metadata. Assigned verification level 1 (preserved). Not published.",
-                  },
-                  {
-                    step: "3",
-                    title: "Source checking",
-                    desc: "At least one contributor checks the information against a documented public source with a URL, publisher, publication date, and access date. Assigned verification level 2 (source checked). May be published with content status review_pending if the editorial summary has not yet been reviewed.",
-                  },
-                  {
-                    step: "4",
-                    title: "Corroboration (where applicable)",
-                    desc: "Where possible, information is checked against multiple independent sources or documentation types. Assigned verification level 3 (corroborated).",
-                  },
-                  {
-                    step: "5",
-                    title: "Editorial review",
-                    desc: "A contributor with relevant subject-matter knowledge reviews the platform's written summary for accuracy, clarity, safety, and consistency with the source. Content status updated to reviewed or static_preview depending on the review depth.",
-                  },
-                  {
-                    step: "6",
-                    title: "Publication",
-                    desc: "The evidence record is published with its verification level, content status, legal status labels (if applicable), source list, last-reviewed date, reviewer role, and correction route.",
-                  },
-                  {
-                    step: "7",
-                    title: "Ongoing review",
-                    desc: "Published records are re-reviewed when new sources become available, when corrections are submitted, or when the underlying legal or factual context changes. Version numbers are incremented with each substantive update.",
-                  },
-                ].map((s) => (
-                  <li key={s.step} className="flex gap-4">
-                    <span
-                      className="flex-shrink-0 w-8 h-8 rounded-full bg-ink text-bone font-mono text-sm font-medium flex items-center justify-center"
-                      aria-hidden="true"
-                    >
-                      {s.step}
-                    </span>
-                    <div>
-                      <p className="font-serif text-base font-semibold text-ink">
-                        {s.title}
-                      </p>
-                      <p className="text-sm text-charcoal/70 leading-relaxed mt-0.5">
-                        {s.desc}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
+            <PublicationWorkflow />
           </PolicySection>
 
           {/* 9. Corrections and disputes */}
@@ -434,6 +321,7 @@ export function MethodologyPage() {
             </p>
           </PolicySection>
 
+          {/* 10-20. Remaining sections continue with same content */}
           {/* 10. Institutional right of reply */}
           <PolicySection title="Institutional right of reply" id="right-of-reply" delay={0.42}>
             <p>
@@ -463,9 +351,7 @@ export function MethodologyPage() {
 
           {/* 11. Protection before publication */}
           <PolicySection title="Protection before publication" id="protection" delay={0.45}>
-            <p>
-              The platform will not publish:
-            </p>
+            <p>The platform will not publish:</p>
             <ul className="space-y-2 mt-3">
               <li className="flex items-start gap-2">
                 <span className="text-clay mt-1.5" aria-hidden="true">•</span>
@@ -490,7 +376,7 @@ export function MethodologyPage() {
             </ul>
           </PolicySection>
 
-          {/* 12. Content moderation */}
+          {/* 12-20. Content moderation through Versioning */}
           <PolicySection title="Content moderation" id="content-moderation" delay={0.48}>
             <p>
               During the public static beta, all content is reviewed by
@@ -575,7 +461,7 @@ export function MethodologyPage() {
             </p>
           </PolicySection>
 
-          {/* 15. Organization relationship and partner-verification policy */}
+          {/* 15. Organization relationships */}
           <PolicySection title="Organization relationships" id="org-relationships" delay={0.57}>
             <p>
               Organisations listed in the{" "}
@@ -694,23 +580,13 @@ export function MethodologyPage() {
             </ul>
           </PolicySection>
 
-          {/* 18. How to cite Accountability Atlas */}
+          {/* 18. How to cite */}
           <PolicySection title="How to cite Accountability Atlas" id="citation" delay={0.66}>
             <p>
               When citing this platform in research, journalism, legal
               submissions, or other work, please use the following format:
             </p>
-            <div className="bg-bone border border-border rounded-md p-5 mt-4">
-              <p className="font-mono text-sm text-charcoal/80 leading-relaxed">
-                Accountability Atlas, &ldquo;[Page title],&rdquo; version [x],
-                last reviewed [date], [canonical URL], accessed [date].
-              </p>
-            </div>
-            <p className="mt-4 text-sm text-charcoal/60">
-              Example: Accountability Atlas, &ldquo;Methodology,&rdquo; version
-              1, last reviewed 2026-07-12,
-              https://accountabilityatlas.org/methodology, accessed 2026-07-12.
-            </p>
+            <CitationGuide />
             <p className="mt-3">
               For evidence records, cite the <strong>original source</strong> —
               not this platform&rsquo;s summary. This platform is a finding aid
@@ -731,7 +607,7 @@ export function MethodologyPage() {
             </ul>
           </PolicySection>
 
-          {/* 20. Reviewer and contributor request */}
+          {/* 20. Contributor request */}
           <PolicySection title="Reviewer and contributor request" id="contributor-request" delay={0.72}>
             <p>
               This methodology is an active draft. It needs review by people
@@ -778,7 +654,7 @@ export function MethodologyPage() {
             </p>
           </PolicySection>
 
-          {/* 21. Version and last-updated information */}
+          {/* 21. Versioning */}
           <PolicySection title="Versioning" id="versioning" delay={0.75}>
             <p>
               The methodology is versioned. Each substantive update increments

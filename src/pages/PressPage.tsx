@@ -7,6 +7,7 @@ import { LastUpdated } from "../components/pages/LastUpdated";
 import { PreviewNotice } from "../components/pages/PreviewNotice";
 import { CorrectionLink } from "../components/pages/CorrectionLink";
 import { ExternalLink } from "../components/ui/ExternalLink";
+import { CitationGuide } from "../components/press/CitationGuide";
 
 export default function PressPage() {
   return (
@@ -230,17 +231,7 @@ export default function PressPage() {
           This ensures readers can find the exact version of the page you
           referenced.
         </p>
-        <div className="bg-bone border border-border rounded-md p-5 mt-4">
-          <p className="font-mono text-sm text-charcoal/80 leading-relaxed">
-            Accountability Atlas, &ldquo;[Page title],&rdquo; version [x],
-            last reviewed [date], [canonical URL], accessed [date].
-          </p>
-        </div>
-        <p className="mt-4 text-sm text-charcoal/60">
-          Example: Accountability Atlas, &ldquo;Methodology,&rdquo; version
-          1, last reviewed 2026-07-10,
-          https://accountabilityatlas.org/methodology, accessed 2026-07-12.
-        </p>
+        <CitationGuide exampleTitle="Methodology" exampleDate="2026-07-10" exampleUrl="https://accountabilityatlas.org/methodology" />
         <p className="mt-3">
           For pages with a &ldquo;Page structure last updated&rdquo; footer,
           use that date. For evidence records, cite the original source — not

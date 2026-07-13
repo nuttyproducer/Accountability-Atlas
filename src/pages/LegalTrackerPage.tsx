@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Container } from "../components/ui/Container";
 import { Reveal } from "../components/ui/Reveal";
-import { Card } from "../components/ui/Card";
 import { PageIntro } from "../components/pages/PageIntro";
 import { PageStatusNotice } from "../components/pages/PageStatusNotice";
 import { PolicySection } from "../components/pages/PolicySection";
@@ -9,64 +8,9 @@ import { LastUpdated } from "../components/pages/LastUpdated";
 import { PreviewNotice } from "../components/pages/PreviewNotice";
 import { CorrectionLink } from "../components/pages/CorrectionLink";
 import { LegalStatusBadge } from "../components/pages/LegalStatusBadge";
-import { VerificationBadge } from "../components/pages/VerificationBadge";
-import { ContentStatusBadge } from "../components/pages/ContentStatusBadge";
-import { SourceList } from "../components/pages/SourceList";
 import { legalCases } from "../data/legalCases";
-import { sources } from "../data/sources";
-import type { LegalStatus } from "../types/content";
-
-const statusExplanations: { status: LegalStatus; explanation: string }[] = [
-  {
-    status: "court_proceeding_active",
-    explanation:
-      "A case is actively pending before a court or tribunal. Procedural steps — hearings, filings, deliberations — are ongoing.",
-  },
-  {
-    status: "provisional_measures_issued",
-    explanation:
-      "A court has issued binding provisional (interim) measures before reaching a final judgment. These measures aim to preserve rights and prevent irreparable harm during proceedings.",
-  },
-  {
-    status: "arrest_warrant_issued",
-    explanation:
-      "A court has issued an arrest warrant. Warrants are subject to judicial review processes. All persons are presumed innocent until proven guilty.",
-  },
-  {
-    status: "allegation_under_investigation",
-    explanation:
-      "An allegation has been made and is under formal investigation by a competent body. No determination has been reached.",
-  },
-  {
-    status: "un_finding",
-    explanation:
-      "A United Nations body — such as a Commission of Inquiry, Human Rights Council mechanism, or Special Rapporteur — has published findings. UN findings are fact-finding outputs, not judicial rulings.",
-  },
-  {
-    status: "ngo_legal_determination",
-    explanation:
-      "An established non-governmental organization with relevant legal expertise has published a determination based on documented evidence and legal analysis.",
-  },
-  {
-    status: "not_judicially_determined",
-    explanation:
-      "The matter has not been determined by a court or tribunal. It may be under investigation, subject to public reporting, or categorized for future tracking.",
-  },
-  {
-    status: "contested_claim",
-    explanation:
-      "The claim is contested by one or more parties or credible sources. The platform flags contested status to avoid presenting one-sided accounts as settled.",
-  },
-  {
-    status: "requires_further_verification",
-    explanation:
-      "The information has been recorded but requires additional source verification before it can be upgraded to a higher verification level.",
-  },
-];
-
-function getSourceById(id: string) {
-  return sources.find((s) => s.id === id);
-}
+import { LegalCaseCard } from "../components/legal/LegalCaseCard";
+import { statusExplanations } from "../components/legal/legalStatusExplanations";
 
 export default function LegalTrackerPage() {
   return (
@@ -123,90 +67,9 @@ export default function LegalTrackerPage() {
       </PolicySection>
 
       <div className="space-y-8 mb-10">
-        {legalCases.map((entry, i) => {
-          const entrySources = entry.sourceIds
-            .map(getSourceById)
-            .filter(Boolean) as typeof sources;
-
-          return (
-            <Reveal key={entry.id} delay={0.2 + i * 0.08}>
-              <Card
-                accent={i === 0 ? "amber" : i === 1 ? "clay" : "blue"}
-                title={entry.title}
-                label={entry.institution}
-              >
-                <p className="text-charcoal/80 leading-relaxed mb-4">
-                  {entry.summary}
-                </p>
-
-                {entry.proceduralNote && (
-                  <p className="text-sm text-charcoal/60 italic mb-4">
-                    {entry.proceduralNote}
-                  </p>
-                )}
-
-                {/* 1. Procedural / legal status */}
-                <div className="mb-4">
-                  <h4 className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-charcoal/50 mb-2">
-                    Legal status
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {entry.legalStatuses.map((ls) => (
-                      <LegalStatusBadge key={ls} status={ls} />
-                    ))}
-                  </div>
-                </div>
-
-                {/* 2. Source quality */}
-                <div className="mb-4">
-                  <h4 className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-charcoal/50 mb-2">
-                    Source quality
-                  </h4>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <VerificationBadge
-                      level={entry.sourceQuality}
-                      showPrefix
-                    />
-                  </div>
-                </div>
-
-                {/* 3. Editorial status */}
-                <div className="mb-4">
-                  <h4 className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-charcoal/50 mb-2">
-                    Editorial status
-                  </h4>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <ContentStatusBadge status={entry.contentStatus} />
-                    {entry.lastReviewedAt && (
-                      <span className="text-xs text-charcoal/50 font-mono">
-                        Checked: {entry.lastReviewedAt}
-                      </span>
-                    )}
-                    {entry.version > 0 && (
-                      <span className="text-xs text-charcoal/50 font-mono">
-                        v{entry.version}
-                      </span>
-                    )}
-                    {entry.reviewedByRole && (
-                      <span className="text-xs text-charcoal/50">
-                        {entry.reviewedByRole}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Sources */}
-                {entrySources.length > 0 && (
-                  <SourceList
-                    sources={entrySources}
-                    title="Linked sources"
-                    emptyMessage="Source documents not yet linked."
-                  />
-                )}
-              </Card>
-            </Reveal>
-          );
-        })}
+        {legalCases.map((entry, i) => (
+          <LegalCaseCard key={entry.id} entry={entry} index={i} />
+        ))}
       </div>
 
       {/* 3. How to Read Legal Status Labels */}
