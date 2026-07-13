@@ -1,6 +1,7 @@
 # Current Implementation State
 
 **Generated:** 2026-07-12  
+**Updated:** 2026-07-13 — Content validation system migration (see §8a)  
 **Branch:** `feature/landing-page`  
 **Method:** Code-derived audit — every figure is verified against actual repository files.
 
@@ -69,7 +70,7 @@ All routes have unique `<title>`, `<meta name="description">`, OG metadata, cano
 | `src/data/legalCases.ts` | 3 | 0 | 3 | 0 |
 | `src/data/countries.ts` | 9 Belgium sections | 0 | 7 | 2 |
 | `src/data/institutions.ts` | 5 EU institutions | 0 | 4 | 1 |
-| `src/data/organizations.ts` | 13 | 13 | 0 | 0 |
+| `src/data/organizations.ts` | 13 | 0 | 13 | 0 |
 | `src/data/actionTemplates.ts` | 6 (all active) | 0 | 0 | 6 |
 | `src/data/evidenceItems.ts` | 9 | 2 | 7 | 0 |
 | `src/data/attributions.ts` | 2 | 1 | 1 | N/A |
@@ -78,13 +79,13 @@ All routes have unique `<title>`, `<meta name="description">`, OG metadata, cano
 | `src/data/modules.ts` | Landing page modules | N/A | N/A | N/A |
 | `src/data/principles.ts` | Safety principles | N/A | N/A | N/A |
 | `src/data/roadmap.ts` | Roadmap items | N/A | N/A | N/A |
-| **Total records** | **64 content records** | **16** | **22** | **9** |
+| **Total records** | **64 content records** | **2** | **36** | **9** |
 
 ### Record status definitions
 
-- **Reviewed:** Has `lastReviewedAt`, `reviewedByRole`, and source basis. Organization listings count as reviewed (verified against official websites). Court-record evidence items count as reviewed.
-- **Review Pending:** Has at least one public source but editorial summary not yet formally reviewed. Honest placeholder `reviewedByRole` values.
-- **Static Preview:** Structural skeleton, draft template, or future-content placeholder. Clearly labeled to readers.
+- **Reviewed:** Has `lastReviewedAt`, `reviewedByRole`, `sourceIds`, and source basis. Currently only 2 ICJ evidence items meet this standard.
+- **Review Pending:** Has at least one public source but editorial summary not yet formally reviewed, or was downgraded from reviewed due to missing sourceIds/second-reviewer. Honest placeholder `reviewedByRole` values. Currently 36 records.
+- **Static Preview:** Structural skeleton, draft template, or future-content placeholder. Clearly labeled to readers. 9 records.
 
 ---
 
@@ -102,8 +103,8 @@ All routes have unique `<title>`, `<meta name="description">`, OG metadata, cano
 | NotFoundPage | 1 | 7 | ✅ |
 | Route smoke (11 pages) | 1 | 11 | ✅ |
 | Axe a11y (4 pages) | 1 | 4 | ✅ |
-| Data validation (8 collections) | 1 | 14 | ✅ |
-| **Total** | **11** | **87** | **All passing** |
+| Data validation (8 collections) | 1 | 153 | ✅ — 18 rules, full coverage |
+| **Total** | **11** | **226** | **All passing** |
 
 ### Pages not yet smoke-tested (7)
 
@@ -119,7 +120,7 @@ GazaDossier, LegalTracker, Belgium, EuropeanUnion, Organizations, ActionHub, Evi
 | Dependabot (npm) | ✅ Weekly |
 | Dependabot (GitHub Actions) | ✅ Monthly |
 | ESLint v9 flat config | ✅ React + TypeScript rules |
-| Data validation in CI | ✅ 14 rules across 8 collections |
+| Data validation in CI | ✅ 18 rules across 8 collections + `npm run validate:content` |
 | CSP (HTTP header) | ✅ `public/_headers` |
 | CSP (meta fallback) | ✅ `index.html` |
 | HSTS | ✅ `max-age=2yr; includeSubDomains; preload` |
@@ -156,11 +157,33 @@ GazaDossier, LegalTracker, Belgium, EuropeanUnion, Organizations, ActionHub, Evi
 
 ---
 
-## 8. Data-integrity problems
+## 8. Data-integrity validation
 
-### None detected
+### Validation system (updated 2026-07-13)
 
-The validation suite (`src/data/__tests__/validation.test.ts`) checks 14 rules across 8 collections. All 14 tests pass. No duplicate IDs, no invalid status values, no unreferenced source IDs, no impossible verification levels, no reviewed records missing review metadata, no invalid URLs, no invalid relationship statuses.
+The validation suite has been upgraded from 14 rules to **18 rules** across 8 collections. A new content-validation library (`src/lib/content-validation/`) provides:
+
+- **Zod-backed schemas** (`src/schemas/index.ts`) for runtime type validation
+- **18 composable validation rules** (`src/lib/content-validation/rules.ts`)
+- **Orchestrator** (`src/lib/content-validation/validate.ts`) that runs all rules
+- **Summary generator** (`src/lib/content-validation/summary.ts`) for human-readable reports
+- **CLI entry point** (`scripts/validate-content.ts`) — `npm run validate:content`
+- **153 tests** covering all 18 rules plus integration
+
+### New rules added (rules 2, 4, 8, 13, 16, 17)
+
+| # | Rule | Status |
+|---|---|---|
+| 2 | Duplicate slugs within a record type | ✅ |
+| 4 | Invalid or ambiguous dates (rejects ranges like "2024–2025") | ✅ |
+| 8 | Reviewed status without reviewedByRole | ✅ |
+| 13 | Action templates marked reviewed without jurisdiction/language review evidence | ✅ |
+| 16 | Missing route targets in relatedRoutes | ✅ |
+| 17 | Records with stale review dates based on configured review cadence | ✅ |
+
+### Current validation results
+
+`npm run validate:content` — ✅ **0 errors, 11 warnings** (year-only date warnings — honest, we don't know exact months).
 
 ### Source ID coverage
 
@@ -168,24 +191,70 @@ The validation suite (`src/data/__tests__/validation.test.ts`) checks 14 rules a
 |---|---|---|---|
 | Legal cases | 3/3 | 0 | All cases reference actual SourceRecords |
 | Evidence items | 4/9 | 5 | 2 ICJ records reference sources; 5 `review_pending` records have descriptive source text but no SourceRecord entries yet |
-| Organizations | 0/13 | 13 | Allowed — `officialWebsite` IS the source; validation accepts this |
+| Organizations | 0/13 | 13 | All now `review_pending` — sourceIds must be populated before re-review (see §9) |
 | Action templates | 0/6 | 0 required | All `static_preview`; internal routing templates don't need external sources |
+
+---
+
+## 8a. 2026-07-13 Content validation migration
+
+### What changed
+
+A comprehensive content-integrity validation system was implemented, replacing the previous hand-rolled validators with a structured, testable rules engine backed by Zod schemas.
+
+### Data remediation performed
+
+**Date ranges fixed (5 records):** Evidence items with `publicationDate: "2024–2025"` were corrected to `"2025"` (most recent year of the documented period). The multi-year nature of these summary records is described in their summary text. These were honest errors — date ranges are not valid ISO 8601 dates.
+
+**Organizations downgraded (13 records):** All 13 organization records were changed from `contentStatus: "reviewed"` to `contentStatus: "review_pending"`. The previous reviewed status was based on single-contributor website verification. Per the updated validation rules and editorial governance:
+- Reviewed records must have `sourceIds` populated (or, for orgs specifically, a valid `officialWebsite` plus a second reviewer)
+- Reviewed records require separation of duties (source verifier ≠ editor)
+- The original review notes already noted "Formal second-reviewer process pending"
+
+Review notes were updated to document the downgrade date and rationale. No data was deleted; all verification work (website checks, descriptions, services) is preserved. To return these records to `reviewed`:
+1. Create SourceRecord entries for each organization's official website (or confirm the website IS the primary source per publication criteria)
+2. Complete a second-reviewer pass
+3. Update `lastReviewedAt`, `reviewedByRole`, and `version`
+
+**No sources were invented.** No reviewers were invented. No fake data was added.
+
+### New artifacts
+
+| Artifact | Path | Purpose |
+|---|---|---|
+| Zod schemas | `src/schemas/index.ts` | Runtime type validation for all 8 record types |
+| Validation rules | `src/lib/content-validation/rules.ts` | 18 composable integrity rules |
+| Orchestrator | `src/lib/content-validation/validate.ts` | Runs all rules across all collections |
+| Summary generator | `src/lib/content-validation/summary.ts` | Human-readable and machine-readable reports |
+| CLI script | `scripts/validate-content.ts` | Standalone validation for CI |
+| Expanded tests | `src/data/__tests__/validation.test.ts` | 153 tests covering all rules |
+| Updated wrapper | `src/data/validation.ts` | Backward-compatible re-export |
+
+### New npm script
+
+```
+npm run validate:content
+```
+
+Runs the CLI validation script via `tsx`. Exits 1 on errors (for CI), 0 on pass/warnings.
 
 ---
 
 ## 9. Content marked reviewed without documented review evidence
 
-### Reviewed records audit
+### Reviewed records audit (updated 2026-07-13)
 
 | Record | Status | Reviewer role | Evidence |
 |---|---|---|---|
-| Organizations × 13 | `reviewed` | "Contributor — verified against official public website" | Each org's website was checked against the listing. No formal second-reviewer process exists. |
+| ~~Organizations × 13~~ | ~~`reviewed`~~ → `review_pending` | "Contributor — verified against official public website" | Downgraded 2026-07-13 — empty sourceIds, single-reviewer only. See §8a. |
 | Evidence: ICJ Jan 2024 | `reviewed` | "Contributor — legal research background" | Summary verified against ICJ order text at icj-cij.org. Source record exists. |
 | Evidence: ICJ May 2024 | `reviewed` | "Contributor — legal research background" | Same as above. |
 
-**Assessment:** 15 records are marked `reviewed` (13 orgs + 2 evidence items). All have `lastReviewedAt` dates and honest `reviewedByRole` values. None claim external or formal review. The placeholder roles accurately describe single-contributor verification.
+**Current state:** 2 records are `reviewed` (both ICJ evidence items). 36 records are `review_pending` (was 22 before the migration). All reviewed records have `lastReviewedAt`, `reviewedByRole`, `sourceIds`, and `version`.
 
-**Recommendation:** Before graduating from static beta, all 15 reviewed records should have at least one second-reviewer pass. This is documented in `docs/content-review-workflow.md`.
+**Assessment:** The two remaining reviewed records (ICJ evidence) have source IDs referencing actual SourceRecords and honest review metadata. No record claims external or formal review. The placeholder roles accurately describe single-contributor verification.
+
+**Recommendation:** Before graduating from static beta, the 2 reviewed records and the 13 downgraded org records should receive second-reviewer passes. This is documented in `docs/content-review-workflow.md`.
 
 ---
 

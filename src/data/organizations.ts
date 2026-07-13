@@ -84,14 +84,14 @@ export const organizationRecords: OrganizationRecord[] = [
       "Microfinance and poverty alleviation",
     ],
     relationshipStatus: "public_resource",
-    contentStatus: "reviewed",
+    contentStatus: "review_pending",
     sourceIds: [],
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
     reviewNotes:
-      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
+      "Organisation name, description, website, and services verified against the organisation's own public website. Downgraded from reviewed to review_pending (2026-07-13): sourceIds must be populated and a second reviewer must confirm before returning to reviewed status.",
   },
   {
     id: "ocha-opt",
@@ -109,14 +109,14 @@ export const organizationRecords: OrganizationRecord[] = [
       "Humanitarian funding tracking",
     ],
     relationshipStatus: "public_resource",
-    contentStatus: "reviewed",
+    contentStatus: "review_pending",
     sourceIds: [],
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
     reviewNotes:
-      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
+      "Organisation name, description, website, and services verified against the organisation's own public website. Downgraded from reviewed to review_pending (2026-07-13): sourceIds must be populated and a second reviewer must confirm before returning to reviewed status.",
   },
   {
     id: "wfp",
@@ -134,14 +134,14 @@ export const organizationRecords: OrganizationRecord[] = [
       "Logistics and supply-chain support",
     ],
     relationshipStatus: "public_resource",
-    contentStatus: "reviewed",
+    contentStatus: "review_pending",
     sourceIds: [],
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
     reviewNotes:
-      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
+      "Organisation name, description, website, and services verified against the organisation's own public website. Downgraded from reviewed to review_pending (2026-07-13): sourceIds must be populated and a second reviewer must confirm before returning to reviewed status.",
   },
 
   // ── Red Cross / Red Crescent ───────────────────────────────────────
@@ -162,14 +162,14 @@ export const organizationRecords: OrganizationRecord[] = [
       "Family reunification and tracing",
     ],
     relationshipStatus: "public_resource",
-    contentStatus: "reviewed",
+    contentStatus: "review_pending",
     sourceIds: [],
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
     reviewNotes:
-      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
+      "Organisation name, description, website, and services verified against the organisation's own public website. Downgraded from reviewed to review_pending (2026-07-13): sourceIds must be populated and a second reviewer must confirm before returning to reviewed status.",
   },
   {
     id: "prcs",
@@ -188,14 +188,14 @@ export const organizationRecords: OrganizationRecord[] = [
       "Disaster response",
     ],
     relationshipStatus: "public_resource",
-    contentStatus: "reviewed",
+    contentStatus: "review_pending",
     sourceIds: [],
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
     reviewNotes:
-      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
+      "Organisation name, description, website, and services verified against the organisation's own public website. Downgraded from reviewed to review_pending (2026-07-13): sourceIds must be populated and a second reviewer must confirm before returning to reviewed status.",
   },
 
   // ── Medical ─────────────────────────────────────────────────────────
@@ -216,14 +216,14 @@ export const organizationRecords: OrganizationRecord[] = [
       "Vaccination and disease-outbreak response",
     ],
     relationshipStatus: "public_resource",
-    contentStatus: "reviewed",
+    contentStatus: "review_pending",
     sourceIds: [],
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
     reviewNotes:
-      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
+      "Organisation name, description, website, and services verified against the organisation's own public website. Downgraded from reviewed to review_pending (2026-07-13): sourceIds must be populated and a second reviewer must confirm before returning to reviewed status.",
   },
   {
     id: "map-uk",
@@ -241,14 +241,14 @@ export const organizationRecords: OrganizationRecord[] = [
       "Surgical training and capacity building",
     ],
     relationshipStatus: "public_resource",
-    contentStatus: "reviewed",
+    contentStatus: "review_pending",
     sourceIds: [],
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
     reviewNotes:
-      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
+      "Organisation name, description, website, and services verified against the organisation's own public website. Downgraded from reviewed to review_pending (2026-07-13): sourceIds must be populated and a second reviewer must confirm before returning to reviewed status.",
   },
 
   // ── Legal and human rights ──────────────────────────────────────────
@@ -268,14 +268,14 @@ export const organizationRecords: OrganizationRecord[] = [
       "Legal analysis of international law compliance",
     ],
     relationshipStatus: "public_resource",
-    contentStatus: "reviewed",
+    contentStatus: "review_pending",
     sourceIds: [],
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
     reviewNotes:
-      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
+      "Organisation name, description, website, and services verified against the organisation's own public website. Downgraded from reviewed to review_pending (2026-07-13): sourceIds must be populated and a second reviewer must confirm before returning to reviewed status.",
   },
   {
     id: "hrw",
@@ -293,14 +293,14 @@ export const organizationRecords: OrganizationRecord[] = [
       "International law and policy analysis",
     ],
     relationshipStatus: "public_resource",
-    contentStatus: "reviewed",
+    contentStatus: "review_pending",
     sourceIds: [],
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
     reviewNotes:
-      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
+      "Organisation name, description, website, and services verified against the organisation's own public website. Downgraded from reviewed to review_pending (2026-07-13): sourceIds must be populated and a second reviewer must confirm before returning to reviewed status.",
   },
 
   // ── Documentation and data ──────────────────────────────────────────
@@ -320,14 +320,14 @@ export const organizationRecords: OrganizationRecord[] = [
       "Public reporting and advocacy",
     ],
     relationshipStatus: "public_resource",
-    contentStatus: "reviewed",
+    contentStatus: "review_pending",
     sourceIds: [],
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
     reviewNotes:
-      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
+      "Organisation name, description, website, and services verified against the organisation's own public website. Downgraded from reviewed to review_pending (2026-07-13): sourceIds must be populated and a second reviewer must confirm before returning to reviewed status.",
   },
   {
     id: "airwars",
@@ -344,14 +344,14 @@ export const organizationRecords: OrganizationRecord[] = [
       "Transparent methodology and published datasets",
     ],
     relationshipStatus: "public_resource",
-    contentStatus: "reviewed",
+    contentStatus: "review_pending",
     sourceIds: [],
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
     reviewNotes:
-      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
+      "Organisation name, description, website, and services verified against the organisation's own public website. Downgraded from reviewed to review_pending (2026-07-13): sourceIds must be populated and a second reviewer must confirm before returning to reviewed status.",
   },
 
   // ── Journalism and press freedom ────────────────────────────────────
@@ -371,14 +371,14 @@ export const organizationRecords: OrganizationRecord[] = [
       "Emergency assistance for journalists at risk",
     ],
     relationshipStatus: "public_resource",
-    contentStatus: "reviewed",
+    contentStatus: "review_pending",
     sourceIds: [],
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
     reviewNotes:
-      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
+      "Organisation name, description, website, and services verified against the organisation's own public website. Downgraded from reviewed to review_pending (2026-07-13): sourceIds must be populated and a second reviewer must confirm before returning to reviewed status.",
   },
 
   // ── Academic and research ───────────────────────────────────────────
@@ -397,14 +397,14 @@ export const organizationRecords: OrganizationRecord[] = [
       "Submissions to international courts and UN bodies",
     ],
     relationshipStatus: "public_resource",
-    contentStatus: "reviewed",
+    contentStatus: "review_pending",
     sourceIds: [],
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
     correctionUrl: "/corrections",
     reviewNotes:
-      "Organisation name, description, website, and services verified against the organisation's own public website. Formal second-reviewer process pending.",
+      "Organisation name, description, website, and services verified against the organisation's own public website. Downgraded from reviewed to review_pending (2026-07-13): sourceIds must be populated and a second reviewer must confirm before returning to reviewed status.",
   },
 ];
 
