@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from "../HomePage";
 import { MethodologyPage } from "../MethodologyPage";
 import { ContributePage } from "../ContributePage";
@@ -12,6 +12,7 @@ import { ChangelogPage } from "../ChangelogPage";
 import { NotFoundPage } from "../NotFoundPage";
 import PressPage from "../PressPage";
 import SourceRegistryPage from "../SourceRegistryPage";
+import EvidenceDetailPage from "../EvidenceDetailPage";
 
 // Mock framer-motion — jsdom doesn't support animation APIs.
 // Components using Reveal will render children without animation.
@@ -124,6 +125,32 @@ describe("Route rendering smoke tests", () => {
     renderPage(SourceRegistryPage);
     expect(
       screen.getByText("Public Source Registry"),
+    ).toBeInTheDocument();
+  });
+
+  it("renders EvidenceDetailPage for a known slug", () => {
+    render(
+      <MemoryRouter initialEntries={["/evidence/icj-provisional-measures-jan-2024"]}>
+        <Routes>
+          <Route path="/evidence/:slug" element={<EvidenceDetailPage />} />
+        </Routes>
+      </MemoryRouter>,
+    );
+    expect(
+      screen.getByRole("heading", { name: /ICJ provisional measures order/ }),
+    ).toBeInTheDocument();
+  });
+
+  it("renders EvidenceDetailPage not-found state for unknown slug", () => {
+    render(
+      <MemoryRouter initialEntries={["/evidence/nonexistent-slug"]}>
+        <Routes>
+          <Route path="/evidence/:slug" element={<EvidenceDetailPage />} />
+        </Routes>
+      </MemoryRouter>,
+    );
+    expect(
+      screen.getByText("Evidence record not found"),
     ).toBeInTheDocument();
   });
 

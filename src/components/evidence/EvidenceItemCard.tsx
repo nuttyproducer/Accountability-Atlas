@@ -234,15 +234,21 @@ export function EvidenceItemCard({ item }: EvidenceItemCardProps) {
         </>
       )}
 
-      {/* Correction route */}
-      <p className="mt-4 pt-3 border-t border-border text-sm text-charcoal/50">
+      {/* View full record + correction */}
+      <div className="mt-4 pt-3 border-t border-border flex flex-wrap items-center gap-x-5 gap-y-1">
+        <Link
+          to={`/evidence/${item.slug}`}
+          className="text-sm font-medium text-trust hover:text-trust/80 underline underline-offset-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
+        >
+          View full record
+        </Link>
         <Link
           to={item.correctionUrl}
-          className="text-trust hover:text-trust/80 underline underline-offset-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
+          className="text-sm text-charcoal/50 hover:text-trust/80 underline underline-offset-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
         >
-          Report an error in this summary
+          Report an error
         </Link>
-      </p>
+      </div>
     </Card>
   );
 }

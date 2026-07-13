@@ -379,3 +379,8 @@ export function getAvailableContentStatuses(): ContentStatus[] {
   const statuses = new Set(evidenceItems.map((item) => item.contentStatus));
   return Array.from(statuses).sort();
 }
+
+/** Lookup an evidence item by its URL slug. */
+export function getEvidenceBySlug(slug: string): EvidenceItem | undefined {
+  return evidenceItems.find((item) => item.slug === slug);
+}

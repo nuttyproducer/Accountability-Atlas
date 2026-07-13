@@ -227,6 +227,17 @@ export function getRouteMeta(pathname: string): RouteMeta {
     };
   }
 
+  // Dynamic routes: /evidence/:slug
+  if (key.startsWith("/evidence/") && key !== "/evidence") {
+    return {
+      title: fullTitle("Evidence Record"),
+      description:
+        "Evidence record detail — category, source quality, editorial status, legal status labels, linked sources, citation, and correction route.",
+      canonicalPath: key,
+      ogType: "article",
+    };
+  }
+
   return meta[key] ?? meta["/404"];
 }
 
