@@ -15,6 +15,7 @@ import { DisclaimerPage } from "./pages/DisclaimerPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import GazaDossierPage from "./pages/GazaDossierPage";
 import LegalTrackerPage from "./pages/LegalTrackerPage";
+import LegalCaseDetailPage from "./pages/LegalCaseDetailPage";
 import BelgiumPage from "./pages/BelgiumPage";
 import EuropeanUnionPage from "./pages/EuropeanUnionPage";
 import OrganizationsPage from "./pages/OrganizationsPage";
@@ -69,6 +70,7 @@ export default function App() {
           <Route path="/disclaimer" element={<DisclaimerPage />} />
           <Route path="/gaza-dossier" element={<GazaDossierPage />} />
           <Route path="/legal-tracker" element={<LegalTrackerPage />} />
+          <Route path="/legal-tracker/:slug" element={<LegalCaseDetailPage />} />
           <Route path="/countries/belgium" element={<BelgiumPage />} />
           <Route path="/institutions/european-union" element={<EuropeanUnionPage />} />
           <Route path="/organizations" element={<OrganizationsPage />} />

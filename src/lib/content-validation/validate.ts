@@ -8,6 +8,7 @@
 import { sources } from "../../data/sources";
 import { evidenceItems } from "../../data/evidenceItems";
 import { legalCases } from "../../data/legalCases";
+import { legalTimelineEvents } from "../../data/legalTimeline";
 import { belgiumSections } from "../../data/countries";
 import { euInstitutions } from "../../data/institutions";
 import { organizationRecords } from "../../data/organizations";
@@ -94,6 +95,19 @@ export function validateAll(): ValidationReport {
     ...checkContentStatuses("legalCases", legalCases),
     ...checkVersions("legalCases", legalCases),
 
+    // ── Legal timeline events ────────────────────────────────────────────
+    ...checkDuplicateIds("legalTimelineEvents", legalTimelineEvents),
+    ...checkInvalidDates("legalTimelineEvents", legalTimelineEvents, ["date", "lastReviewedAt"]),
+    ...checkMissingSourceRefs("legalTimelineEvents", legalTimelineEvents, SOURCE_IDS),
+    ...checkEmptySourcesOnReviewed("legalTimelineEvents", legalTimelineEvents),
+    ...checkReviewedWithoutLastReviewedAt("legalTimelineEvents", legalTimelineEvents),
+    ...checkReviewedWithoutReviewedByRole("legalTimelineEvents", legalTimelineEvents),
+    ...checkReviewedWithoutVersion("legalTimelineEvents", legalTimelineEvents),
+    ...checkInvalidVerificationLevels("legalTimelineEvents", legalTimelineEvents),
+    ...checkMissingCorrectionRoute("legalTimelineEvents", legalTimelineEvents),
+    ...checkContentStatuses("legalTimelineEvents", legalTimelineEvents),
+    ...checkVersions("legalTimelineEvents", legalTimelineEvents),
+
     // ── Organizations ───────────────────────────────────────────────────
     ...checkDuplicateIds("organizations", organizationRecords),
     ...checkDuplicateSlugs("organizations", organizationRecords),
@@ -148,11 +162,12 @@ export function validateAll(): ValidationReport {
     issues: allIssues,
     errors,
     warnings,
-    collectionsChecked: 8,
+    collectionsChecked: 9,
     recordsChecked:
       sources.length +
       evidenceItems.length +
       legalCases.length +
+      legalTimelineEvents.length +
       organizationRecords.length +
       actionTemplates.length +
       belgiumSections.length +
@@ -162,6 +177,7 @@ export function validateAll(): ValidationReport {
       sources: sources.length,
       evidenceItems: evidenceItems.length,
       legalCases: legalCases.length,
+      legalTimelineEvents: legalTimelineEvents.length,
       organizations: organizationRecords.length,
       actionTemplates: actionTemplates.length,
       belgiumSections: belgiumSections.length,

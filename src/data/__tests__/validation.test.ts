@@ -52,7 +52,7 @@ describe("Static data validation (full integration)", () => {
   const report = validateAll();
 
   it("checks records across all collections", () => {
-    expect(report.collectionsChecked).toBe(8);
+    expect(report.collectionsChecked).toBe(9);
     expect(report.recordsChecked).toBeGreaterThan(0);
   });
 

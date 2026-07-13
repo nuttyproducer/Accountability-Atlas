@@ -21,6 +21,7 @@ export interface LegalCaseEntry {
   reviewedByRole?: string;
   version: number;
   proceduralNote?: string;
+  correctionUrl: string;
 }
 
 export const legalCases: LegalCaseEntry[] = [
@@ -52,6 +53,7 @@ export const legalCases: LegalCaseEntry[] = [
     version: 1,
     proceduralNote:
       "Provisional measures are binding orders issued before a final judgment. They do not constitute a final ruling on the merits of the case.",
+    correctionUrl: "/corrections",
   },
   {
     id: "icc-palestine-situation",
@@ -78,6 +80,7 @@ export const legalCases: LegalCaseEntry[] = [
     version: 1,
     proceduralNote:
       "The ICC prosecutes individuals, not states. Arrest warrants are issued by Pre-Trial Chambers and are subject to judicial review. All persons are presumed innocent until proven guilty.",
+    correctionUrl: "/corrections",
   },
   {
     id: "un-coi-opt",
@@ -108,5 +111,11 @@ export const legalCases: LegalCaseEntry[] = [
     version: 1,
     proceduralNote:
       "UN Commissions of Inquiry are fact-finding bodies. Their findings inform international accountability processes but are not judicial rulings.",
+    correctionUrl: "/corrections",
   },
 ];
+
+/** Look up a legal case by its URL slug. */
+export function getLegalCaseBySlug(slug: string): LegalCaseEntry | undefined {
+  return legalCases.find((c) => c.slug === slug);
+}

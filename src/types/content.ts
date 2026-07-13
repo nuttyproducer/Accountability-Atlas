@@ -133,3 +133,63 @@ export interface BasePreviewRecord {
   summary: string;
   review: ReviewMetadata;
 }
+
+// ── Legal Timeline ─────────────────────────────────────────────────────────
+
+/** Controlled procedural event types for legal case timelines. */
+export type LegalTimelineEventType =
+  | "filing"
+  | "jurisdiction_decision"
+  | "investigation_opened"
+  | "provisional_measure"
+  | "arrest_warrant_application"
+  | "arrest_warrant_issued"
+  | "hearing"
+  | "order"
+  | "judgment"
+  | "intervention"
+  | "official_report_update";
+
+export const LEGAL_TIMELINE_EVENT_LABELS: Record<LegalTimelineEventType, string> = {
+  filing: "Filing",
+  jurisdiction_decision: "Jurisdiction decision",
+  investigation_opened: "Investigation opened",
+  provisional_measure: "Provisional measure",
+  arrest_warrant_application: "Arrest warrant application",
+  arrest_warrant_issued: "Arrest warrant issued",
+  hearing: "Hearing",
+  order: "Order",
+  judgment: "Judgment",
+  intervention: "Intervention",
+  official_report_update: "Official report / update",
+};
+
+/** A single procedural event in a legal case timeline. */
+export interface LegalTimelineEvent {
+  /** Unique identifier for this timeline event. */
+  id: string;
+  /** References the legal case this event belongs to. */
+  legalCaseId: string;
+  /** Date of the procedural event (ISO 8601). */
+  date: string;
+  /** Controlled event type from the procedural vocabulary. */
+  eventType: LegalTimelineEventType;
+  /** Brief title for this timeline entry. */
+  title: string;
+  /** Careful procedural summary — distinguishes allegations from findings. */
+  proceduralSummary: string;
+  /** Source document IDs that support this timeline entry. */
+  sourceIds: string[];
+  /** Editorial content status of this timeline entry. */
+  contentStatus: ContentStatus;
+  /** Verification level of the underlying sources. */
+  sourceQuality: VerificationLevel;
+  /** Schema version of this timeline record. */
+  version: number;
+  /** When this timeline entry was last reviewed. */
+  lastReviewedAt?: string;
+  /** Role that performed the review — not a personal name. */
+  reviewedByRole?: string;
+  /** Route to the corrections process. */
+  correctionUrl: string;
+}

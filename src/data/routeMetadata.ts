@@ -238,6 +238,17 @@ export function getRouteMeta(pathname: string): RouteMeta {
     };
   }
 
+  // Dynamic routes: /legal-tracker/:slug
+  if (key.startsWith("/legal-tracker/") && key !== "/legal-tracker") {
+    return {
+      title: fullTitle("Legal Case Detail"),
+      description:
+        "Legal case detail — institution, jurisdiction, parties, procedural timeline, legal status labels, source documents, and correction route. Not legal advice.",
+      canonicalPath: key,
+      ogType: "article",
+    };
+  }
+
   return meta[key] ?? meta["/404"];
 }
 
