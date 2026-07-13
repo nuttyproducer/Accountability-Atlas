@@ -55,8 +55,9 @@ export function validateAll(): ValidationReport {
   const allIssues = [
     // ── Sources ──────────────────────────────────────────────────────────
     ...checkDuplicateIds("sources", sources),
+    ...checkDuplicateSlugs("sources", sources),
     ...checkInvalidUrls("sources", sources, ["url"]),
-    ...checkInvalidDates("sources", sources, ["publicationDate", "accessedAt"]),
+    ...checkInvalidDates("sources", sources, ["publicationDate", "accessedAt", "lastCheckedAt"]),
     ...checkSourceCompleteness(sources),
 
     // ── Evidence items ──────────────────────────────────────────────────

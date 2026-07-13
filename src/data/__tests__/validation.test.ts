@@ -574,9 +574,17 @@ describe("Rule 17: Stale reviews", () => {
 // ── Rule 18: Source completeness ───────────────────────────────────────────
 
 describe("Rule 18: Source completeness", () => {
+  const baseSource = {
+    slug: "test-source",
+    status: "active" as const,
+    version: 1,
+    correctionUrl: "/corrections",
+  };
+
   it("passes for complete sources", () => {
     const complete = [
       {
+        ...baseSource,
         id: "test",
         title: "Test Title",
         publisher: "Test Publisher",
@@ -591,6 +599,7 @@ describe("Rule 18: Source completeness", () => {
   it("detects missing publisher", () => {
     const incomplete = [
       {
+        ...baseSource,
         id: "test",
         title: "Test",
         publisher: "",
@@ -606,6 +615,7 @@ describe("Rule 18: Source completeness", () => {
   it("detects missing title", () => {
     const incomplete = [
       {
+        ...baseSource,
         id: "test",
         title: "",
         publisher: "Pub",
@@ -621,6 +631,7 @@ describe("Rule 18: Source completeness", () => {
   it("detects invalid URL", () => {
     const incomplete = [
       {
+        ...baseSource,
         id: "test",
         title: "T",
         publisher: "P",
@@ -636,6 +647,7 @@ describe("Rule 18: Source completeness", () => {
   it("detects invalid source type", () => {
     const incomplete = [
       {
+        ...baseSource,
         id: "test",
         title: "T",
         publisher: "P",

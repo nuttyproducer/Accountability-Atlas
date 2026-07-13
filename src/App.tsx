@@ -21,6 +21,8 @@ import OrganizationsPage from "./pages/OrganizationsPage";
 import ActionHubPage from "./pages/ActionHubPage";
 import EvidenceLibraryPage from "./pages/EvidenceLibraryPage";
 import PressPage from "./pages/PressPage";
+import SourceRegistryPage from "./pages/SourceRegistryPage";
+import SourceDetailPage from "./pages/SourceDetailPage";
 
 function RouteMeta() {
   const { pathname } = useLocation();
@@ -72,6 +74,8 @@ export default function App() {
           <Route path="/take-action" element={<ActionHubPage />} />
           <Route path="/evidence" element={<EvidenceLibraryPage />} />
           <Route path="/press" element={<PressPage />} />
+          <Route path="/sources" element={<SourceRegistryPage />} />
+          <Route path="/sources/:sourceId" element={<SourceDetailPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </PageShell>

@@ -105,17 +105,33 @@ export const sourceTypeSchema = z.enum([
 
 // ── SourceRecord ──────────────────────────────────────────────────────────
 
+export const sourceStatusSchema = z.enum([
+  "active",
+  "broken",
+  "archived",
+  "superseded",
+]);
+
 export const sourceRecordSchema = z.object({
   id: nonEmptyString,
+  slug: slugString,
   title: nonEmptyString,
   publisher: nonEmptyString,
   sourceType: sourceTypeSchema,
+  documentType: z.string().optional(),
   url: validUrl,
   publicationDate: z.string().optional(),
   accessedAt: validDate,
   archiveUrl: z.string().optional(),
   language: z.string().optional(),
+  jurisdiction: z.string().optional(),
+  authors: z.array(z.string()).optional(),
+  official: z.boolean().optional(),
+  status: sourceStatusSchema,
   notes: z.string().optional(),
+  version: z.number().int().min(1),
+  lastCheckedAt: validDate.optional(),
+  correctionUrl: nonEmptyString,
 });
 
 // ── ReviewMetadata (shared review fields) ─────────────────────────────────

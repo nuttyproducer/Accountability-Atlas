@@ -6,6 +6,7 @@ import type { SourceRecord } from "../../../types/content";
 const sampleSources: SourceRecord[] = [
   {
     id: "icj-2024-01-26",
+    slug: "icj-order-jan-2024",
     title: "ICJ Order of 26 January 2024",
     publisher: "International Court of Justice",
     sourceType: "court",
@@ -13,9 +14,13 @@ const sampleSources: SourceRecord[] = [
     publicationDate: "2024-01-26",
     accessedAt: "2026-07-10",
     language: "en",
+    status: "active",
+    version: 1,
+    correctionUrl: "/corrections",
   },
   {
     id: "ocha-report",
+    slug: "ocha-gaza-snapshot-june-2025",
     title: "Gaza Humanitarian Snapshot — June 2025",
     publisher: "UN OCHA",
     sourceType: "un",
@@ -25,6 +30,9 @@ const sampleSources: SourceRecord[] = [
     language: "en",
     archiveUrl: "https://archive.org/ocha-report",
     notes: "Monthly situation update.",
+    status: "active",
+    version: 1,
+    correctionUrl: "/corrections",
   },
 ];
 

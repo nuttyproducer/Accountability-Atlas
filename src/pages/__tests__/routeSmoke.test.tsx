@@ -11,6 +11,7 @@ import { AttributionsPage } from "../AttributionsPage";
 import { ChangelogPage } from "../ChangelogPage";
 import { NotFoundPage } from "../NotFoundPage";
 import PressPage from "../PressPage";
+import SourceRegistryPage from "../SourceRegistryPage";
 
 // Mock framer-motion — jsdom doesn't support animation APIs.
 // Components using Reveal will render children without animation.
@@ -116,6 +117,13 @@ describe("Route rendering smoke tests", () => {
     renderPage(PressPage);
     expect(
       screen.getByText("Press and Resources"),
+    ).toBeInTheDocument();
+  });
+
+  it("renders SourceRegistryPage", () => {
+    renderPage(SourceRegistryPage);
+    expect(
+      screen.getByText("Public Source Registry"),
     ).toBeInTheDocument();
   });
 

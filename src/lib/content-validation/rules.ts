@@ -437,11 +437,13 @@ export function checkStaleReviews(
 
 // ── Rule 18: Source records missing required fields ──────────────────────
 
+const VALID_SOURCE_STATUSES = new Set(["active", "broken", "archived", "superseded"]);
+
 export function checkSourceCompleteness(
-  sources: SourceRecord[],
+  sourceRecords: SourceRecord[],
 ): ValidationIssue[] {
   const issues: ValidationIssue[] = [];
-  for (const s of sources) {
+  for (const s of sourceRecords) {
     if (!s.publisher || s.publisher.trim() === "") {
       issues.push(issue("sources", s.id, "publisher", "Source record is missing publisher."));
     }
@@ -456,6 +458,18 @@ export function checkSourceCompleteness(
     }
     if (!s.sourceType || !VALID_SOURCE_TYPES.has(s.sourceType)) {
       issues.push(issue("sources", s.id, "sourceType", `Source record has invalid or missing source type: "${s.sourceType}".`));
+    }
+    if (!s.slug || s.slug.trim() === "") {
+      issues.push(issue("sources", s.id, "slug", "Source record is missing slug."));
+    }
+    if (!s.status || !VALID_SOURCE_STATUSES.has(s.status)) {
+      issues.push(issue("sources", s.id, "status", `Source record has invalid or missing status: "${s.status}".`));
+    }
+    if (!s.version || s.version < 1) {
+      issues.push(issue("sources", s.id, "version", `Missing or invalid version: ${s.version}.`));
+    }
+    if (!s.correctionUrl || s.correctionUrl.trim() === "") {
+      issues.push(issue("sources", s.id, "correctionUrl", "Source record is missing correction route."));
     }
   }
   return issues;

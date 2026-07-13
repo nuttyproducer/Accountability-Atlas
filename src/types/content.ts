@@ -72,17 +72,46 @@ export const SOURCE_TYPE_LABELS: Record<SourceType, string> = {
   osint: "OSINT / documentation group",
 };
 
+/** Source record status — describes URL and currency state. */
+export type SourceStatus = "active" | "broken" | "archived" | "superseded";
+
+export const SOURCE_STATUS_LABELS: Record<SourceStatus, string> = {
+  active: "Active",
+  broken: "Broken link",
+  archived: "Archived",
+  superseded: "Superseded",
+};
+
 export interface SourceRecord {
   id: string;
+  /** URL-safe slug for routing. */
+  slug: string;
   title: string;
   publisher: string;
   sourceType: SourceType;
+  /** The document type, e.g. "court order", "report", "resolution", "filing". */
+  documentType?: string;
   url: string;
   publicationDate?: string;
   accessedAt: string;
   archiveUrl?: string;
   language?: string;
+  /** Legal or institutional jurisdiction, e.g. "International", "Belgium". */
+  jurisdiction?: string;
+  /** Authors or issuing body, if distinct from publisher. */
+  authors?: string[];
+  /** Whether this is an official institutional record. */
+  official?: boolean;
+  /** Source currency status. */
+  status: SourceStatus;
+  /** Notes safe for public display — no private/internal review notes. */
   notes?: string;
+  /** Schema version of this record. */
+  version: number;
+  /** When the URL was last verified as resolving correctly. */
+  lastCheckedAt?: string;
+  /** Route to the corrections process. */
+  correctionUrl: string;
 }
 
 export interface ReviewMetadata {

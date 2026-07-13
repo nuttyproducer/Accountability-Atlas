@@ -181,6 +181,15 @@ const meta: Record<string, RouteMeta> = {
     ogType: "website",
   },
 
+  // ── Source Registry ──────────────────────────────────────────────────
+  "/sources": {
+    title: fullTitle("Source Registry"),
+    description:
+      "Public source registry — every source referenced on Accountability Atlas, with publisher, type, access dates, status, and links to original documents.",
+    canonicalPath: "/sources",
+    ogType: "website",
+  },
+
   // ── Meta ────────────────────────────────────────────────────────────
   "/changelog": {
     title: fullTitle("Changelog"),
@@ -206,6 +215,18 @@ export function getRouteMeta(pathname: string): RouteMeta {
   // Normalise: strip trailing slash except for root
   const key =
     pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
+
+  // Dynamic routes: /sources/:sourceId
+  if (key.startsWith("/sources/") && key !== "/sources") {
+    return {
+      title: fullTitle("Source Detail"),
+      description:
+        "Source record detail — publisher, document type, publication date, access date, related evidence records, and original document links.",
+      canonicalPath: key,
+      ogType: "article",
+    };
+  }
+
   return meta[key] ?? meta["/404"];
 }
 

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type { SourceRecord } from "../../types/content";
 import { SOURCE_TYPE_LABELS } from "../../types/content";
 import { ExternalLink } from "../ui/ExternalLink";
@@ -45,15 +46,21 @@ export function SourceList({
                 </span>
               )}
             </div>
-            <ExternalLink href={source.url} showIcon>
+            <Link
+              to={`/sources/${source.slug}`}
+              className="text-sm font-medium text-ink hover:text-trust/80 underline underline-offset-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
+            >
               {source.title}
-            </ExternalLink>
+            </Link>
             <p className="text-charcoal/60 mt-1">{source.publisher}</p>
             <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1.5 text-xs text-charcoal/50">
               {source.publicationDate && (
                 <span>Published: {source.publicationDate}</span>
               )}
               <span>Accessed: {source.accessedAt}</span>
+              <ExternalLink href={source.url} showIcon>
+                Original
+              </ExternalLink>
               {source.archiveUrl && (
                 <ExternalLink href={source.archiveUrl} showIcon>
                   Archived version
