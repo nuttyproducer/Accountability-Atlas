@@ -9,6 +9,7 @@ const projectLinks = [
   { label: "Organizations", href: "/organizations" },
   { label: "Take Action", href: "/take-action" },
   { label: "Evidence Library", href: "/evidence" },
+  { label: "Dossier Library", href: "/dossiers" },
   { label: "Methodology", href: "/methodology" },
   { label: "Contribute", href: "/contribute" },
   { label: "Corrections", href: "/corrections" },

@@ -134,6 +134,133 @@ export interface BasePreviewRecord {
   review: ReviewMetadata;
 }
 
+// ── Dossier ─────────────────────────────────────────────────────────────────
+
+/** Dossier type — corresponds to PRD dossier types. */
+export type DossierType =
+  | "one_page_brief"
+  | "five_page_memo"
+  | "full_dossier"
+  | "journalist_briefing"
+  | "council_motion_pack"
+  | "mp_contact_pack"
+  | "humanitarian_access_brief"
+  | "arms_transfer_brief"
+  | "legal_accountability_brief";
+
+export const DOSSIER_TYPE_LABELS: Record<DossierType, string> = {
+  one_page_brief: "One-page executive brief",
+  five_page_memo: "Five-page policy memo",
+  full_dossier: "Full evidence dossier",
+  journalist_briefing: "Journalist briefing",
+  council_motion_pack: "Local council motion pack",
+  mp_contact_pack: "MP/MEP contact pack",
+  humanitarian_access_brief: "Humanitarian access brief",
+  arms_transfer_brief: "Arms-transfer review brief",
+  legal_accountability_brief: "Legal accountability brief",
+};
+
+/** Target audience for a dossier. */
+export type DossierAudience =
+  | "citizen"
+  | "journalist"
+  | "researcher"
+  | "policymaker"
+  | "ngo"
+  | "legal_professional";
+
+export const DOSSIER_AUDIENCE_LABELS: Record<DossierAudience, string> = {
+  citizen: "Concerned citizens",
+  journalist: "Journalists and researchers",
+  researcher: "Academic researchers",
+  policymaker: "Policymakers and staffers",
+  ngo: "NGOs and humanitarian organizations",
+  legal_professional: "Legal workers and human-rights defenders",
+};
+
+/** Generation status for dossier output. */
+export type DossierGenerationStatus =
+  | "manual_static_preview"
+  | "generation_inactive";
+
+export const DOSSIER_GENERATION_STATUS_LABELS: Record<DossierGenerationStatus, string> = {
+  manual_static_preview: "Static preview — manually constructed",
+  generation_inactive: "Automated generation not yet active",
+};
+
+/**
+ * A structured dossier record.
+ *
+ * Dossiers are assembled from reviewed records (evidence, legal cases,
+ * country/institution data, and sources). During the static beta,
+ * dossiers are manually constructed previews. Automated generation
+ * from reviewed records will be implemented in a later phase.
+ */
+export interface DossierRecord {
+  /** Stable unique identifier — kebab-case. */
+  id: string;
+  /** URL-safe slug for routing. */
+  slug: string;
+  /** Human-readable title. */
+  title: string;
+  /** Dossier type from the controlled vocabulary. */
+  dossierType: DossierType;
+  /** Primary intended audience. */
+  audience: DossierAudience;
+  /** Issue or crisis focus (e.g. "Gaza accountability"). */
+  issueFocus: string;
+  /** Jurisdiction scope, e.g. "International", "Belgium", "European Union". */
+  jurisdiction: string;
+  /** Language code (ISO 639-1). */
+  language: string;
+  /** One-paragraph executive summary. */
+  executiveSummary: string;
+  /** IDs of evidence items that provide key factual support. */
+  keyFactRecordIds: string[];
+  /** IDs of legal cases referenced in the dossier. */
+  legalCaseIds: string[];
+  /** IDs of country or institution entries referenced. */
+  countryOrInstitutionIds: string[];
+  /** Policy asks derived from sourced records. */
+  policyAsks: string[];
+  /** Recommended lawful actions. */
+  recommendedActions: string[];
+  /** IDs of source records supporting dossier content. */
+  sourceIds: string[];
+  /** Editorial and review status. */
+  contentStatus: ContentStatus;
+  /** Generation status — always generation_inactive or manual_static_preview during static beta. */
+  generationStatus: DossierGenerationStatus;
+  /** Schema version of this record. */
+  version: number;
+  /** When this dossier was created or last assembled. */
+  createdAt: string;
+  /** When this dossier was last reviewed. */
+  lastReviewedAt?: string;
+  /** Role that performed the last review. */
+  reviewedByRole?: string;
+  /** Route to the corrections process. */
+  correctionUrl: string;
+}
+
+/** Dossier template metadata — describes a dossier type without the full content. */
+export interface DossierTemplate {
+  /** Template identifier. */
+  id: string;
+  /** The dossier type this template describes. */
+  dossierType: DossierType;
+  /** Human-readable label. */
+  label: string;
+  /** What this template produces. */
+  description: string;
+  /** Typical inputs/parameters. */
+  inputs: string[];
+  /** Typical output structure. */
+  outputStructure: string[];
+  /** Whether automated generation is active for this template. */
+  generationActive: boolean;
+}
+
 // ── Legal Timeline ─────────────────────────────────────────────────────────
 
 /** Controlled procedural event types for legal case timelines. */

@@ -97,3 +97,132 @@ body::before {
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+
+/* ── Print styles ─────────────────────────────────────────────────────────── */
+
+@media print {
+  /* Reset background and text for clean printing */
+  body {
+    background: white !important;
+    color: #101828;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  body::before {
+    display: none !important;
+  }
+
+  /* Hide navigation, footer, and interactive controls */
+  header[role="banner"],
+  footer[role="contentinfo"],
+  .skip-to-content,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Ensure all content is visible */
+  #root {
+    position: static;
+    z-index: auto;
+  }
+
+  /* Remove animations and transitions */
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Ensure links show their URLs where useful */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #555;
+  }
+
+  /* Don't show URL for internal links or anchors */
+  a[href^="/"]::after,
+  a[href^="#"]::after {
+    content: none;
+  }
+
+  /* But show the domain for internal routes */
+  a[href^="/"] {
+    color: #101828;
+    text-decoration: underline;
+  }
+
+  /* Preserve external link appearance */
+  a[href^="http"] {
+    color: #101828;
+    text-decoration: underline;
+  }
+
+  /* Show hidden print elements */
+  .hidden.print\:block {
+    display: block !important;
+  }
+
+  .hidden.print\:inline {
+    display: inline !important;
+  }
+
+  /* Cards and sections — clean borders */
+  .border-border,
+  .border-border\/60,
+  .border-border\/30 {
+    border-color: #ccc !important;
+  }
+
+  /* Remove background highlights */
+  .bg-bone,
+  .bg-bone\/60 {
+    background: white !important;
+  }
+
+  /* Page breaks */
+  h2 {
+    page-break-after: avoid;
+  }
+
+  section {
+    page-break-inside: avoid;
+  }
+
+  /* Ensure reasonable margins */
+  @page {
+    margin: 2cm;
+  }
+
+  /* Dossier-specific print optimizations */
+  .dossier-print {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Badge simplification for print */
+  .font-mono.text-xs.font-medium {
+    border: 1px solid #999;
+    background: none;
+    color: #333;
+  }
+
+  /* Reduce spacing for print */
+  .mb-10 {
+    margin-bottom: 1.5rem !important;
+  }
+
+  .mb-14 {
+    margin-bottom: 2rem !important;
+  }
+
+  .py-16 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .lg\:py-20 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}

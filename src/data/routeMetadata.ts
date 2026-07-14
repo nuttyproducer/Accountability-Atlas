@@ -204,6 +204,15 @@ const meta: Record<string, RouteMeta> = {
     ogType: "website",
   },
 
+  // ── Dossier Library ──────────────────────────────────────────────────
+  "/dossiers": {
+    title: fullTitle("Dossier Library"),
+    description:
+      "Structured, source-linked evidence briefs for policymakers, journalists, researchers, and citizens. One static preview dossier available during the beta. Automated generation from reviewed records planned for a later phase.",
+    canonicalPath: "/dossiers",
+    ogType: "website",
+  },
+
   // ── Meta ────────────────────────────────────────────────────────────
   "/changelog": {
     title: fullTitle("Changelog"),
@@ -280,6 +289,17 @@ export function getRouteMeta(pathname: string): RouteMeta {
       title: fullTitle("Action Detail"),
       description:
         "Action template detail — title, type, jurisdiction, intended audience, purpose, policy ask, source basis, instructions, template text, review statuses, warnings, related routes, and correction link. Manual copy-only during the static beta.",
+      canonicalPath: key,
+      ogType: "article",
+    };
+  }
+
+  // Dynamic routes: /dossiers/:slug
+  if (key.startsWith("/dossiers/") && key !== "/dossiers") {
+    return {
+      title: fullTitle("Dossier"),
+      description:
+        "Policy dossier detail — title, version, dossier type, executive summary, key facts from referenced records, legal context, policy asks, recommended actions, and full source list. Static preview — automated generation not yet active.",
       canonicalPath: key,
       ogType: "article",
     };

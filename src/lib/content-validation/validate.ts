@@ -14,6 +14,7 @@ import { euInstitutions } from "../../data/institutions";
 import { organizationRecords } from "../../data/organizations";
 import { actionTemplates } from "../../data/actionTemplates";
 import { attributionRecords } from "../../data/attributions";
+import { dossiers } from "../../data/dossiers";
 import { routeMetadataMap } from "../../data/routeMetadata";
 import type { ContentStatus } from "../../types/content";
 import type { ValidationReport } from "./types";
@@ -153,6 +154,19 @@ export function validateAll(): ValidationReport {
     ...checkInvalidUrls("attributions", attributionRecords, ["licenseUrl", "sourceUrl"]),
     ...checkInvalidDates("attributions", attributionRecords, ["dateAdded", "accessedAt"]),
     ...checkStaleReviews("attributions", attributionRecords.map((a) => ({ id: a.id, contentStatus: a.status as ContentStatus, lastReviewedAt: undefined })), "attribution"),
+
+    // ── Dossiers ───────────────────────────────────────────────────────
+    ...checkDuplicateIds("dossiers", dossiers),
+    ...checkDuplicateSlugs("dossiers", dossiers),
+    ...checkInvalidDates("dossiers", dossiers, ["createdAt", "lastReviewedAt"]),
+    ...checkMissingSourceRefs("dossiers", dossiers, SOURCE_IDS),
+    ...checkEmptySourcesOnReviewed("dossiers", dossiers),
+    ...checkReviewedWithoutLastReviewedAt("dossiers", dossiers),
+    ...checkReviewedWithoutReviewedByRole("dossiers", dossiers),
+    ...checkReviewedWithoutVersion("dossiers", dossiers),
+    ...checkMissingCorrectionRoute("dossiers", dossiers),
+    ...checkContentStatuses("dossiers", dossiers),
+    ...checkVersions("dossiers", dossiers),
   ];
 
   const errors = allIssues.filter((i) => i.severity === "error");
@@ -162,7 +176,7 @@ export function validateAll(): ValidationReport {
     issues: allIssues,
     errors,
     warnings,
-    collectionsChecked: 9,
+    collectionsChecked: 10,
     recordsChecked:
       sources.length +
       evidenceItems.length +
@@ -172,7 +186,8 @@ export function validateAll(): ValidationReport {
       actionTemplates.length +
       belgiumSections.length +
       euInstitutions.length +
-      attributionRecords.length,
+      attributionRecords.length +
+      dossiers.length,
     recordCounts: {
       sources: sources.length,
       evidenceItems: evidenceItems.length,
@@ -183,6 +198,7 @@ export function validateAll(): ValidationReport {
       belgiumSections: belgiumSections.length,
       euInstitutions: euInstitutions.length,
       attributions: attributionRecords.length,
+      dossiers: dossiers.length,
     },
     passed: errors.length === 0,
   };

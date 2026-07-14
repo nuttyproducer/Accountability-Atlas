@@ -32,6 +32,7 @@ import { actionTemplates } from "../actionTemplates";
 import { belgiumSections } from "../countries";
 import { euInstitutions } from "../institutions";
 import { attributionRecords } from "../attributions";
+import { dossiers } from "../dossiers";
 import { routeMetadataMap } from "../routeMetadata";
 import type { ValidationError } from "../validation";
 
@@ -52,7 +53,7 @@ describe("Static data validation (full integration)", () => {
   const report = validateAll();
 
   it("checks records across all collections", () => {
-    expect(report.collectionsChecked).toBe(9);
+    expect(report.collectionsChecked).toBe(10);
     expect(report.recordsChecked).toBeGreaterThan(0);
   });
 
@@ -90,6 +91,7 @@ describe("Rule 1: Duplicate IDs", () => {
     expect(checkDuplicateIds("belgiumSections", belgiumSections)).toHaveLength(0);
     expect(checkDuplicateIds("euInstitutions", euInstitutions)).toHaveLength(0);
     expect(checkDuplicateIds("attributions", attributionRecords)).toHaveLength(0);
+    expect(checkDuplicateIds("dossiers", dossiers)).toHaveLength(0);
   });
 });
 
@@ -740,6 +742,7 @@ describe("Content status validation", () => {
     expect(checkContentStatuses("actionTemplates", actionTemplates)).toHaveLength(0);
     expect(checkContentStatuses("belgiumSections", belgiumSections)).toHaveLength(0);
     expect(checkContentStatuses("euInstitutions", euInstitutions)).toHaveLength(0);
+    expect(checkContentStatuses("dossiers", dossiers)).toHaveLength(0);
   });
 });
 
@@ -761,6 +764,7 @@ describe("Version validation", () => {
     expect(checkVersions("legalCases", legalCases)).toHaveLength(0);
     expect(checkVersions("organizations", organizationRecords)).toHaveLength(0);
     expect(checkVersions("actionTemplates", actionTemplates)).toHaveLength(0);
+    expect(checkVersions("dossiers", dossiers)).toHaveLength(0);
   });
 });
 

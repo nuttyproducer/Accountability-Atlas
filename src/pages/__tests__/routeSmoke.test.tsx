@@ -16,6 +16,8 @@ import EvidenceDetailPage from "../EvidenceDetailPage";
 import ActionDetailPage from "../ActionDetailPage";
 import CountriesIndexPage from "../CountriesIndexPage";
 import InstitutionsIndexPage from "../InstitutionsIndexPage";
+import DossiersPage from "../DossiersPage";
+import DossierDetailPage from "../DossierDetailPage";
 
 // Mock framer-motion — jsdom doesn't support animation APIs.
 // Components using Reveal will render children without animation.
@@ -205,6 +207,41 @@ describe("Route rendering smoke tests", () => {
     );
     expect(
       screen.getByText("Action template not found"),
+    ).toBeInTheDocument();
+  });
+
+  it("renders DossiersPage", () => {
+    renderPage(DossiersPage);
+    expect(
+      screen.getByRole("heading", { name: "Dossier Library" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/One static example is available now/),
+    ).toBeInTheDocument();
+  });
+
+  it("renders DossierDetailPage for a known slug", () => {
+    render(
+      <MemoryRouter initialEntries={["/dossiers/gaza-accountability-one-page"]}>
+        <Routes>
+          <Route path="/dossiers/:slug" element={<DossierDetailPage />} />
+        </Routes>
+      </MemoryRouter>,
+    );
+    const headings = screen.getAllByRole("heading", { name: /Gaza Accountability — One-Page/ });
+    expect(headings.length).toBeGreaterThanOrEqual(1);
+  });
+
+  it("renders DossierDetailPage not-found state for unknown slug", () => {
+    render(
+      <MemoryRouter initialEntries={["/dossiers/nonexistent-dossier"]}>
+        <Routes>
+          <Route path="/dossiers/:slug" element={<DossierDetailPage />} />
+        </Routes>
+      </MemoryRouter>,
+    );
+    expect(
+      screen.getByText("Dossier not found"),
     ).toBeInTheDocument();
   });
 });
