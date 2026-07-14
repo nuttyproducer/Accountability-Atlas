@@ -249,6 +249,17 @@ export function getRouteMeta(pathname: string): RouteMeta {
     };
   }
 
+  // Dynamic routes: /organizations/:slug
+  if (key.startsWith("/organizations/") && key !== "/organizations") {
+    return {
+      title: fullTitle("Organization Detail"),
+      description:
+        "Organization listing detail — category, regions, services, official website, relationship status, editorial status, and correction/removal route. Public resource listing — no partnership implied.",
+      canonicalPath: key,
+      ogType: "article",
+    };
+  }
+
   return meta[key] ?? meta["/404"];
 }
 

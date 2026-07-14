@@ -19,6 +19,7 @@ import LegalCaseDetailPage from "./pages/LegalCaseDetailPage";
 import BelgiumPage from "./pages/BelgiumPage";
 import EuropeanUnionPage from "./pages/EuropeanUnionPage";
 import OrganizationsPage from "./pages/OrganizationsPage";
+import OrganizationDetailPage from "./pages/OrganizationDetailPage";
 import ActionHubPage from "./pages/ActionHubPage";
 import EvidenceLibraryPage from "./pages/EvidenceLibraryPage";
 import EvidenceDetailPage from "./pages/EvidenceDetailPage";
@@ -74,6 +75,7 @@ export default function App() {
           <Route path="/countries/belgium" element={<BelgiumPage />} />
           <Route path="/institutions/european-union" element={<EuropeanUnionPage />} />
           <Route path="/organizations" element={<OrganizationsPage />} />
+          <Route path="/organizations/:slug" element={<OrganizationDetailPage />} />
           <Route path="/take-action" element={<ActionHubPage />} />
           <Route path="/evidence" element={<EvidenceLibraryPage />} />
           <Route path="/evidence/:slug" element={<EvidenceDetailPage />} />

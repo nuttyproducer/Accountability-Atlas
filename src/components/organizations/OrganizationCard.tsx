@@ -106,6 +106,31 @@ export function OrganizationCard({ org, category, index }: OrganizationCardProps
           )}
         </div>
 
+        {/* Detail page link */}
+        <div className="mt-4 pt-4 border-t border-border/50">
+          <Link
+            to={`/organizations/${org.slug}`}
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-trust hover:text-trust/80 underline underline-offset-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50 focus-visible:ring-offset-2 rounded-sm"
+          >
+            View listing details
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 8.5L7 5.5L4 2.5"
+                stroke="currentColor"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </Link>
+        </div>
+
         {/* Correction link */}
         <p className="mt-3 text-sm text-charcoal/50">
           <Link

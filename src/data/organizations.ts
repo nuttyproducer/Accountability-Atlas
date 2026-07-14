@@ -47,6 +47,10 @@ export interface OrganizationRecord {
   relationshipStatus: RelationshipStatus;
   contentStatus: ContentStatus;
   sourceIds: string[];
+  /** When the official website URL was last verified as resolving correctly. */
+  officialWebsiteCheckedAt?: string;
+  /** When the official donation URL was last verified as resolving correctly. */
+  officialDonationUrlCheckedAt?: string;
   lastReviewedAt?: string;
   reviewedByRole?: string;
   version: number;
@@ -76,6 +80,7 @@ export const organizationRecords: OrganizationRecord[] = [
       "UN agency established in 1949 providing education, healthcare, relief, and social services to Palestine refugees across five fields of operation. UNRWA is a major humanitarian actor in Gaza and the wider region.",
     officialWebsite: "https://www.unrwa.org/",
     officialDonationUrl: "https://donate.unrwa.org/",
+    officialDonationUrlCheckedAt: "2026-07-12",
     services: [
       "Primary and secondary education",
       "Primary healthcare and medical services",
@@ -86,6 +91,7 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "review_pending",
     sourceIds: [],
+    officialWebsiteCheckedAt: "2026-07-12",
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
@@ -111,6 +117,7 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "review_pending",
     sourceIds: [],
+    officialWebsiteCheckedAt: "2026-07-12",
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
@@ -128,6 +135,7 @@ export const organizationRecords: OrganizationRecord[] = [
       "The UN's food-assistance branch and the world's largest humanitarian organization addressing hunger. WFP delivers emergency food aid during crises including in Gaza.",
     officialWebsite: "https://www.wfp.org/",
     officialDonationUrl: "https://www.wfp.org/donate",
+    officialDonationUrlCheckedAt: "2026-07-12",
     services: [
       "Emergency food distribution",
       "Nutrition programmes for children",
@@ -136,6 +144,7 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "review_pending",
     sourceIds: [],
+    officialWebsiteCheckedAt: "2026-07-12",
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
@@ -155,6 +164,7 @@ export const organizationRecords: OrganizationRecord[] = [
       "The ICRC is an independent, neutral organisation ensuring humanitarian protection and assistance for victims of armed conflict. It operates under the Geneva Conventions and provides medical care, water, and family-reunification services in Gaza.",
     officialWebsite: "https://www.icrc.org/",
     officialDonationUrl: "https://www.icrc.org/en/donate",
+    officialDonationUrlCheckedAt: "2026-07-12",
     services: [
       "War surgery and medical support",
       "Water and sanitation in conflict zones",
@@ -164,6 +174,7 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "review_pending",
     sourceIds: [],
+    officialWebsiteCheckedAt: "2026-07-12",
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
@@ -181,6 +192,7 @@ export const organizationRecords: OrganizationRecord[] = [
       "The PRCS is the national Red Crescent society for Palestine and part of the International Red Cross and Red Crescent Movement. It provides emergency medical services, ambulance transport, and primary healthcare.",
     officialWebsite: "https://www.palestinercs.org/",
     officialDonationUrl: "https://www.palestinercs.org/en/donate",
+    officialDonationUrlCheckedAt: "2026-07-12",
     services: [
       "Emergency medical and ambulance services",
       "Primary healthcare and rehabilitation",
@@ -190,6 +202,7 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "review_pending",
     sourceIds: [],
+    officialWebsiteCheckedAt: "2026-07-12",
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
@@ -209,6 +222,7 @@ export const organizationRecords: OrganizationRecord[] = [
       "MSF is an independent international medical humanitarian organisation that delivers emergency medical care to people affected by armed conflict, epidemics, and disasters. MSF runs clinics, supports hospitals, and provides surgical care in Gaza.",
     officialWebsite: "https://www.msf.org/",
     officialDonationUrl: "https://www.msf.org/donate",
+    officialDonationUrlCheckedAt: "2026-07-12",
     services: [
       "Emergency and trauma surgery",
       "Primary and secondary healthcare",
@@ -218,6 +232,7 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "review_pending",
     sourceIds: [],
+    officialWebsiteCheckedAt: "2026-07-12",
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
@@ -235,6 +250,7 @@ export const organizationRecords: OrganizationRecord[] = [
       "MAP is a UK-based charity working for the health and dignity of Palestinians living under occupation and as refugees. It provides medical aid, supports local health services, and advocates for health rights.",
     officialWebsite: "https://www.map.org.uk/",
     officialDonationUrl: "https://www.map.org.uk/donate",
+    officialDonationUrlCheckedAt: "2026-07-12",
     services: [
       "Medical supplies and equipment to hospitals",
       "Mobile clinics and community health programmes",
@@ -243,6 +259,7 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "review_pending",
     sourceIds: [],
+    officialWebsiteCheckedAt: "2026-07-12",
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
@@ -262,6 +279,7 @@ export const organizationRecords: OrganizationRecord[] = [
       "Amnesty International is a global human-rights movement that researches, documents, and campaigns against human-rights abuses. It publishes regular reports on international humanitarian law compliance, arms transfers, and civilian harm.",
     officialWebsite: "https://www.amnesty.org/",
     officialDonationUrl: "https://www.amnesty.org/en/donate/",
+    officialDonationUrlCheckedAt: "2026-07-12",
     services: [
       "Human-rights research and reporting",
       "Advocacy and campaigning",
@@ -270,6 +288,7 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "review_pending",
     sourceIds: [],
+    officialWebsiteCheckedAt: "2026-07-12",
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
@@ -287,6 +306,7 @@ export const organizationRecords: OrganizationRecord[] = [
       "HRW is an independent international human-rights organisation that investigates and reports on abuses worldwide. It publishes detailed documentation on civilian harm, weapons use, and compliance with international humanitarian law.",
     officialWebsite: "https://www.hrw.org/",
     officialDonationUrl: "https://www.hrw.org/donate",
+    officialDonationUrlCheckedAt: "2026-07-12",
     services: [
       "Human-rights documentation and investigation",
       "Arms and conflict research",
@@ -295,6 +315,7 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "review_pending",
     sourceIds: [],
+    officialWebsiteCheckedAt: "2026-07-12",
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
@@ -314,6 +335,7 @@ export const organizationRecords: OrganizationRecord[] = [
       "B'Tselem is an Israeli human-rights organisation that documents human-rights violations in the occupied territories. It publishes data on casualties, displacement, demolitions, and settlement expansion using verified field research.",
     officialWebsite: "https://www.btselem.org/",
     officialDonationUrl: "https://www.btselem.org/donate",
+    officialDonationUrlCheckedAt: "2026-07-12",
     services: [
       "Documentation of human-rights violations",
       "Casualty and displacement data collection",
@@ -322,6 +344,7 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "review_pending",
     sourceIds: [],
+    officialWebsiteCheckedAt: "2026-07-12",
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
@@ -346,6 +369,7 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "review_pending",
     sourceIds: [],
+    officialWebsiteCheckedAt: "2026-07-12",
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
@@ -365,6 +389,7 @@ export const organizationRecords: OrganizationRecord[] = [
       "CPJ is an independent non-profit organisation that promotes press freedom and defends the rights of journalists. It documents journalist casualties, detentions, and press-freedom violations worldwide.",
     officialWebsite: "https://cpj.org/",
     officialDonationUrl: "https://cpj.org/donate/",
+    officialDonationUrlCheckedAt: "2026-07-12",
     services: [
       "Journalist casualty and detention tracking",
       "Press-freedom advocacy",
@@ -373,6 +398,7 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "review_pending",
     sourceIds: [],
+    officialWebsiteCheckedAt: "2026-07-12",
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
@@ -399,6 +425,7 @@ export const organizationRecords: OrganizationRecord[] = [
     relationshipStatus: "public_resource",
     contentStatus: "review_pending",
     sourceIds: [],
+    officialWebsiteCheckedAt: "2026-07-12",
     lastReviewedAt: "2026-07-12",
     reviewedByRole: "Contributor — verified against official public website",
     version: 1,
@@ -407,6 +434,11 @@ export const organizationRecords: OrganizationRecord[] = [
       "Organisation name, description, website, and services verified against the organisation's own public website. Downgraded from reviewed to review_pending (2026-07-13): sourceIds must be populated and a second reviewer must confirm before returning to reviewed status.",
   },
 ];
+
+/** Look up an organization by its URL slug. */
+export function getOrganizationBySlug(slug: string): OrganizationRecord | undefined {
+  return organizationRecords.find((o) => o.slug === slug);
+}
 
 /** Convenience: records grouped by category. */
 export function getOrganizationsByCategory(): Record<
