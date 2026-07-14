@@ -14,6 +14,8 @@ import PressPage from "../PressPage";
 import SourceRegistryPage from "../SourceRegistryPage";
 import EvidenceDetailPage from "../EvidenceDetailPage";
 import ActionDetailPage from "../ActionDetailPage";
+import CountriesIndexPage from "../CountriesIndexPage";
+import InstitutionsIndexPage from "../InstitutionsIndexPage";
 
 // Mock framer-motion — jsdom doesn't support animation APIs.
 // Components using Reveal will render children without animation.
@@ -158,6 +160,26 @@ describe("Route rendering smoke tests", () => {
   it("renders NotFoundPage", () => {
     renderPage(NotFoundPage);
     expect(screen.getByText("404")).toBeInTheDocument();
+  });
+
+  it("renders CountriesIndexPage", () => {
+    renderPage(CountriesIndexPage);
+    expect(
+      screen.getByRole("heading", { name: "Countries" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Country accountability pages track/),
+    ).toBeInTheDocument();
+  });
+
+  it("renders InstitutionsIndexPage", () => {
+    renderPage(InstitutionsIndexPage);
+    expect(
+      screen.getByRole("heading", { name: "Institutions" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Institution accountability pages track/),
+    ).toBeInTheDocument();
   });
 
   it("renders ActionDetailPage for a known slug", () => {

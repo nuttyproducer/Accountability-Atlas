@@ -67,3 +67,50 @@ export const euInstitutions: InstitutionEntry[] = [
     status: "static_preview",
   },
 ];
+
+// ── Institution index entries ──────────────────────────────────────────────
+
+export interface InstitutionIndexEntry {
+  id: string;
+  slug: string;
+  name: string;
+  acronym?: string;
+  entityType: "institution";
+  region: string;
+  route: string;
+  contentStatus: ContentStatus;
+  summary: string;
+  lastReviewedAt?: string;
+  version: number;
+  active: boolean;
+}
+
+/** All institution entities with an active route. Only European Union during the static beta. */
+export const institutionIndexEntries: InstitutionIndexEntry[] = [
+  {
+    id: "european-union",
+    slug: "european-union",
+    name: "European Union",
+    acronym: "EU",
+    entityType: "institution",
+    region: "Europe",
+    route: "/institutions/european-union",
+    contentStatus: "review_pending",
+    summary:
+      "The European Union is a significant actor in foreign policy, trade, humanitarian aid, and arms-export regulation. This page tracks EU-level mechanisms — Commission, Council, Parliament, EEAS — and distinguishes them from member-state competencies. The EU is not a state; its powers vary by policy area.",
+    version: 1,
+    active: true,
+  },
+];
+
+/** Convenience: active institution entries only. */
+export function getActiveInstitutionEntries(): InstitutionIndexEntry[] {
+  return institutionIndexEntries.filter((e) => e.active);
+}
+
+/** Convenience: institution lookup by slug. */
+export function getInstitutionEntryBySlug(
+  slug: string,
+): InstitutionIndexEntry | undefined {
+  return institutionIndexEntries.find((e) => e.slug === slug);
+}

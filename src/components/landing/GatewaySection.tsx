@@ -26,8 +26,8 @@ const gatewayCards = [
     label: "Module 03",
     title: "Examine Country Responsibility",
     description:
-      "Start with Belgium: federal positions, UN voting, arms-transfer review, humanitarian aid, and ICC/ICJ cooperation — tracked with clear competency boundaries.",
-    to: "/countries/belgium",
+      "Start with Belgium: federal positions, UN voting, arms-transfer review, humanitarian aid, and ICC/ICJ cooperation — tracked with clear competency boundaries between national governments and supranational institutions.",
+    to: "/countries",
     disabled: false,
     accent: "blue" as const,
   },

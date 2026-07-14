@@ -81,12 +81,26 @@ const meta: Record<string, RouteMeta> = {
     canonicalPath: "/legal-tracker",
     ogType: "article",
   },
+  "/countries": {
+    title: fullTitle("Countries — Accountability Index"),
+    description:
+      "Country accountability index — what country pages track and why. Structured documentation of publicly verifiable positions, votes, and actions. Limited coverage during static beta; no scores or rankings.",
+    canonicalPath: "/countries",
+    ogType: "website",
+  },
   "/countries/belgium": {
     title: fullTitle("Belgium — Country Accountability"),
     description:
       "Belgium country accountability page: federal positions, UN voting, arms-transfer review, humanitarian aid, and ICC/ICJ cooperation — tracked with clear competency boundaries.",
     canonicalPath: "/countries/belgium",
     ogType: "article",
+  },
+  "/institutions": {
+    title: fullTitle("Institutions — Accountability Index"),
+    description:
+      "Institution accountability index — what supranational bodies are legally competent to decide. Separate from country pages. European Union coverage during static beta; no scores or rankings.",
+    canonicalPath: "/institutions",
+    ogType: "website",
   },
   "/institutions/european-union": {
     title: fullTitle("European Union — Institution Accountability"),

@@ -16,7 +16,9 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 import GazaDossierPage from "./pages/GazaDossierPage";
 import LegalTrackerPage from "./pages/LegalTrackerPage";
 import LegalCaseDetailPage from "./pages/LegalCaseDetailPage";
+import CountriesIndexPage from "./pages/CountriesIndexPage";
 import BelgiumPage from "./pages/BelgiumPage";
+import InstitutionsIndexPage from "./pages/InstitutionsIndexPage";
 import EuropeanUnionPage from "./pages/EuropeanUnionPage";
 import OrganizationsPage from "./pages/OrganizationsPage";
 import OrganizationDetailPage from "./pages/OrganizationDetailPage";
@@ -73,7 +75,9 @@ export default function App() {
           <Route path="/gaza-dossier" element={<GazaDossierPage />} />
           <Route path="/legal-tracker" element={<LegalTrackerPage />} />
           <Route path="/legal-tracker/:slug" element={<LegalCaseDetailPage />} />
+          <Route path="/countries" element={<CountriesIndexPage />} />
           <Route path="/countries/belgium" element={<BelgiumPage />} />
+          <Route path="/institutions" element={<InstitutionsIndexPage />} />
           <Route path="/institutions/european-union" element={<EuropeanUnionPage />} />
           <Route path="/organizations" element={<OrganizationsPage />} />
           <Route path="/organizations/:slug" element={<OrganizationDetailPage />} />

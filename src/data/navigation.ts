@@ -7,7 +7,7 @@ export interface NavItem {
 export const mainNavItems: NavItem[] = [
   { label: "Gaza Dossier", href: "/gaza-dossier" },
   { label: "Legal Tracker", href: "/legal-tracker" },
-  { label: "Belgium", href: "/countries/belgium" },
+  { label: "Countries", href: "/countries" },
   { label: "Methodology", href: "/methodology" },
   { label: "Contribute", href: "/contribute" },
 ];

@@ -4,8 +4,8 @@ import logoMark from "../../assets/logo-mark.svg";
 const projectLinks = [
   { label: "Gaza Dossier", href: "/gaza-dossier" },
   { label: "Legal Tracker", href: "/legal-tracker" },
-  { label: "Belgium", href: "/countries/belgium" },
-  { label: "European Union", href: "/institutions/european-union" },
+  { label: "Countries", href: "/countries" },
+  { label: "Institutions", href: "/institutions" },
   { label: "Organizations", href: "/organizations" },
   { label: "Take Action", href: "/take-action" },
   { label: "Evidence Library", href: "/evidence" },

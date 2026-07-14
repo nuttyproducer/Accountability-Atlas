@@ -82,3 +82,46 @@ export const belgiumSections: CountrySection[] = [
     statusLabel: "Future feature",
   },
 ];
+
+// ── Country index entries ─────────────────────────────────────────────────
+
+export interface CountryEntry {
+  id: string;
+  slug: string;
+  name: string;
+  entityType: "country";
+  region: string;
+  route: string;
+  contentStatus: ContentStatus;
+  summary: string;
+  lastReviewedAt?: string;
+  version: number;
+  active: boolean;
+}
+
+/** All country entities with an active route. Only Belgium during the static beta. */
+export const countries: CountryEntry[] = [
+  {
+    id: "belgium",
+    slug: "belgium",
+    name: "Belgium",
+    entityType: "country",
+    region: "Europe — European Union",
+    route: "/countries/belgium",
+    contentStatus: "review_pending",
+    summary:
+      "Belgium is the first country accountability page. It tracks federal positions, UN voting, arms-transfer review, humanitarian aid, and ICC/ICJ cooperation — with clear federal/regional competency boundaries. Belgium hosts the EU institutions and NATO headquarters in Brussels.",
+    version: 1,
+    active: true,
+  },
+];
+
+/** Convenience: active countries only. */
+export function getActiveCountries(): CountryEntry[] {
+  return countries.filter((c) => c.active);
+}
+
+/** Convenience: country lookup by slug. */
+export function getCountryBySlug(slug: string): CountryEntry | undefined {
+  return countries.find((c) => c.slug === slug);
+}
