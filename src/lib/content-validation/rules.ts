@@ -321,17 +321,29 @@ export function checkActionTemplateReview(
       // Reviewed action templates must have:
       // - sourceIds (jurisdiction/language evidence)
       // - reviewedByRole indicating legal review if template has legal implications
-      // - templateReviewStatus must be "reviewed"
+      // - templateReviewStatus, jurisdictionReviewStatus, and languageReviewStatus must be "reviewed" or "not_applicable"
       if (t.sourceIds.length === 0) {
         issues.push(
           issue("actionTemplates", t.id, "sourceIds",
             "Action template is reviewed but has no source IDs — jurisdiction and language review evidence is required."),
         );
       }
-      if (t.templateReviewStatus !== "reviewed") {
+      if (t.templateReviewStatus !== "reviewed" && t.templateReviewStatus !== "not_applicable") {
         issues.push(
           issue("actionTemplates", t.id, "templateReviewStatus",
-            `Action template is reviewed but templateReviewStatus is "${t.templateReviewStatus}" — must be "reviewed".`),
+            `Action template is reviewed but templateReviewStatus is "${t.templateReviewStatus}" — must be "reviewed" or "not_applicable".`),
+        );
+      }
+      if (t.jurisdictionReviewStatus !== "reviewed" && t.jurisdictionReviewStatus !== "not_applicable") {
+        issues.push(
+          issue("actionTemplates", t.id, "jurisdictionReviewStatus",
+            `Action template is reviewed but jurisdictionReviewStatus is "${t.jurisdictionReviewStatus}" — must be "reviewed" or "not_applicable".`),
+        );
+      }
+      if (t.languageReviewStatus !== "reviewed" && t.languageReviewStatus !== "not_applicable") {
+        issues.push(
+          issue("actionTemplates", t.id, "languageReviewStatus",
+            `Action template is reviewed but languageReviewStatus is "${t.languageReviewStatus}" — must be "reviewed" or "not_applicable".`),
         );
       }
     }

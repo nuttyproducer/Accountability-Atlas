@@ -13,6 +13,7 @@ import { NotFoundPage } from "../NotFoundPage";
 import PressPage from "../PressPage";
 import SourceRegistryPage from "../SourceRegistryPage";
 import EvidenceDetailPage from "../EvidenceDetailPage";
+import ActionDetailPage from "../ActionDetailPage";
 
 // Mock framer-motion — jsdom doesn't support animation APIs.
 // Components using Reveal will render children without animation.
@@ -157,5 +158,31 @@ describe("Route rendering smoke tests", () => {
   it("renders NotFoundPage", () => {
     renderPage(NotFoundPage);
     expect(screen.getByText("404")).toBeInTheDocument();
+  });
+
+  it("renders ActionDetailPage for a known slug", () => {
+    render(
+      <MemoryRouter initialEntries={["/take-action/contact-representative"]}>
+        <Routes>
+          <Route path="/take-action/:slug" element={<ActionDetailPage />} />
+        </Routes>
+      </MemoryRouter>,
+    );
+    expect(
+      screen.getByRole("heading", { name: "Contact your representative" }),
+    ).toBeInTheDocument();
+  });
+
+  it("renders ActionDetailPage not-found state for unknown slug", () => {
+    render(
+      <MemoryRouter initialEntries={["/take-action/nonexistent-action"]}>
+        <Routes>
+          <Route path="/take-action/:slug" element={<ActionDetailPage />} />
+        </Routes>
+      </MemoryRouter>,
+    );
+    expect(
+      screen.getByText("Action template not found"),
+    ).toBeInTheDocument();
   });
 });

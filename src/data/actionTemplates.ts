@@ -23,6 +23,14 @@ export const ACTION_TYPE_LABELS: Record<ActionType, string> = {
   volunteer: "Volunteer for the project",
 };
 
+export type ReviewStatus = "draft" | "reviewed" | "not_applicable";
+
+export const REVIEW_STATUS_LABELS: Record<ReviewStatus, string> = {
+  draft: "Draft — not yet reviewed",
+  reviewed: "Reviewed",
+  not_applicable: "Not applicable",
+};
+
 export interface ActionTemplate {
   id: string;
   slug: string;
@@ -42,9 +50,13 @@ export interface ActionTemplate {
   instructions: string;
   /** Draft template body — copy-only during static beta. Labeled clearly as draft or reviewed. */
   templateBody?: string;
-  /** Template review status: "draft" = not yet reviewed, "reviewed" = reviewed for safety and accuracy. */
-  templateReviewStatus?: "draft" | "reviewed";
-  /** Language the template is written in. */
+  /** Template review status — whether the template text has been reviewed for safety and accuracy in its target jurisdiction. */
+  templateReviewStatus: ReviewStatus;
+  /** Jurisdiction review status — whether the template has been reviewed for legal accuracy in the specific jurisdiction it targets. */
+  jurisdictionReviewStatus: ReviewStatus;
+  /** Language review status — whether the template text has been reviewed by a competent speaker of the target language. */
+  languageReviewStatus: ReviewStatus;
+  /** Language the template is written in (ISO 639-1 code). */
   language: string;
   contentStatus: ContentStatus;
   sourceIds: string[];
@@ -57,6 +69,8 @@ export interface ActionTemplate {
   warnings: string[];
   /** Whether this action is currently displayed on the page. */
   active: boolean;
+  /** Route to the corrections process. Required for all publishable records. */
+  correctionUrl: string;
 }
 
 export const actionTemplates: ActionTemplate[] = [
@@ -97,6 +111,8 @@ Thank you for your time and for representing our community.
 Yours sincerely,
 [Your name]`,
     templateReviewStatus: "draft",
+    jurisdictionReviewStatus: "draft",
+    languageReviewStatus: "draft",
     language: "en",
     contentStatus: "static_preview",
     sourceIds: [],
@@ -110,6 +126,7 @@ Yours sincerely,
       "Do not impersonate another person or use false identity information.",
     ],
     active: true,
+    correctionUrl: "/corrections",
   },
   {
     id: "arms-transfer-review",
@@ -152,6 +169,8 @@ Thank you for your attention to this matter.
 Yours sincerely,
 [Your name]`,
     templateReviewStatus: "draft",
+    jurisdictionReviewStatus: "draft",
+    languageReviewStatus: "draft",
     language: "en",
     contentStatus: "static_preview",
     sourceIds: [],
@@ -164,6 +183,7 @@ Yours sincerely,
       "No message is sent through this platform. Copy and send yourself.",
     ],
     active: true,
+    correctionUrl: "/corrections",
   },
   {
     id: "humanitarian-access",
@@ -206,6 +226,8 @@ Thank you for your attention to this urgent humanitarian matter.
 Yours sincerely,
 [Your name]`,
     templateReviewStatus: "draft",
+    jurisdictionReviewStatus: "draft",
+    languageReviewStatus: "draft",
     language: "en",
     contentStatus: "static_preview",
     sourceIds: [],
@@ -218,6 +240,7 @@ Yours sincerely,
       "No message is sent through this platform. Copy and send yourself.",
     ],
     active: true,
+    correctionUrl: "/corrections",
   },
   {
     id: "send-dossier",
@@ -259,6 +282,8 @@ Thank you for your work covering this topic.
 [Your name]
 [Optional: your contact method if you wish to be reached for follow-up]`,
     templateReviewStatus: "draft",
+    jurisdictionReviewStatus: "draft",
+    languageReviewStatus: "draft",
     language: "en",
     contentStatus: "static_preview",
     sourceIds: [],
@@ -272,6 +297,7 @@ Thank you for your work covering this topic.
       "This is not a whistleblowing channel. If you need secure submission, use the journalist's own secure channels.",
     ],
     active: true,
+    correctionUrl: "/corrections",
   },
   {
     id: "submit-correction",
@@ -293,6 +319,9 @@ Thank you for your work covering this topic.
 4. Submit through GitHub Issues — this is the preferred method during the static beta.
 5. Alternatively, use the project contact route listed on the Contribute page.
 6. Do not submit sensitive witness information, private personal data, or confidential material through public channels.`,
+    templateReviewStatus: "not_applicable",
+    jurisdictionReviewStatus: "not_applicable",
+    languageReviewStatus: "draft",
     language: "en",
     contentStatus: "static_preview",
     lastReviewedAt: "2026-07-12",
@@ -306,6 +335,7 @@ Thank you for your work covering this topic.
       "Not every source suggestion will result in an immediate update — some require expert review.",
     ],
     active: true,
+    correctionUrl: "/corrections",
   },
   {
     id: "volunteer",
@@ -326,6 +356,9 @@ Thank you for your work covering this topic.
 3. Look for "good first issue" labels on GitHub — these are small, safe tasks suited to new contributors.
 4. Join the project on GitHub and introduce yourself in a contribution discussion.
 5. Every contribution is reviewed. Start small — a documentation fix, a translation, or a source check is a valuable contribution.`,
+    templateReviewStatus: "not_applicable",
+    jurisdictionReviewStatus: "not_applicable",
+    languageReviewStatus: "draft",
     language: "en",
     contentStatus: "static_preview",
     lastReviewedAt: "2026-07-12",
@@ -339,6 +372,7 @@ Thank you for your work covering this topic.
       "Do not include sensitive personal information in public contributions.",
     ],
     active: true,
+    correctionUrl: "/corrections",
   },
 ];
 

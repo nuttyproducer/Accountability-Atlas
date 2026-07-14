@@ -504,9 +504,10 @@ describe("Rule 15: Missing correction routes", () => {
     expect(checkMissingCorrectionRoute("test", records)).toHaveLength(0);
   });
 
-  it("passes on real evidence items and organizations", () => {
+  it("passes on real evidence items, organizations, and action templates", () => {
     expect(checkMissingCorrectionRoute("evidenceItems", evidenceItems)).toHaveLength(0);
     expect(checkMissingCorrectionRoute("organizations", organizationRecords)).toHaveLength(0);
+    expect(checkMissingCorrectionRoute("actionTemplates", actionTemplates)).toHaveLength(0);
   });
 });
 

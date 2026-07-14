@@ -21,6 +21,7 @@ import EuropeanUnionPage from "./pages/EuropeanUnionPage";
 import OrganizationsPage from "./pages/OrganizationsPage";
 import OrganizationDetailPage from "./pages/OrganizationDetailPage";
 import ActionHubPage from "./pages/ActionHubPage";
+import ActionDetailPage from "./pages/ActionDetailPage";
 import EvidenceLibraryPage from "./pages/EvidenceLibraryPage";
 import EvidenceDetailPage from "./pages/EvidenceDetailPage";
 import PressPage from "./pages/PressPage";
@@ -77,6 +78,7 @@ export default function App() {
           <Route path="/organizations" element={<OrganizationsPage />} />
           <Route path="/organizations/:slug" element={<OrganizationDetailPage />} />
           <Route path="/take-action" element={<ActionHubPage />} />
+          <Route path="/take-action/:slug" element={<ActionDetailPage />} />
           <Route path="/evidence" element={<EvidenceLibraryPage />} />
           <Route path="/evidence/:slug" element={<EvidenceDetailPage />} />
           <Route path="/press" element={<PressPage />} />

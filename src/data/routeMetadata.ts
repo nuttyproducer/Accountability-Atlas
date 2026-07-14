@@ -260,6 +260,17 @@ export function getRouteMeta(pathname: string): RouteMeta {
     };
   }
 
+  // Dynamic routes: /take-action/:slug
+  if (key.startsWith("/take-action/") && key !== "/take-action") {
+    return {
+      title: fullTitle("Action Detail"),
+      description:
+        "Action template detail — title, type, jurisdiction, intended audience, purpose, policy ask, source basis, instructions, template text, review statuses, warnings, related routes, and correction link. Manual copy-only during the static beta.",
+      canonicalPath: key,
+      ogType: "article",
+    };
+  }
+
   return meta[key] ?? meta["/404"];
 }
 
