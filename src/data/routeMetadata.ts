@@ -213,6 +213,15 @@ const meta: Record<string, RouteMeta> = {
     ogType: "website",
   },
 
+  // ── Search ───────────────────────────────────────────────────────────
+  "/search": {
+    title: fullTitle("Search"),
+    description:
+      "Search across all public platform records — sources, evidence, legal cases, organizations, actions, countries, institutions, dossiers, and trust pages. Client-side only. No queries are logged or stored.",
+    canonicalPath: "/search",
+    ogType: "website",
+  },
+
   // ── Meta ────────────────────────────────────────────────────────────
   "/changelog": {
     title: fullTitle("Changelog"),

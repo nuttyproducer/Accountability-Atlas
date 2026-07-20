@@ -31,6 +31,7 @@ import SourceRegistryPage from "./pages/SourceRegistryPage";
 import SourceDetailPage from "./pages/SourceDetailPage";
 import DossiersPage from "./pages/DossiersPage";
 import DossierDetailPage from "./pages/DossierDetailPage";
+import SearchPage from "./pages/SearchPage";
 
 function RouteMeta() {
   const { pathname } = useLocation();
@@ -92,6 +93,7 @@ export default function App() {
           <Route path="/sources/:sourceId" element={<SourceDetailPage />} />
           <Route path="/dossiers" element={<DossiersPage />} />
           <Route path="/dossiers/:slug" element={<DossierDetailPage />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </PageShell>

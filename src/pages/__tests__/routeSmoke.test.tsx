@@ -18,6 +18,7 @@ import CountriesIndexPage from "../CountriesIndexPage";
 import InstitutionsIndexPage from "../InstitutionsIndexPage";
 import DossiersPage from "../DossiersPage";
 import DossierDetailPage from "../DossierDetailPage";
+import SearchPage from "../SearchPage";
 
 // Mock framer-motion — jsdom doesn't support animation APIs.
 // Components using Reveal will render children without animation.
@@ -242,6 +243,19 @@ describe("Route rendering smoke tests", () => {
     );
     expect(
       screen.getByText("Dossier not found"),
+    ).toBeInTheDocument();
+  });
+
+  it("renders SearchPage", () => {
+    renderPage(SearchPage);
+    expect(
+      screen.getByRole("heading", { name: "Search Platform Records" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("search"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByLabelText("Search records"),
     ).toBeInTheDocument();
   });
 });

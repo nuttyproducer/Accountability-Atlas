@@ -55,6 +55,17 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+            <Link
+              to="/search"
+              className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-charcoal hover:text-ink rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50"
+              aria-label="Search platform records"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.2" />
+                <path d="M11 11l3.5 3.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+              </svg>
+              <span className="hidden lg:inline">Search</span>
+            </Link>
             <a
               href={githubLink.href}
               target="_blank"
@@ -107,6 +118,18 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+            <Link
+              to="/search"
+              className="inline-flex items-center gap-1.5 px-3 py-3 text-sm font-medium text-charcoal hover:text-ink rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust/50"
+              onClick={closeMenu}
+              aria-label="Search platform records"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.2" />
+                <path d="M11 11l3.5 3.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+              </svg>
+              Search
+            </Link>
             <a
               href={githubLink.href}
               target="_blank"
