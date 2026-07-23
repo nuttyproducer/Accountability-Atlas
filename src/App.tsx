@@ -3,6 +3,9 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { PageShell } from "./components/layout/PageShell";
 import { DocumentHead } from "./components/ui/DocumentHead";
 import { getRouteMeta } from "./data/routeMetadata";
+import { LocaleProvider } from "./i18n/LocaleProvider";
+// Import i18n config to ensure initialization before first render
+import "./i18n/config";
 import { HomePage } from "./pages/HomePage";
 import { MethodologyPage } from "./pages/MethodologyPage";
 import { ContributePage } from "./pages/ContributePage";
@@ -61,10 +64,11 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <RouteMeta />
-      <ScrollToTop />
-      <PageShell>
+    <LocaleProvider>
+      <BrowserRouter>
+        <RouteMeta />
+        <ScrollToTop />
+        <PageShell>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/methodology" element={<MethodologyPage />} />
@@ -98,5 +102,6 @@ export default function App() {
         </Routes>
       </PageShell>
     </BrowserRouter>
+    </LocaleProvider>
   );
 }

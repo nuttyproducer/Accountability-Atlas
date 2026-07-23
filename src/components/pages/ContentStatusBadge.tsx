@@ -1,6 +1,6 @@
+import { useTranslation } from "react-i18next";
 import { Badge } from "../ui/Badge";
 import type { ContentStatus } from "../../types/content";
-import { CONTENT_STATUS_LABELS } from "../../types/content";
 
 interface ContentStatusBadgeProps {
   status: ContentStatus;
@@ -24,9 +24,10 @@ export function ContentStatusBadge({
   status,
   className = "",
 }: ContentStatusBadgeProps) {
+  const { t } = useTranslation("statusLabels");
   return (
     <Badge variant={variantMap[status]} className={className}>
-      {CONTENT_STATUS_LABELS[status]}
+      {t(`contentStatus.${status}`)}
     </Badge>
   );
 }

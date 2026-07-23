@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { mainNavItems, githubLink } from "../../data/navigation";
 import logoMark from "../../assets/logo-mark.svg";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -66,6 +67,7 @@ export function Header() {
               </svg>
               <span className="hidden lg:inline">Search</span>
             </Link>
+            <LanguageSwitcher />
             <a
               href={githubLink.href}
               target="_blank"
@@ -130,6 +132,9 @@ export function Header() {
               </svg>
               Search
             </Link>
+            <div className="px-3 py-2">
+              <LanguageSwitcher />
+            </div>
             <a
               href={githubLink.href}
               target="_blank"

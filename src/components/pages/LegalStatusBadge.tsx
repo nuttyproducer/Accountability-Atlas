@@ -1,6 +1,6 @@
+import { useTranslation } from "react-i18next";
 import { Badge } from "../ui/Badge";
 import type { LegalStatus } from "../../types/content";
-import { LEGAL_STATUS_LABELS } from "../../types/content";
 
 interface LegalStatusBadgeProps {
   status: LegalStatus;
@@ -20,9 +20,10 @@ const variantMap: Record<LegalStatus, "neutral" | "info" | "warning" | "alert"> 
 };
 
 export function LegalStatusBadge({ status, className = "" }: LegalStatusBadgeProps) {
+  const { t } = useTranslation("statusLabels");
   return (
     <Badge variant={variantMap[status]} className={className}>
-      {LEGAL_STATUS_LABELS[status]}
+      {t(`legalStatus.${status}`)}
     </Badge>
   );
 }

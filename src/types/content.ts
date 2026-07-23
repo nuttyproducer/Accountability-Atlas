@@ -243,6 +243,48 @@ export interface DossierRecord {
   correctionUrl: string;
 }
 
+// ── Translation ──────────────────────────────────────────────────────────────
+
+/** Controlled translation status vocabulary. */
+export type TranslationStatus =
+  | "not_started"
+  | "draft"
+  | "review_pending"
+  | "reviewed"
+  | "outdated"
+  | "archived";
+
+export const TRANSLATION_STATUS_LABELS: Record<TranslationStatus, string> = {
+  not_started: "Not started",
+  draft: "Draft translation",
+  review_pending: "Translation review pending",
+  reviewed: "Translation reviewed",
+  outdated: "Translation outdated",
+  archived: "Translation archived",
+};
+
+/** Metadata for a translated content item. */
+export interface TranslationMetadata {
+  /** ISO 639-1 code of the source language. */
+  sourceLanguage: string;
+  /** ISO 639-1 code of the target language. */
+  targetLanguage: string;
+  /** Current translation status. */
+  translationStatus: TranslationStatus;
+  /** Whether machine translation was used in the draft. */
+  machineAssisted: boolean;
+  /** Role that produced the translation draft. */
+  translatedByRole?: string;
+  /** Role that reviewed the translation. */
+  reviewedByRole?: string;
+  /** When the translation was last reviewed. */
+  lastReviewedAt?: string;
+  /** Schema version of this translation record. */
+  version: number;
+}
+
+// ── Dossier template ─────────────────────────────────────────────────────────
+
 /** Dossier template metadata — describes a dossier type without the full content. */
 export interface DossierTemplate {
   /** Template identifier. */

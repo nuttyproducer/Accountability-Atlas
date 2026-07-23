@@ -1,6 +1,6 @@
+import { useTranslation } from "react-i18next";
 import { Badge } from "../ui/Badge";
 import type { VerificationLevel } from "../../types/content";
-import { VERIFICATION_LEVEL_LABELS } from "../../types/content";
 
 interface VerificationBadgeProps {
   level: VerificationLevel;
@@ -22,8 +22,11 @@ export function VerificationBadge({
   showPrefix = true,
   className = "",
 }: VerificationBadgeProps) {
-  const label = VERIFICATION_LEVEL_LABELS[level];
-  const display = showPrefix ? `Level ${level} — ${label}` : label;
+  const { t } = useTranslation("statusLabels");
+  const label = t(`verificationLevel.${level}`);
+  const display = showPrefix
+    ? t("verificationLevelShort.levelLabel", { level, label })
+    : label;
 
   return (
     <Badge variant={variantMap[level]} className={className}>
