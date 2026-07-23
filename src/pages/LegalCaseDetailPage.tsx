@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { Container } from "../components/ui/Container";
 import { LastUpdated } from "../components/pages/LastUpdated";
 import { CorrectionLink } from "../components/pages/CorrectionLink";
+import { PrintHeader, PrintFooter } from "../components/pages/PrintOnly";
 import { LegalStatusBadge } from "../components/pages/LegalStatusBadge";
 import { ContentStatusBadge } from "../components/pages/ContentStatusBadge";
 import { SourceList } from "../components/pages/SourceList";
@@ -55,7 +56,23 @@ export default function LegalCaseDetailPage() {
   const timelineEvents = getTimelineEventsForCase(legalCase.id);
 
   return (
-    <Container className="py-16 lg:py-20">
+    <Container className="py-16 lg:py-20 legal-print">
+      {/* ── Print header (visible only when printing) ────────────────── */}
+      <PrintHeader
+        title={legalCase.title}
+        version={legalCase.version}
+        status={`${legalCase.contentStatus} · ${VERIFICATION_LEVEL_LABELS[legalCase.sourceQuality]}`}
+        dates={[
+          legalCase.openedDate ? `Opened: ${legalCase.openedDate}` : null,
+          legalCase.latestVerifiedUpdateDate ? `Last verified update: ${legalCase.latestVerifiedUpdateDate}` : null,
+          legalCase.lastReviewedAt ? `Last reviewed: ${legalCase.lastReviewedAt}` : null,
+        ].filter(Boolean).join(" · ") || "Dates not recorded"}
+        extraLines={[
+          `Institution: ${legalCase.institution}`,
+          `Parties: ${legalCase.parties.join(", ")}`,
+        ]}
+      />
+
       {/* Back link */}
       <p className="mb-6">
         <Link
@@ -362,6 +379,14 @@ export default function LegalCaseDetailPage() {
 
       <CorrectionLink />
       <LastUpdated date="2026-07-13" />
+
+      {/* ── Print footer (visible only when printing) ────────────────── */}
+      <PrintFooter
+        canonicalPath={`/legal-tracker/${legalCase.slug}`}
+        extraLines={[
+          "Not legal advice. This page provides publicly available information about legal proceedings for informational purposes only.",
+        ]}
+      />
     </Container>
   );
 }

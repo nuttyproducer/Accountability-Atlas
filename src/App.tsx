@@ -1,40 +1,49 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { PageShell } from "./components/layout/PageShell";
 import { DocumentHead } from "./components/ui/DocumentHead";
+import { RouteLoadingFallback } from "./components/ui/RouteLoadingFallback";
 import { getRouteMeta } from "./data/routeMetadata";
 import { LocaleProvider } from "./i18n/LocaleProvider";
+import { DisplayPreferenceProvider } from "./contexts/DisplayPreference";
 // Import i18n config to ensure initialization before first render
 import "./i18n/config";
+
+// ── Eager-loaded pages (critical for first paint / error handling) ──────────
 import { HomePage } from "./pages/HomePage";
-import { MethodologyPage } from "./pages/MethodologyPage";
-import { ContributePage } from "./pages/ContributePage";
-import { ChangelogPage } from "./pages/ChangelogPage";
-import { AttributionsPage } from "./pages/AttributionsPage";
-import { CorrectionsPage } from "./pages/CorrectionsPage";
-import { PrivacyPage } from "./pages/PrivacyPage";
-import { AccessibilityPage } from "./pages/AccessibilityPage";
-import { DisclaimerPage } from "./pages/DisclaimerPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
-import GazaDossierPage from "./pages/GazaDossierPage";
-import LegalTrackerPage from "./pages/LegalTrackerPage";
-import LegalCaseDetailPage from "./pages/LegalCaseDetailPage";
-import CountriesIndexPage from "./pages/CountriesIndexPage";
-import BelgiumPage from "./pages/BelgiumPage";
-import InstitutionsIndexPage from "./pages/InstitutionsIndexPage";
-import EuropeanUnionPage from "./pages/EuropeanUnionPage";
-import OrganizationsPage from "./pages/OrganizationsPage";
-import OrganizationDetailPage from "./pages/OrganizationDetailPage";
-import ActionHubPage from "./pages/ActionHubPage";
-import ActionDetailPage from "./pages/ActionDetailPage";
-import EvidenceLibraryPage from "./pages/EvidenceLibraryPage";
-import EvidenceDetailPage from "./pages/EvidenceDetailPage";
-import PressPage from "./pages/PressPage";
-import SourceRegistryPage from "./pages/SourceRegistryPage";
-import SourceDetailPage from "./pages/SourceDetailPage";
-import DossiersPage from "./pages/DossiersPage";
-import DossierDetailPage from "./pages/DossierDetailPage";
-import SearchPage from "./pages/SearchPage";
+
+// ── Lazy-loaded routes — split at the page level ────────────────────────────
+// Pages with default exports: import directly.
+// Pages with named exports: wrap via .then(m => ({ default: m.Name })).
+
+const MethodologyPage = lazy(() => import("./pages/MethodologyPage").then(m => ({ default: m.MethodologyPage })));
+const ContributePage = lazy(() => import("./pages/ContributePage").then(m => ({ default: m.ContributePage })));
+const ChangelogPage = lazy(() => import("./pages/ChangelogPage").then(m => ({ default: m.ChangelogPage })));
+const AttributionsPage = lazy(() => import("./pages/AttributionsPage").then(m => ({ default: m.AttributionsPage })));
+const CorrectionsPage = lazy(() => import("./pages/CorrectionsPage").then(m => ({ default: m.CorrectionsPage })));
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage").then(m => ({ default: m.PrivacyPage })));
+const AccessibilityPage = lazy(() => import("./pages/AccessibilityPage").then(m => ({ default: m.AccessibilityPage })));
+const DisclaimerPage = lazy(() => import("./pages/DisclaimerPage").then(m => ({ default: m.DisclaimerPage })));
+const GazaDossierPage = lazy(() => import("./pages/GazaDossierPage"));
+const LegalTrackerPage = lazy(() => import("./pages/LegalTrackerPage"));
+const LegalCaseDetailPage = lazy(() => import("./pages/LegalCaseDetailPage"));
+const CountriesIndexPage = lazy(() => import("./pages/CountriesIndexPage"));
+const BelgiumPage = lazy(() => import("./pages/BelgiumPage"));
+const InstitutionsIndexPage = lazy(() => import("./pages/InstitutionsIndexPage"));
+const EuropeanUnionPage = lazy(() => import("./pages/EuropeanUnionPage"));
+const OrganizationsPage = lazy(() => import("./pages/OrganizationsPage"));
+const OrganizationDetailPage = lazy(() => import("./pages/OrganizationDetailPage"));
+const ActionHubPage = lazy(() => import("./pages/ActionHubPage"));
+const ActionDetailPage = lazy(() => import("./pages/ActionDetailPage"));
+const EvidenceLibraryPage = lazy(() => import("./pages/EvidenceLibraryPage"));
+const EvidenceDetailPage = lazy(() => import("./pages/EvidenceDetailPage"));
+const PressPage = lazy(() => import("./pages/PressPage"));
+const SourceRegistryPage = lazy(() => import("./pages/SourceRegistryPage"));
+const SourceDetailPage = lazy(() => import("./pages/SourceDetailPage"));
+const DossiersPage = lazy(() => import("./pages/DossiersPage"));
+const DossierDetailPage = lazy(() => import("./pages/DossierDetailPage"));
+const SearchPage = lazy(() => import("./pages/SearchPage"));
 
 function RouteMeta() {
   const { pathname } = useLocation();
@@ -64,11 +73,13 @@ function ScrollToTop() {
 
 export default function App() {
   return (
+    <DisplayPreferenceProvider>
     <LocaleProvider>
       <BrowserRouter>
         <RouteMeta />
         <ScrollToTop />
         <PageShell>
+        <Suspense fallback={<RouteLoadingFallback />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/methodology" element={<MethodologyPage />} />
@@ -100,8 +111,10 @@ export default function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        </Suspense>
       </PageShell>
     </BrowserRouter>
     </LocaleProvider>
+    </DisplayPreferenceProvider>
   );
 }

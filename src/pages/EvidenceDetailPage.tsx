@@ -5,6 +5,7 @@ import { Badge } from "../components/ui/Badge";
 import { ExternalLink } from "../components/ui/ExternalLink";
 import { LastUpdated } from "../components/pages/LastUpdated";
 import { CorrectionLink } from "../components/pages/CorrectionLink";
+import { PrintHeader, PrintFooter } from "../components/pages/PrintOnly";
 import { getEvidenceBySlug, EVIDENCE_CATEGORY_LABELS } from "../data/evidenceItems";
 import { sources } from "../data/sources";
 import { legalCases } from "../data/legalCases";
@@ -128,7 +129,18 @@ export default function EvidenceDetailPage() {
   const canonicalPath = `https://accountabilityatlas.org/evidence/${item.slug}`;
 
   return (
-    <Container className="py-16 lg:py-20">
+    <Container className="py-16 lg:py-20 evidence-print">
+      {/* ── Print header (visible only when printing) ────────────────── */}
+      <PrintHeader
+        title={item.title}
+        version={item.version}
+        status={`${CONTENT_STATUS_LABELS[item.contentStatus]} · ${VERIFICATION_LEVEL_LABELS[item.sourceQuality]}`}
+        dates={[
+          item.publicationDate ? `Source published: ${item.publicationDate}` : null,
+          item.lastReviewedAt ? `Last reviewed: ${item.lastReviewedAt}` : null,
+        ].filter(Boolean).join(" · ") || "Dates not recorded"}
+      />
+
       {/* Back link */}
       <p className="mb-6">
         <Link
@@ -492,6 +504,16 @@ export default function EvidenceDetailPage() {
 
       <CorrectionLink />
       <LastUpdated date="2026-07-13" />
+
+      {/* ── Print footer (visible only when printing) ────────────────── */}
+      <PrintFooter
+        canonicalPath={`/evidence/${item.slug}`}
+        extraLines={[
+          item.contentStatus !== "reviewed"
+            ? "This record has not been editorially reviewed. Do not describe it as verified or reviewed content."
+            : "",
+        ].filter(Boolean)}
+      />
     </Container>
   );
 }

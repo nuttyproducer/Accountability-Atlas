@@ -9,12 +9,22 @@ import { PolicySection } from "../components/pages/PolicySection";
 import { LastUpdated } from "../components/pages/LastUpdated";
 import { PreviewNotice } from "../components/pages/PreviewNotice";
 import { CorrectionLink } from "../components/pages/CorrectionLink";
+import { PrintHeader, PrintFooter } from "../components/pages/PrintOnly";
 import { euInstitutions } from "../data/institutions";
 import { CONTENT_STATUS_LABELS } from "../types/content";
 
 export default function EuropeanUnionPage() {
   return (
-    <Container className="py-16 lg:py-20">
+    <Container className="py-16 lg:py-20 institution-print">
+      {/* ── Print header (visible only when printing) ────────────────── */}
+      <PrintHeader
+        title="European Union — Institution Accountability"
+        version={1}
+        status="Content under review"
+        dates="Last updated: 2026-07-10"
+        extraLines={["Institution accountability page tracking EU positions, resolutions, and policy actions."]}
+      />
+
       <PageIntro
         eyebrow="Institution Accountability"
         title="European Union"
@@ -244,6 +254,14 @@ export default function EuropeanUnionPage() {
 
       <CorrectionLink />
       <LastUpdated date="2026-07-10" />
+
+      {/* ── Print footer (visible only when printing) ────────────────── */}
+      <PrintFooter
+        canonicalPath="/institutions/european-union"
+        extraLines={[
+          "Content under review. No accountability scores or final policy conclusions are published.",
+        ]}
+      />
     </Container>
   );
 }

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Reveal } from "../ui/Reveal";
 import { Container } from "../ui/Container";
+import { ContextualImage } from "../../contexts/DisplayPreference";
 import heroBgJpg from "../../assets/images/hero-gaza-displacement.jpg";
 import heroBgWebp from "../../assets/images/hero-gaza-displacement.webp";
 
@@ -10,16 +11,24 @@ export function Hero() {
       className="relative isolate overflow-hidden bg-ink text-bone min-h-[620px] md:min-h-[680px] lg:min-h-[720px]"
       aria-labelledby="hero-title"
     >
-      {/* Background image — contextual, not purely decorative */}
-      <picture className="absolute inset-0 z-0" aria-hidden="true">
-        <source srcSet={heroBgWebp} type="image/webp" />
-        <img
-          src={heroBgJpg}
-          alt="People walking through a destroyed urban area in Gaza during forced displacement."
-          className="w-full h-full object-cover object-center lg:object-[center_55%]"
-          loading="eager"
-        />
-      </picture>
+      {/* Background image — contextual, not purely decorative.
+           fetchpriority="high" signals this as the LCP candidate.
+           Explicit width/height (4032×2268) reserve aspect ratio to prevent CLS.
+           In low-graphic mode, replaced with a calm non-graphic surface. */}
+      <ContextualImage className="absolute inset-0 z-0">
+        <picture className="absolute inset-0" aria-hidden="true">
+          <source srcSet={heroBgWebp} type="image/webp" />
+          <img
+            src={heroBgJpg}
+            alt="People walking through a destroyed urban area in Gaza during forced displacement."
+            width={4032}
+            height={2268}
+            className="w-full h-full object-cover object-center lg:object-[center_55%]"
+            loading="eager"
+            fetchPriority="high"
+          />
+        </picture>
+      </ContextualImage>
 
       {/* Overlay 1: Dark navy readability base */}
       <div

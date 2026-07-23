@@ -1,5 +1,6 @@
 import { Reveal } from "../ui/Reveal";
 import { Container } from "../ui/Container";
+import { ContextualImage } from "../../contexts/DisplayPreference";
 import focusImage from "../../assets/images/Destruction_of_Gaza_1.jpg";
 
 export function StartingFocus() {
@@ -8,13 +9,20 @@ export function StartingFocus() {
       className="relative isolate overflow-hidden bg-ink min-h-[620px] md:min-h-[680px] lg:min-h-[760px]"
       aria-labelledby="focus-title"
     >
-      {/* Full-width background image */}
-      <img
-        src={focusImage}
-        alt="A child stands near damaged buildings in Gaza, overlooking destruction in a residential area."
-        className="absolute inset-0 h-full w-full object-cover object-center lg:object-[58%_center]"
-        loading="lazy"
-      />
+      {/* Full-width background image — below fold, lazy-loaded.
+           Explicit width/height (3522×2348) reserve aspect ratio to prevent CLS.
+           In low-graphic mode, replaced with a calm non-graphic surface. */}
+      <ContextualImage className="absolute inset-0 z-0">
+        <img
+          src={focusImage}
+          alt="A child stands near damaged buildings in Gaza, overlooking destruction in a residential area."
+          width={3522}
+          height={2348}
+          className="absolute inset-0 h-full w-full object-cover object-center lg:object-[58%_center]"
+          loading="lazy"
+          decoding="async"
+        />
+      </ContextualImage>
 
       {/* Overlay 1: Base dark veil */}
       <div

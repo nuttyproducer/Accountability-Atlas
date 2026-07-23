@@ -9,12 +9,22 @@ import { PolicySection } from "../components/pages/PolicySection";
 import { LastUpdated } from "../components/pages/LastUpdated";
 import { PreviewNotice } from "../components/pages/PreviewNotice";
 import { CorrectionLink } from "../components/pages/CorrectionLink";
+import { PrintHeader, PrintFooter } from "../components/pages/PrintOnly";
 import { belgiumSections } from "../data/countries";
 import { CONTENT_STATUS_LABELS } from "../types/content";
 
 export default function BelgiumPage() {
   return (
-    <Container className="py-16 lg:py-20">
+    <Container className="py-16 lg:py-20 country-print">
+      {/* ── Print header (visible only when printing) ────────────────── */}
+      <PrintHeader
+        title="Belgium — Country Accountability"
+        version={1}
+        status="Content under review"
+        dates="Last updated: 2026-07-10"
+        extraLines={["Country accountability page tracking government positions, voting records, and policy summaries."]}
+      />
+
       <PageIntro
         eyebrow="Country Accountability"
         title="Belgium"
@@ -166,6 +176,14 @@ export default function BelgiumPage() {
 
       <CorrectionLink />
       <LastUpdated date="2026-07-10" />
+
+      {/* ── Print footer (visible only when printing) ────────────────── */}
+      <PrintFooter
+        canonicalPath="/countries/belgium"
+        extraLines={[
+          "Content under review. No accountability scores or final policy conclusions are published.",
+        ]}
+      />
     </Container>
   );
 }

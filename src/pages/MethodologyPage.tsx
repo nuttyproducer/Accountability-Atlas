@@ -7,6 +7,7 @@ import { PageIntro } from "../components/pages/PageIntro";
 import { PageStatusNotice } from "../components/pages/PageStatusNotice";
 import { PolicySection } from "../components/pages/PolicySection";
 import { LastUpdated } from "../components/pages/LastUpdated";
+import { PrintHeader, PrintFooter } from "../components/pages/PrintOnly";
 import {
   VERIFICATION_LEVEL_LABELS,
   LEGAL_STATUS_LABELS,
@@ -32,7 +33,16 @@ export function MethodologyPage() {
   return (
     <div className="py-24 lg:py-32">
       <Container>
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto methodology-print">
+          {/* ── Print header (visible only when printing) ────────────────── */}
+          <PrintHeader
+            title="Methodology"
+            version={1}
+            status="Active draft"
+            dates="Last updated: 2026-07-12"
+            extraLines={["Evidence, sources, verification, and review methodology for the platform."]}
+          />
+
           <PageIntro
             eyebrow="Methodology"
             title="How Accountability Atlas works with evidence."
@@ -686,6 +696,14 @@ export function MethodologyPage() {
           </Reveal>
 
           <LastUpdated date="2026-07-12" />
+
+          {/* ── Print footer (visible only when printing) ────────────────── */}
+          <PrintFooter
+            canonicalPath="/methodology"
+            extraLines={[
+              "The methodology is an active draft and will be updated as the platform develops.",
+            ]}
+          />
         </div>
       </Container>
     </div>

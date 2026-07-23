@@ -142,9 +142,9 @@ describe("Route rendering smoke tests", () => {
         </Routes>
       </MemoryRouter>,
     );
-    expect(
-      screen.getByRole("heading", { name: /ICJ provisional measures order/ }),
-    ).toBeInTheDocument();
+    // Print header adds a hidden h1 with the same name; use getAllByRole
+    const headings = screen.getAllByRole("heading", { name: /ICJ provisional measures order/ });
+    expect(headings.length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders EvidenceDetailPage not-found state for unknown slug", () => {

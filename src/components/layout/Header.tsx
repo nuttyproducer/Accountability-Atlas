@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { mainNavItems, githubLink } from "../../data/navigation";
 import logoMark from "../../assets/logo-mark.svg";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { DisplayDensityToggle } from "./DisplayDensityToggle";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,6 +26,8 @@ export function Header() {
             <img
               src={logoMark}
               alt=""
+              width={40}
+              height={40}
               className="w-10 h-10 flex-shrink-0"
               aria-hidden="true"
             />
@@ -68,6 +71,7 @@ export function Header() {
               <span className="hidden lg:inline">Search</span>
             </Link>
             <LanguageSwitcher />
+            <DisplayDensityToggle />
             <a
               href={githubLink.href}
               target="_blank"
@@ -134,6 +138,9 @@ export function Header() {
             </Link>
             <div className="px-3 py-2">
               <LanguageSwitcher />
+            </div>
+            <div className="px-3 py-2">
+              <DisplayDensityToggle />
             </div>
             <a
               href={githubLink.href}

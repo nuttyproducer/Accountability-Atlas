@@ -34,6 +34,10 @@ const commitments = [
     desc: "Images that convey information include descriptive alt text. Purely decorative images are marked as decorative.",
   },
   {
+    title: "Low-graphic display mode",
+    desc: "A privacy-safe local preference (standard / low-graphic) lets you replace contextual documentary images with calm non-graphic surfaces. All text and functionality are preserved. The preference is stored only in your browser — no account is needed. Toggle it from the Display button in the header.",
+  },
+  {
     title: "Reduced motion support",
     desc: "Animations respect the prefers-reduced-motion browser setting. When enabled, scroll-triggered reveals and motion effects are disabled.",
   },
@@ -97,8 +101,8 @@ export function AccessibilityPage() {
               <li className="flex items-start gap-2">
                 <span className="text-clay mt-1.5" aria-hidden="true">•</span>
                 <span>
-                  <strong>Low-graphic and trauma-informed design</strong> —
-                  content presentation that accounts for the sensitive nature of
+                  <strong>Trauma-informed design review</strong> —
+                  expert review of content presentation for contexts involving
                   atrocity documentation and humanitarian crisis reporting.
                 </span>
               </li>
