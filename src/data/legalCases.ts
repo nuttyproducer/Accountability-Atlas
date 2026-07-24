@@ -45,11 +45,11 @@ export const legalCases: LegalCaseEntry[] = [
       "Alleged violations of the Convention on the Prevention and Punishment of the Crime of Genocide (1948)",
     actionRelevance:
       "Provisional measures are binding under international law. Member states may submit interventions or make declarations of intervention.",
-    sourceIds: ["icj-2024-01-26", "icj-2024-05-24"],
+    sourceIds: ["icj-2024-01-26", "icj-2024-03-28", "icj-2024-05-24"],
     sourceQuality: 5,
     contentStatus: "review_pending",
-    lastReviewedAt: "2026-07-10",
-    reviewedByRole: "Static beta — editorial review pending",
+    lastReviewedAt: "2026-07-24",
+    reviewedByRole: "Static beta — editorial review pending; sourceIds expanded with March 2024 order",
     version: 1,
     proceduralNote:
       "Provisional measures are binding orders issued before a final judgment. They do not constitute a final ruling on the merits of the case.",
@@ -72,11 +72,11 @@ export const legalCases: LegalCaseEntry[] = [
       "Alleged war crimes and crimes against humanity within the Court's jurisdiction under the Rome Statute",
     actionRelevance:
       "ICC arrest warrants are binding on all States Parties to the Rome Statute. States Parties have a duty to cooperate with the Court.",
-    sourceIds: ["icc-palestine-2024"],
+    sourceIds: ["icc-palestine-2024", "icc-arrest-warrants-2024-11"],
     sourceQuality: 5,
     contentStatus: "review_pending",
-    lastReviewedAt: "2026-07-10",
-    reviewedByRole: "Static beta — editorial review pending",
+    lastReviewedAt: "2026-07-24",
+    reviewedByRole: "Static beta — editorial review pending; sourceIds expanded with Nov 2024 arrest warrant record",
     version: 1,
     proceduralNote:
       "The ICC prosecutes individuals, not states. Arrest warrants are issued by Pre-Trial Chambers and are subject to judicial review. All persons are presumed innocent until proven guilty.",
